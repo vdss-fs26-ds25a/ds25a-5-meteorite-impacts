@@ -5,23 +5,63 @@ import plotly.express as px
 from shiny import App, render, ui, reactive
 from shinywidgets import output_widget, render_widget
 
+def format_mass(value_g):
+    if pd.isna(value_g):
+        return "NA"
+    if value_g >= 1_000_000:
+        value = value_g / 1_000_000
+        unit = "t"
+    elif value_g >= 1_000:
+        value = value_g / 1_000
+        unit = "kg"
+    else:
+        value = value_g
+        unit = "g"
+
+    if value >= 100:
+        text = f"{value:,.0f}"
+    elif value >= 10:
+        text = f"{value:,.1f}".rstrip("0").rstrip(".")
+    else:
+        text = f"{value:,.2f}".rstrip("0").rstrip(".")
+    return f"{text} {unit}"
+
+def decade_ticks(min_log, max_log):
+    start = int(np.floor(min_log))
+    end = int(np.ceil(max_log))
+    tickvals = list(range(start, end + 1))
+    ticktext = [format_mass(10 ** exponent) for exponent in tickvals]
+    return tickvals, ticktext
+
 # Load and clean data
 def load_data():
     try:
         df = pd.read_csv("Meteorite_Landings.csv")
         df.columns = df.columns.str.strip()
-        df = df.dropna(subset=['year', 'mass (g)', 'reclat', 'reclong'])
+        for col in ["year", "mass (g)", "reclat", "reclong"]:
+            df[col] = pd.to_numeric(df[col], errors="coerce")
+
+        df = df.rename(columns={"mass (g)": "mass_g"})
+        df = df.dropna(subset=['year', 'mass_g', 'reclat', 'reclong'])
         df = df[(df['year'] >= 800) & (df['year'] <= 2025)]
         df = df[(df['reclat'] != 0) | (df['reclong'] != 0)]
         df = df[(df['reclat'].between(-90, 90)) & (df['reclong'].between(-180, 180))]
+        df = df[df["mass_g"] > 0]
         df['year'] = df['year'].astype(int)
-        df['log_mass'] = np.log10(df['mass (g)'].clip(lower=0.1))
+        df['log_mass'] = np.log10(df['mass_g'])
         return df
     except Exception as e:
         print(f"Error: {e}")
         return pd.DataFrame()
 
 meteorites = load_data()
+
+if meteorites.empty:
+    MASS_LOG_MIN = -2.0
+    MASS_LOG_MAX = 8.0
+else:
+    MASS_LOG_MIN = float(np.floor(meteorites["log_mass"].min() * 10) / 10)
+    MASS_LOG_MAX = float(np.ceil(meteorites["log_mass"].max() * 10) / 10)
 
 app_ui = ui.page_fluid(
     ui.tags.head(
@@ -137,7 +177,7 @@ def server(input, output, session):
     
     # Defaults
     cur_years = reactive.Value([1950, 2024])
-    cur_mass_log = reactive.Value([0.0, 8.0])
+    cur_mass_log = reactive.Value([MASS_LOG_MIN, MASS_LOG_MAX])
     cur_limit = reactive.Value(1000)
     cur_fall_filter = reactive.Value(["Fell", "Found"])
     
@@ -210,8 +250,9 @@ def server(input, output, session):
                                 max=int(meteorites['year'].max()), 
                                 value=cur_years(), 
                                 sep=""),
-                ui.input_slider("mass_range_log", "MASS (LOG G)", 
-                                min=0, max=8, value=cur_mass_log(), step=0.1),
+                ui.input_slider("mass_range_log", "MASS (g/kg/t)", 
+                                min=MASS_LOG_MIN, max=MASS_LOG_MAX, value=cur_mass_log(), step=0.1),
+                ui.div(ui.output_text("mass_range_label"), style="font-size: 12px; color: #bbb; margin-top: 6px;"),
                 ui.input_numeric("limit", "MAX POINTS", value=cur_limit(), min=1, max=45000),
                 class_="menu-widget"
             )
@@ -226,6 +267,16 @@ def server(input, output, session):
     def count_summary():
         df = filtered_data()
         return f"{len(df):,} DETECTED IMPACTS"
+
+    @render.text
+    def mass_range_label():
+        try:
+            mass_log = input.mass_range_log()
+        except:
+            mass_log = cur_mass_log()
+        low_g = 10 ** mass_log[0]
+        high_g = 10 ** mass_log[1]
+        return f"Selected mass: {format_mass(low_g)} to {format_mass(high_g)}"
 
     @render_widget
     def globe_plot():
@@ -289,13 +340,19 @@ def server(input, output, session):
             s_impacts = show_impacts()
 
         if s_impacts and not df.empty:
+            try:
+                mass_log = input.mass_range_log()
+            except:
+                mass_log = cur_mass_log()
+            tickvals, ticktext = decade_ticks(mass_log[0], mass_log[1])
+
             hover_texts = []
             for _, row in df.iterrows():
                 fall_type = "Fallen" if row['fall'] == 'Fell' else ("Found" if row['fall'] == 'Found' else "")
                 year_label = f"Year {fall_type}" if fall_type else "Year"
                 text = (f"<b>{row['name']}</b><br>"
                         f"Class: {row['recclass']}<br>"
-                        f"Mass: {row['mass (g)']:,.0f}g<br>"
+                        f"Mass: {format_mass(row['mass_g'])}<br>"
                         f"{year_label}: {row['year']}<br>"
                         f"Coord: {row['reclat']:.2f}, {row['reclong']:.2f}")
                 hover_texts.append(text)
@@ -310,16 +367,20 @@ def server(input, output, session):
                     size = 5 + (df['log_mass'] * 1.5),
                     opacity = 0.8,
                     color = df['log_mass'],
+                    cmin = mass_log[0],
+                    cmax = mass_log[1],
                     colorscale = 'RdYlGn',
                     reversescale = True, 
                     showscale = True,
                     colorbar = dict(
-                        title = "MASS (LOG G)",
+                        title = "MASS (g/kg/t)",
                         titleside = "right",
                         thickness = 15,
                         len = 0.8,
                         x = 0.95,
                         y = 0.5,
+                        tickvals = tickvals,
+                        ticktext = ticktext,
                         tickfont = dict(color="#888", size=10),
                         titlefont = dict(color="#888", size=10)
                     ),
@@ -373,10 +434,18 @@ def server(input, output, session):
         df = filtered_data()
         if df.empty: return go.Figure()
         fig = px.histogram(df, x="log_mass", nbins=50, color_discrete_sequence=['#555'])
+        tickvals, ticktext = decade_ticks(df["log_mass"].min(), df["log_mass"].max())
         fig.update_layout(
             margin={"r":10,"t":10,"l":10,"b":10},
             paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
-            xaxis=dict(title="LOG MASS (G)", showgrid=False, tickfont=dict(color="#666"), titlefont=dict(color="#888", size=9)),
+            xaxis=dict(
+                title="MASS (g/kg/t)",
+                tickvals=tickvals,
+                ticktext=ticktext,
+                showgrid=False,
+                tickfont=dict(color="#666"),
+                titlefont=dict(color="#888", size=9)
+            ),
             yaxis=dict(title="COUNT", showgrid=True, gridcolor="#222", tickfont=dict(color="#666"), titlefont=dict(color="#888", size=9))
         )
         return fig
