@@ -235,7 +235,7 @@ def server(input, output, session):
                                 max=int(meteorites['year'].max()),
                                 value=cur_years(),
                                 sep=""),
-                ui.input_slider("mass_range_log", "MASS (g/kg/t)",
+                ui.input_slider("mass_range_log", "MASS (log)",
                                 min=MASS_LOG_MIN, max=MASS_LOG_MAX, value=cur_mass_log(), step=0.1),
                 ui.div(ui.output_text("mass_range_label"),
                        style="font-size: 12px; color: #bbb; margin-top: 6px;"),
