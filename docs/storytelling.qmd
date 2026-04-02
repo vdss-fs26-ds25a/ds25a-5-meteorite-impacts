@@ -1,0 +1,91 @@
+# Museum Metorite Storytelling
+
+# Story
+
+## Basic Knowledge
+
+### What is a meteorite?
+- If a meteoroid/asteroid/comet enters Earth’s atmosphere → it becomes a meteor (shooting star / bright streak)
+- If part of it reaches the ground → it’s a meteorite
+
+### What kind of meteorite are there? (Compositions)
+
+| Main Class                 | Subtype / Abbreviation                       | Composition / Notes                                                                                       |
+|:---------------------------|:---------------------------------------------|:----------------------------------------------------------------------------------------------------------|
+| **Chondrites (Stony)**     | H                                           | Ordinary chondrite; high iron (~25–31%), many metallic grains, relatively dense                           |
+|                             | L                                           | Ordinary chondrite; low iron (~20–25%), fewer metal grains, more oxidized                                   |
+|                             | LL                                          | Ordinary chondrite; low iron (~19–22%), very low metal, highly oxidized                                     |
+|                             | CI                                          | Carbonaceous chondrite; very primitive, almost no chondrules, rich in water and organics                    |
+|                             | CM                                          | Carbonaceous chondrite; contains chondrules, hydrated minerals, organics                                     |
+|                             | CO                                          | Carbonaceous chondrite; small chondrules, primitive silicates                                               |
+|                             | CV                                          | Carbonaceous chondrite; large chondrules, refractory inclusions, relatively oxidized                       |
+|                             | CR                                          | Carbonaceous chondrite; rich in metal and chondrules, some water-bearing minerals                            |
+|                             | CK                                          | Carbonaceous chondrite; oxidized, high-temperature, few chondrules                                         |
+|                             | CH                                          | Carbonaceous chondrite; very metal-rich, tiny chondrules                                                   |
+|                             | CB                                          | Carbonaceous chondrite; metal-rich, unusual, likely from planetesimal impacts                               |
+| **Achondrites (Stony)**    | Eucrite, Diogenite, Aubrite, Angrite, Ureilite | Igneous/recrystallized rocks; originate from differentiated bodies (asteroids)                              |
+| **Primitive Achondrites**   | Acapulcoites, Lodranites, Winonaites       | Transitional between chondrites and achondrites; partially melted and recrystallized                        |
+| **Iron Meteorites**         | IAB                                         | Low–medium Ni (~6–13%), silicate inclusions, heterogeneous; from parent asteroid cores                     |
+|                             | IIAB                                        | Very low Ni (~5–6%), fine octahedrite structure, mostly pure iron-nickel                                     |
+|                             | IIIAB                                       | Medium Ni (~8–10%), coarse octahedrite, from large asteroid cores                                           |
+|                             | IVA                                         | Ni ~8–13%, fine–medium octahedrite, low trace elements, from outer cores                                     |
+|                             | IVB                                         | Ni ~16–18%, high Ni, very rare, likely from deep inner cores                                                |
+| **Stony-Iron Meteorites**   | Pallasites                                  | Mixture of olivine crystals + iron-nickel; boundary between asteroid core and mantle                        |
+|                             | Mesosiderites                               | Brecciated mix of silicates + iron-nickel; often from collisions of asteroids                                |
+| **Enstatite Chondrites**    | EH                                          | High iron, reduced environment, unusual minerals                                                            |
+|                             | EL                                          | Low iron, reduced environment, unusual minerals                                                             |
+| **Planetary Meteorites**    | Lunar                                       | Ejected from the Moon by impacts; provide samples of lunar crust                                           |
+|                             | Martian                                     | Ejected from Mars by impacts; provide samples of Martian crust and rocks                                     |
+| **Unclassified / Other**    | Unknown, Fusion crust, Relict, Stone-ung    | Not clearly classified or only surface fragments                                                          |
+
+## Time line
+
+### First recorded meteorite ca. 860
+
+- Nogata
+860, 472g, Fell
+Card on Timeline
+- Name
+- Mass
+- Composition
+- Location
+- Image of Meteroite (Wiki)
+- Wiki (Link)
+
+### Biggest 3 meteorites
+
+Card on Timeline
+- Name
+- Mass
+- Composition
+- Location
+- Image of Meteroite (Wiki)
+- Wiki (Link)
+
+1. Hoba
+1920, 60t | Found
+Wheigth in London Double Decker buses (12t)
+60t / 12t = 5 buses
+
+2. Cape York | Found
+1818, 58.2t
+
+3. Campo del Cielo | Found
+1575, 50t
+
+### Meteorite hit House and Person
+
+1954, 5.56 kg | Fell
+
+### Mars Meteorite 
+- Allan Hills 84001
+1984, 1.9309 kg | Found
+
+
+### Peak of distribution in year (year with most metorites recorded)
+
+2003 Peak, 3323 sightings
+
+## Other
+### Distribution of found and fallen
+### Distribution of meteorite over years
