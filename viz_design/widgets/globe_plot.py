@@ -1,6 +1,62 @@
+import numpy as np
 import plotly.graph_objects as go
+from scipy.ndimage import gaussian_filter
 
 from formatting import decade_ticks, format_mass
+
+
+def _build_smoothed_geo_heat(df, n_lat=140, n_lon=280, sigma=1.35):
+    lat = df["reclat"].to_numpy(dtype=float)
+    lon = df["reclong"].to_numpy(dtype=float)
+
+    valid = np.isfinite(lat) & np.isfinite(lon)
+    lat = np.clip(lat[valid], -90.0, 90.0)
+    lon = ((lon[valid] + 180.0) % 360.0) - 180.0
+
+    if lat.size == 0:
+        return None, None, None
+
+    lat_edges = np.linspace(-90.0, 90.0, n_lat + 1)
+    lon_edges = np.linspace(-180.0, 180.0, n_lon + 1)
+
+    density, _, _ = np.histogram2d(lat, lon, bins=[lat_edges, lon_edges])
+    smoothed = gaussian_filter(density, sigma=(sigma, sigma), mode=("nearest", "wrap"))
+
+    positive = smoothed[smoothed > 0]
+    if positive.size == 0:
+        return None, None, None
+
+    low = float(np.percentile(positive, 2.5))
+    high = float(np.percentile(positive, 99.5))
+    if high <= low:
+        low = float(np.min(positive))
+        high = float(np.max(positive))
+
+    norm = np.clip((smoothed - low) / max(high - low, 1e-9), 0.0, 1.0)
+    lat_centers = (lat_edges[:-1] + lat_edges[1:]) / 2.0
+    lon_centers = (lon_edges[:-1] + lon_edges[1:]) / 2.0
+
+    lon_grid, lat_grid = np.meshgrid(lon_centers, lat_centers)
+    heat = np.power(norm, 0.65).ravel()
+    lon_flat = lon_grid.ravel()
+    lat_flat = lat_grid.ravel()
+
+    mask = heat >= 0.025
+    if not np.any(mask):
+        return None, None, None
+
+    lon_sel = lon_flat[mask]
+    lat_sel = lat_flat[mask]
+    heat_sel = heat[mask]
+
+    # Keep payload responsive in Shiny while preserving strongest density cells.
+    if heat_sel.size > 9000:
+        idx = np.argpartition(heat_sel, -9000)[-9000:]
+        lon_sel = lon_sel[idx]
+        lat_sel = lat_sel[idx]
+        heat_sel = heat_sel[idx]
+
+    return lon_sel, lat_sel, heat_sel
 
 
 def build_globe_plot(df, mass_log, show_impacts=True, show_heatmap=False):
@@ -29,27 +85,27 @@ def build_globe_plot(df, mass_log, show_impacts=True, show_heatmap=False):
     )
 
     if show_heatmap and not df.empty:
-        df_bin = df.copy()
-        df_bin["lat_bin"] = df_bin["reclat"].round(0)
-        df_bin["lon_bin"] = df_bin["reclong"].round(0)
-        density = df_bin.groupby(["lat_bin", "lon_bin"]).size().reset_index(name="count")
-
-        fig.add_trace(
-            go.Scattergeo(
-                lon=density["lon_bin"],
-                lat=density["lat_bin"],
-                mode="markers",
-                hoverinfo="skip",
-                marker=dict(
-                    size=10,
-                    opacity=0.6,
-                    color=density["count"],
-                    colorscale="Hot",
-                    showscale=False,
-                    line=dict(width=0),
-                ),
+        lon_heat, lat_heat, heat = _build_smoothed_geo_heat(df)
+        if heat is not None:
+            fig.add_trace(
+                go.Scattergeo(
+                    lon=lon_heat,
+                    lat=lat_heat,
+                    mode="markers",
+                    hoverinfo="skip",
+                    marker=dict(
+                        symbol="hexagon",
+                        size=3.0 + (heat * 7.5),
+                        opacity=0.2 + (heat * 0.7),
+                        color=heat,
+                        cmin=0,
+                        cmax=1,
+                        colorscale="Hot",
+                        showscale=False,
+                        line=dict(width=0),
+                    ),
+                )
             )
-        )
 
     if show_impacts and not df.empty:
         tickvals, ticktext = decade_ticks(mass_log[0], mass_log[1])

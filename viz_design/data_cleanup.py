@@ -26,3 +26,5 @@ def generate_cleaned_file(
 
     df.to_csv(cleaned_path, index=False)
     return str(cleaned_path)
+
+
