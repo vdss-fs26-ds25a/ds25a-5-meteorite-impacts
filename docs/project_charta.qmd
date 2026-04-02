@@ -1,13 +1,9 @@
 # Project Charta
 ## Context and Scope
-
-
-Unser Projekt gehört zum geowissenschaftlichen Bereich und beschäftigt sich mit Meteoritenfunden. Ziel ist es, die weltweit bekannten Meteoriten interaktiv darzustellen und umfassend zu analysieren. Dabei werden insbesondere die geografische Verteilung, zeitliche Trends, Masse und Klassifikation der Meteoriten betrachtet. Das Projekt soll unter anderem folgende Fragen beantworten: Wo auf der Erde werden Meteoriten am häufigsten gefunden? Gibt es zeitliche oder regionale Muster bei der Masse oder Klassifikation der Meteoriten? Darüber hinaus können auf Basis dieser Daten weitere analytische Fragestellungen entwickelt werden, die gegebenenfalls mit zusätzlichen Datensätzen untersucht werden können.
-
-Die Vorteile des Projekts liegen sowohl im wissenschaftlichen als auch im schulischen Bereich. Nutzer können die Daten interaktiv erkunden, Muster und Trends erkennen und Zusammenhänge anschaulich nachvollziehen. Das Visualisierungsprojekt ist besonders spannend für alle, die sich für Meteoriten interessieren. Man kann die Funde interaktiv entdecken, mehr über die geografische Verteilung, die Klassen und die Größen der Meteoriten erfahren und Zusammenhänge gut nachvollziehen. So wird das Ganze sowohl lehrreich als auch unterhaltsam, egal ob man einfach neugierig ist oder sich bereits tiefer für das Thema interessiert.
-
-Das Projekt wird mit einer Shiny App umgesetzt und als Webseite zugänglich gemacht, sodass Interessierte direkt im Browser auf das Dashboard zugreifen können.
-
+Unser Projekt gehört zum geowissenschaftlichen Bereich und beschäftigt sich mit Meteoritenfunden. Ziel ist es, die wichtigsten Informationen über Meteoriten und ihre Funde weltweit anschaulich und verständlich darzustellen – speziell für den Einsatz auf Tablets in Museen. Die Zielgruppe sind Besucherinnen und Besucher ab etwa 15 Jahren, welche sich im Museum die ersten Informationen über Meteoriten holen wollen.
+Das Storytelling beginnt mit einer einfach verständlichen Einführung: Was sind Meteoriten und wie entstehen sie? Darauf aufbauend werden mithilfe des Datensatzes bedeutende Meteoritenfunde entlang eines Zeitstrahls präsentiert. Besondere Ereignisse wie der erste dokumentierte Fund, besonders große oder schwere Meteoriten sowie andere herausragende Funde werden hervorgehoben. Abschliessend bietet die Visualisierung eine Übersicht über alle Jahre, zum Beispiel Anzahl der Funde pro Jahr, durchschnittliche Masse, regionale Verteilung oder Klassifikation der Meteoriten.
+Am Ende des Storytellings steht eine interaktive Grafik, die es den Besucherinnen und Besuchern ermöglicht, selbst weiterführende Informationen zu entdecken. Sie können nach Jahr, Masse, Klassifikation oder Region filtern und die Ergebnisse direkt auf dem Tablet erkunden. Für besonders Interessierte stehen zudem zusätzliche Details bereit, etwa spezifische Fundorte, chemische Zusammensetzung oder Hintergrundinformationen zu den Meteoritenarten.
+Das gesamte Projekt wird als Shiny-App umgesetzt, sodass die Inhalte einfach auf Tablets im Museum zugänglich sind und die Nutzerinnen und Nutzer sowohl die lineare Storyline verfolgen als auch interaktiv Daten erkunden können
 
 ## Project Objectives and Success Criteria
 
