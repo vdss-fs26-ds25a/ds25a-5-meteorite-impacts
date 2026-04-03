@@ -5,6 +5,7 @@ from shinywidgets import output_widget, render_widget
 from data_cleanup import generate_cleaned_file
 from filters import filter_and_sample
 from formatting import format_mass
+from timeline import build_scroll_timeline_section
 from widgets import (
     build_class_bar,
     build_globe_plot,
@@ -96,27 +97,14 @@ app_ui = ui.page_fluid(
             .form-check-label { color: #bbb !important; font-size: 12px; font-weight: 500; }
         """)
     ),
+    
+    build_scroll_timeline_section(),
 
     # Globe Section
     ui.div(
         output_widget("globe_plot", height="70vh", width="100%"),
         style="background-color: #121212; border-bottom: 1px solid #1a1a1a; overflow: hidden; padding-top: 40px;"
     ),
-
-    ui.HTML("""
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <div style="height: 200px; display: flex; align-items: center; justify-content: center;">
-        <div id="test-box" style="width:120px; height:120px; background:#0d6efd; border-radius:16px; opacity:0;"></div>
-    </div>
-    <script>
-        gsap.registerPlugin(ScrollTrigger);
-        gsap.to("#test-box", {
-            opacity: 1, y: -30, duration: 1, ease: "power2.out",
-            scrollTrigger: { trigger: "#test-box", start: "top 85%", end: "top 40%", scrub: true, markers: true }
-        });
-    </script>
-    """),
 
     # Widget Section
     ui.div(
