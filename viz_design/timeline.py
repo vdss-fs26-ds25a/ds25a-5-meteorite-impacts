@@ -1,4 +1,5 @@
 from shiny import ui
+import re
 
 
 TIMELINE_EVENTS = [
@@ -11,7 +12,8 @@ TIMELINE_EVENTS = [
         "location": "Nogata, Fukuoka, Japan",
         "status": "Fell",
         "wiki_url": "https://en.wikipedia.org/wiki/N%C5%8Dgata_meteorite",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Meteorite_NWA_869.jpg/640px-Meteorite_NWA_869.jpg",
+        "image_url": "",
+        "image_source": "",
         "notes": [],
     },
     {
@@ -23,7 +25,8 @@ TIMELINE_EVENTS = [
         "location": "Gran Chaco region, Argentina",
         "status": "Found",
         "wiki_url": "https://en.wikipedia.org/wiki/Campo_del_Cielo",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Meteorito_Campo_del_Cielo.jpg/640px-Meteorito_Campo_del_Cielo.jpg",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1c/Campo_del_Cielo_meteorite%2C_El_Chaco_fragment%2C_N.jpg",
+        "image_source": "https://commons.wikimedia.org/wiki/File:Campo_del_Cielo_meteorite,_El_Chaco_fragment,_N.jpg",
         "notes": [],
     },
     {
@@ -35,8 +38,9 @@ TIMELINE_EVENTS = [
         "location": "Savissivik, Greenland",
         "status": "Found",
         "wiki_url": "https://en.wikipedia.org/wiki/Cape_York_meteorite",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Cape_York_Meteorite.jpg/640px-Cape_York_Meteorite.jpg",
-        "notes": [],
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/87/Ahnighito_AMNH%2C_34_tons_meteorite.jpg",
+        "image_source": "https://commons.wikimedia.org/wiki/File:Ahnighito_AMNH,_34_tons_meteorite.jpg",
+        "notes": ["Ahnighito AMNH, Larges fragment fount 34t"],
     },
     {
         "year": "1920",
@@ -47,7 +51,8 @@ TIMELINE_EVENTS = [
         "location": "Grootfontein, Namibia",
         "status": "Found",
         "wiki_url": "https://en.wikipedia.org/wiki/Hoba_meteorite",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Hoba_meteorite%2C_Grootfontein%2C_Namibia%2C_2018.jpg/640px-Hoba_meteorite%2C_Grootfontein%2C_Namibia%2C_2018.jpg",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/39/Hoba_meteorite_%2815062762703%29.jpg",
+        "image_source": "https://commons.wikimedia.org/wiki/File:Hoba_meteorite_(15062762703).jpg",
         "notes": ["Weight equivalent: 60 t / 12 t = 5 London double-decker buses."],
     },
     {
@@ -59,7 +64,8 @@ TIMELINE_EVENTS = [
         "location": "Sylacauga, Alabama, USA",
         "status": "Fell",
         "wiki_url": "https://en.wikipedia.org/wiki/Sylacauga_(meteorite)",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Sylacauga_meteorite.jpg/640px-Sylacauga_meteorite.jpg",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/9d/2024-10-21_-_Tuscaloosa%2C_AL%2C_USA_-_Hodges_%28Sylacauga%29_Meteorite.jpg",
+        "image_source": "https://commons.wikimedia.org/wiki/File:2024-10-21_-_Tuscaloosa,_AL,_USA_-_Hodges_(Sylacauga)_Meteorite.jpg",
         "notes": [],
     },
     {
@@ -71,7 +77,8 @@ TIMELINE_EVENTS = [
         "location": "Allan Hills, Antarctica",
         "status": "Found",
         "wiki_url": "https://en.wikipedia.org/wiki/Allan_Hills_84001",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/ALH84001_in_museum.jpg/640px-ALH84001_in_museum.jpg",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c4/ALH84001.jpg",
+        "image_source": "https://commons.wikimedia.org/wiki/File:ALH84001.jpg",
         "notes": [],
     },
     {
@@ -83,7 +90,8 @@ TIMELINE_EVENTS = [
         "location": "Chelyabinsk Oblast, Russia",
         "status": "Fell",
         "wiki_url": "https://en.wikipedia.org/wiki/Chelyabinsk_meteor",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Chelyabinsk_meteor.jpg/640px-Chelyabinsk_meteor.jpg",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/82/Meteorite_explosion_over_Chelyabinsk_on_February_15%2C_2013.gif",
+        "image_source": "https://commons.wikimedia.org/wiki/File:Meteorite_explosion_over_Chelyabinsk_on_February_15,_2013.gif",
         "notes": [],
     },
     {
@@ -95,7 +103,8 @@ TIMELINE_EVENTS = [
         "location": "Global",
         "status": "3323 sightings",
         "wiki_url": "https://en.wikipedia.org/wiki/Meteorite_fall",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Meteor_crater_barringer.jpg/640px-Meteor_crater_barringer.jpg",
+        "image_url": "",
+        "image_source": "",
         "notes": [],
     },
 ]
@@ -109,8 +118,146 @@ def _meta_row(label, value):
     )
 
 
-def _timeline_item(event, index):
+def _extract_year_value(year_text):
+    match = re.search(r"\d{3,4}", str(year_text))
+    return int(match.group()) if match else None
+
+
+def _build_timeline_scale(events):
+    years = [_extract_year_value(event.get("year", "")) for event in events]
+    years = [year for year in years if year is not None]
+    if not years:
+        return {
+            "start": 0,
+            "end": 0,
+            "span": 10,
+            "track_height_px": 3200,
+            "top_pad_px": 260,
+            "bottom_pad_px": 220,
+        }
+
+    start = (min(years) // 10) * 10
+    end = ((max(years) + 9) // 10) * 10
+    span = max(end - start, 10)
+    top_pad_px = 260
+    bottom_pad_px = 220
+    breakpoints = sorted(
+        {
+            start,
+            end,
+            800,
+            1500,
+            1800,
+            2026,
+        }
+    )
+
+    segments = []
+    weighted_span = 0.0
+    for i in range(len(breakpoints) - 1):
+        seg_start = breakpoints[i]
+        seg_end = breakpoints[i + 1]
+        if seg_end <= start or seg_start >= end:
+            continue
+
+        seg_start = max(seg_start, start)
+        seg_end = min(seg_end, end)
+        if seg_end <= seg_start:
+            continue
+
+        mid = (seg_start + seg_end) / 2
+        if 800 <= mid < 1500:
+            weight = 0.35
+        elif 1500 <= mid < 1800:
+            weight = 0.8
+        elif 1800 <= mid < 2026:
+            weight = 2.4
+        else:
+            weight = 1.0
+
+        segments.append((seg_start, seg_end, weight))
+        weighted_span += (seg_end - seg_start) * weight
+
+    weighted_span = max(weighted_span, 1.0)
+    track_height_px = max(
+        3200, int(weighted_span * 2.4 + top_pad_px + bottom_pad_px))
+    return {
+        "start": start,
+        "end": end,
+        "span": span,
+        "segments": segments,
+        "weighted_span": weighted_span,
+        "track_height_px": track_height_px,
+        "top_pad_px": top_pad_px,
+        "bottom_pad_px": bottom_pad_px,
+    }
+
+
+def _year_to_top_pct(year, scale):
+    clamped_year = max(scale["start"], min(scale["end"], year))
+    weighted_pos = 0.0
+    for seg_start, seg_end, weight in scale["segments"]:
+        if clamped_year >= seg_end:
+            weighted_pos += (seg_end - seg_start) * weight
+            continue
+        if clamped_year > seg_start:
+            weighted_pos += (clamped_year - seg_start) * weight
+        break
+
+    ratio = weighted_pos / max(scale["weighted_span"], 1.0)
+    ratio = max(0.0, min(1.0, ratio))
+    usable_px = max(scale["track_height_px"] -
+                    scale["top_pad_px"] - scale["bottom_pad_px"], 1)
+    y_px = scale["top_pad_px"] + ratio * usable_px
+    return (y_px / scale["track_height_px"]) * 100.0
+
+
+def _build_timeline_ticks(events, scale):
+    start = scale["start"]
+    end = scale["end"]
+
+    ticks = []
+    for year in range(start, end + 1, 10):
+        if year % 100 == 0:
+            tick_size = "big"
+        elif year % 50 == 0:
+            tick_size = "medium"
+        else:
+            tick_size = "small"
+
+        top_pct = _year_to_top_pct(year, scale)
+        label = (
+            ui.tags.span(str(year), class_="timeline-tick-label")
+            if tick_size == "big"
+            else None
+        )
+        ticks.append(
+            ui.tags.div(
+                ui.tags.span(class_="timeline-tick-mark"),
+                label,
+                class_=f"timeline-tick {tick_size}",
+                style=f"top: {top_pct:.4f}%;",
+                **{"data-year": str(year)},
+            )
+        )
+
+    return ui.tags.div(
+        *ticks,
+        ui.tags.div(
+            ui.tags.span(class_="timeline-current-tick-mark"),
+            ui.tags.span(class_="timeline-current-tick-label"),
+            class_="timeline-current-tick",
+        ),
+        class_="timeline-ticks",
+    )
+
+
+def _timeline_item(event, index, top_pct):
     side = "left" if index % 2 == 0 else "right"
+    year_value = _extract_year_value(event.get("year", ""))
+    attrs = {"data-year-label": str(event.get("year", ""))}
+    if year_value is not None:
+        attrs["data-year"] = str(year_value)
     details = ui.tags.ul(
         _meta_row("Mass", event["mass"]),
         _meta_row("Composition", event["composition"]),
@@ -139,21 +286,38 @@ def _timeline_item(event, index):
             alt=f"{event['name']} meteorite",
             class_="timeline-image",
             loading="lazy",
+        ) if event["image_url"] else ui.tags.p(
+            "Image unavailable. Open Wiki link.",
+            class_="timeline-image-fallback"
         ),
-        ui.tags.p("Image unavailable. Open Wiki link.", class_="timeline-image-fallback"),
         details,
         ui.tags.ul(*entries, class_="timeline-entry-list") if entries else None,
         *notes,
         ui.tags.div(
-            ui.tags.a("Image (Wiki)", href=event["image_url"], target="_blank", rel="noopener noreferrer", class_="timeline-link"),
-            ui.tags.a("Wiki", href=event["wiki_url"], target="_blank", rel="noopener noreferrer", class_="timeline-link"),
+            ui.tags.a("Image source", href=event["image_source"], target="_blank",
+                      rel="noopener noreferrer", class_="timeline-link"),
+            ui.tags.a("Wiki", href=event["wiki_url"], target="_blank",
+                      rel="noopener noreferrer", class_="timeline-link"),
             class_="timeline-links",
         ),
         class_=f"timeline-item {side}",
+        style=f"top: {top_pct:.4f}%;",
+        **attrs,
     )
 
 
 def build_scroll_timeline_section():
+    scale = _build_timeline_scale(TIMELINE_EVENTS)
+    positioned_items = []
+    total_items = len(TIMELINE_EVENTS)
+    for idx, event in enumerate(TIMELINE_EVENTS):
+        year_value = _extract_year_value(event.get("year", ""))
+        if year_value is not None:
+            top_pct = _year_to_top_pct(year_value, scale)
+        else:
+            top_pct = ((idx + 1) / (total_items + 1)) * 100
+        positioned_items.append(_timeline_item(event, idx, top_pct))
+
     return ui.tags.section(
         ui.tags.style(
             """
@@ -202,7 +366,8 @@ def build_scroll_timeline_section():
                 position: relative;
                 max-width: 860px;
                 margin: 0 auto;
-                padding: 10px 0;
+                height: var(--timeline-track-height, 3200px);
+                --timeline-axis-x: 50%;
             }
 
             .scroll-timeline::before {
@@ -210,44 +375,132 @@ def build_scroll_timeline_section():
                 position: absolute;
                 top: 0;
                 bottom: 0;
-                left: 50%;
+                left: var(--timeline-axis-x);
                 width: 2px;
                 background: linear-gradient(to bottom, #2c2c2c, #4f4f4f, #2c2c2c);
                 transform: translateX(-50%);
+                z-index: 0;
+            }
+
+            .timeline-ticks {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: var(--timeline-axis-x);
+                width: 0;
+                pointer-events: none;
+                z-index: 1;
+            }
+
+            .timeline-tick {
+                position: absolute;
+                left: 0;
+                transform: translate(-50%, -50%);
+            }
+
+            .timeline-tick-mark {
+                display: block;
+                background: #5f5f5f;
+                opacity: 0.35;
+                transition: opacity 240ms ease, background-color 240ms ease, transform 240ms ease;
+            }
+
+            .timeline-tick.small .timeline-tick-mark {
+                width: 10px;
+                height: 1px;
+            }
+
+            .timeline-tick.medium .timeline-tick-mark {
+                width: 16px;
+                height: 1px;
+            }
+
+            .timeline-tick.big .timeline-tick-mark {
+                width: 26px;
+                height: 2px;
+                background: #8ab4ff;
+            }
+
+            .timeline-tick-label {
+                position: absolute;
+                left: 30px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #8ea5c7;
+                font-size: 10px;
+                font-family: monospace;
+                letter-spacing: 0.08em;
+                opacity: 0.38;
+                transition: opacity 240ms ease, color 240ms ease;
+            }
+
+            .timeline-current-tick {
+                position: absolute;
+                left: 0;
+                transform: translate(-50%, -50%);
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 200ms ease;
+            }
+
+            .timeline-current-tick-mark {
+                display: block;
+                width: 34px;
+                height: 2px;
+                background: #dce9ff;
+                box-shadow: 0 0 10px rgba(122, 166, 240, 0.45);
+            }
+
+            .timeline-current-tick-label {
+                position: absolute;
+                left: 42px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #dce9ff;
+                font-family: monospace;
+                font-size: 11px;
+                letter-spacing: 0.08em;
+                text-shadow: 0 0 8px rgba(122, 166, 240, 0.45);
+            }
+
+            .timeline-current-tick.is-visible {
+                opacity: 1;
             }
 
             .timeline-item {
                 width: calc(50% - 34px);
-                margin: 0 0 28px 0;
+                margin: 0;
                 padding: 16px 18px 18px;
                 border: 1px solid rgba(255, 255, 255, 0.14);
                 border-radius: 14px;
                 background: rgba(25, 25, 25, 0.88);
                 box-shadow: 0 16px 28px rgba(0, 0, 0, 0.32);
-                position: relative;
+                position: absolute;
                 opacity: 0;
                 transform: translateY(26px);
                 pointer-events: none;
                 transition: opacity 380ms ease, transform 380ms ease;
+                z-index: 2;
             }
 
             .timeline-item.left {
-                margin-right: auto;
+                left: 0;
             }
 
             .timeline-item.right {
-                margin-left: auto;
+                right: 0;
             }
 
             .timeline-item::before {
                 content: "";
                 position: absolute;
-                top: 22px;
+                top: 0;
                 width: 12px;
                 height: 12px;
                 border-radius: 50%;
                 background: #0d6efd;
                 border: 2px solid #9fc3ff;
+                transform: translateY(-50%);
             }
 
             .timeline-item.left::before {
@@ -283,11 +536,17 @@ def build_scroll_timeline_section():
 
             .timeline-year {
                 display: inline-block;
-                color: #8ab4ff;
+                color: #6f8fbd;
                 font-family: monospace;
                 font-size: 13px;
                 font-weight: 700;
                 letter-spacing: 0.06em;
+                transition: color 240ms ease, text-shadow 240ms ease;
+            }
+
+            .timeline-item.is-current .timeline-year {
+                color: #cfe1ff;
+                text-shadow: 0 0 10px rgba(122, 166, 240, 0.45);
             }
 
             .timeline-status {
@@ -401,15 +660,20 @@ def build_scroll_timeline_section():
 
             @media (max-width: 900px) {
                 .scroll-timeline::before {
-                    left: 24px;
+                    left: var(--timeline-axis-x);
                     transform: none;
+                }
+
+                .scroll-timeline {
+                    --timeline-axis-x: 24px;
                 }
 
                 .timeline-item,
                 .timeline-item.left,
                 .timeline-item.right {
                     width: calc(100% - 54px);
-                    margin-left: 54px;
+                    left: 54px;
+                    right: auto;
                 }
 
                 .timeline-item::before,
@@ -423,12 +687,23 @@ def build_scroll_timeline_section():
                     grid-template-columns: 1fr;
                     gap: 1px;
                 }
+
+                .timeline-tick-label {
+                    left: -54px;
+                    text-align: right;
+                }
+
+                .timeline-current-tick-label {
+                    left: -92px;
+                    text-align: right;
+                }
             }
             """
         ),
         ui.div(
             ui.tags.p("Historic Impact Timeline", class_="timeline-kicker"),
-            ui.tags.h2("Meteorite Events Through Time", class_="timeline-heading"),
+            ui.tags.h2("Meteorite Events Through Time",
+                       class_="timeline-heading"),
             ui.tags.p(
                 "Scroll to reveal major meteorite moments and records.",
                 class_="timeline-subtitle",
@@ -436,8 +711,10 @@ def build_scroll_timeline_section():
             class_="timeline-header",
         ),
         ui.div(
-            *[_timeline_item(event, idx) for idx, event in enumerate(TIMELINE_EVENTS)],
+            _build_timeline_ticks(TIMELINE_EVENTS, scale),
+            *positioned_items,
             class_="scroll-timeline",
+            style=f"--timeline-track-height: {scale['track_height_px']}px;",
         ),
         ui.tags.script(
             """
@@ -448,6 +725,8 @@ def build_scroll_timeline_section():
                     root.dataset.enhanced = '1';
 
                     var items = Array.prototype.slice.call(root.querySelectorAll('.timeline-item'));
+                    var currentTick = root.querySelector('.timeline-current-tick');
+                    var currentTickLabel = root.querySelector('.timeline-current-tick-label');
                     if (!items.length) return;
 
                     items.forEach(function(item) {
@@ -466,7 +745,7 @@ def build_scroll_timeline_section():
                     var ticking = false;
 
                     function updateCurrentItem() {
-                        var viewportMid = (window.innerHeight || document.documentElement.clientHeight) * 0.5;
+                        var viewportMid = (window.innerHeight || document.documentElement.clientHeight) * 0.58;
                         var current = null;
                         var bestDistance = Infinity;
 
@@ -510,6 +789,16 @@ def build_scroll_timeline_section():
                                 item.classList.add('is-future');
                             }
                         });
+
+                        if (currentTick && currentTickLabel) {
+                            if (current) {
+                                currentTickLabel.textContent = current.getAttribute('data-year-label') || '';
+                                currentTick.style.top = current.style.top || '0%';
+                                currentTick.classList.add('is-visible');
+                            } else {
+                                currentTick.classList.remove('is-visible');
+                            }
+                        }
                     }
 
                     function onScrollOrResize() {
