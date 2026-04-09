@@ -3,22 +3,22 @@
 Unser Projekt gehört zum geowissenschaftlichen Bereich und beschäftigt sich mit Meteoritenfunden. Ziel ist es, die wichtigsten Informationen über Meteoriten und ihre Funde weltweit anschaulich und verständlich darzustellen – speziell für den Einsatz auf Tablets in Museen. Die Zielgruppe sind Besucherinnen und Besucher ab etwa 15 Jahren, welche sich im Museum die ersten Informationen über Meteoriten holen wollen.
 Das Storytelling beginnt mit einer einfach verständlichen Einführung: Was sind Meteoriten und wie entstehen sie? Darauf aufbauend werden mithilfe des Datensatzes bedeutende Meteoritenfunde entlang eines Zeitstrahls präsentiert. Besondere Ereignisse wie der erste dokumentierte Fund, besonders große oder schwere Meteoriten sowie andere herausragende Funde werden hervorgehoben. Abschliessend bietet die Visualisierung eine Übersicht über alle Jahre, zum Beispiel Anzahl der Funde pro Jahr, durchschnittliche Masse, regionale Verteilung oder Klassifikation der Meteoriten.
 Am Ende des Storytellings steht eine interaktive Grafik, die es den Besucherinnen und Besuchern ermöglicht, selbst weiterführende Informationen zu entdecken. Sie können nach Jahr, Masse, Klassifikation oder Region filtern und die Ergebnisse direkt auf dem Tablet erkunden. Für besonders Interessierte stehen zudem zusätzliche Details bereit, etwa spezifische Fundorte, chemische Zusammensetzung oder Hintergrundinformationen zu den Meteoritenarten.
-Das gesamte Projekt wird als Shiny-App umgesetzt, sodass die Inhalte einfach auf Tablets im Museum zugänglich sind und die Nutzerinnen und Nutzer sowohl die lineare Storyline verfolgen als auch interaktiv Daten erkunden können
+Das gesamte Projekt wird als Shiny-App umgesetzt, sodass die Inhalte einfach auf Tablets im Museum zugänglich sind und die Nutzerinnen und Nutzer sowohl die lineare Storyline verfolgen als auch interaktiv Daten erkunden können.
 
 ## Project Objectives and Success Criteria
 
 ### Projekziele
-1. Die geografische Verteilung der Meteoritenfunde weltweit über Karten mit Latitude- und Longitude-Daten visualisieren können.  
-2. Zeitliche Trends analysieren können, um Muster bei Meteoritenfällen oder Meteoritenfunden über die Jahre zu erkennen.  
-3. Eigenschaften der Meteoriten wie Masse und Klassifikation einsehen und vergleichen können, beispielsweise zwischen Regionen oder Zeiträumen.  
-4. Interaktiv mit den Daten arbeiten können, z.B. über Filter nach Jahr, Masse, Typ oder Region, um eigene Explorationen durchzuführen.
+1. Besucherinnen und Besuchern eine anschauliche Einführung in Meteoriten bieten.
+2. Wichtige Meteoritenfunde weltweit entlang eines zeitlichen Storytellings präsentieren, einschließlich besonderer Ereignisse (z. B. erster Fund, besonders grosse Meteoriten).
+3. Interaktive Visualisierungen bereitstellen, die es ermöglichen, nach Jahr, Masse, Klassifikation oder Region zu filtern und eigene Explorationen durchzuführen.
+4. Inhalte intuitiv und tabletfreundlich gestalten, sodass Nutzer die Storyline linear verfolgen oder selbst Daten erkunden können.
 
 ### Erfolgskriterien(qualitativ)
-1. Nutzende können die Verteilung und Trends der Meteoriten intuitiv erkunden, ohne vorherige Schulung.
-2. Regionale oder zeitliche Muster der Meteoritenfunde sind erkennbar.
-3. Das Dashboard unterstützt interaktive Filterfunktionen und bietet klare visuelle Hinweise (Farbe, Größe).
-4. Nutzerinnen und Nutzer können verschiedene Datenattribute (Masse, Klasse, Jahr) einfach vergleichen und analysieren.
-5. Die Visualisierungen sind verständlich und selbsterklärend, sodass die Interpretation der Daten leicht fällt.
+1. Die Storyline und die interaktiven Elemente sind auf Tablets flüssig und intuitiv bedienbar.
+2. Nutzerinnen und Nutzer können besondere Meteoritenfunde und Ereignisse klar erkennen.
+3. Filter- und Auswahlfunktionen (Jahr, Masse, Klassifikation, Region) arbeiten zuverlässig und liefern verständliche Ergebnisse.
+4. Besucherinnen und Besucher können eigene Explorationen durchführen und Datenattribute wie Masse, Jahr oder Klassifikation direkt vergleichen.
+5. Alle Visualisierungen sind übersichtlich, selbsterklärend und ermöglichen sowohl das Folgen der Storyline als auch eigenständiges Erkunden der Daten.
 
 ### Out of scope
 1. Das Dashboard zeigt nur bestehende, historische Meteoritenfunde, eine Echtzeitintegration neuer Funde wird nicht umgesetzt.
@@ -26,7 +26,7 @@ Das gesamte Projekt wird als Shiny-App umgesetzt, sodass die Inhalte einfach auf
 
 
 ## Stakeholder Analysis
-Im Projekt Meteoriten Dashboard sind drei zentrale Gruppen beteiligt: Der Auftraggeber (Dozent) bewertet das Projekt und bietet fachliche Unterstützung. Das Projektteam (Studenten) entwickelt und setzt das Dashboard um. Die User nutzen das fertige Dashboard aktiv. So sorgt das Team für eine Umsetzung nach den Vorgaben des Auftraggebers, während die User das Ergebnis direkt verwenden.
+Im Projekt Meteoriten-Dashboard sind vier zentrale Gruppen beteiligt: Der Auftraggeber (Dozent) bewertet das Projekt und bietet fachliche Unterstützung. Das Projektteam (Studenten) entwickelt und setzt das Dashboard um. Die Nutzer verwenden das fertige Dashboard aktiv. Das Museum stellt das Dashboard vor Ort bereit.
 
 ::: {.figure #fig:stakeholder}
 ![Stakeholderanalyse](pics/Stakeholdeanalyse.png){#fig:stakeholderfig}
