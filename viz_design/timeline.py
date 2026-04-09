@@ -4,7 +4,7 @@ import re
 
 TIMELINE_EVENTS = [
     {
-        "year": "ca. 860",
+        "year": "860",
         "title": "First Recorded Meteorite",
         "name": "Nogata",
         "mass": "472 g",
@@ -118,13 +118,8 @@ def _meta_row(label, value):
     )
 
 
-def _extract_year_value(year_text):
-    match = re.search(r"\d{3,4}", str(year_text))
-    return int(match.group()) if match else None
-
-
 def _build_timeline_scale(events):
-    years = [_extract_year_value(event.get("year", "")) for event in events]
+    years = [int(event.get("year", "")) for event in events]
     years = [year for year in years if year is not None]
     if not years:
         return {
@@ -212,7 +207,7 @@ def _year_to_top_pct(year, scale):
     return (y_px / scale["track_height_px"]) * 100.0
 
 
-def _build_timeline_ticks(events, scale):
+def _build_timeline_ticks(scale):
     start = scale["start"]
     end = scale["end"]
 
@@ -254,8 +249,8 @@ def _build_timeline_ticks(events, scale):
 
 def _timeline_item(event, index, top_pct):
     side = "left" if index % 2 == 0 else "right"
-    year_value = _extract_year_value(event.get("year", ""))
-    attrs = {"data-year-label": str(event.get("year", ""))}
+    year_value = int(event.get("year", ""))
+    attrs = {}
     if year_value is not None:
         attrs["data-year"] = str(year_value)
     details = ui.tags.ul(
@@ -274,7 +269,7 @@ def _timeline_item(event, index, top_pct):
         notes.append(ui.tags.p(note, class_="timeline-note"))
 
     return ui.tags.article(
-        ui.tags.div(
+         ui.tags.div(
             ui.tags.span(event["year"], class_="timeline-year"),
             ui.tags.span(event["status"], class_="timeline-status"),
             class_="timeline-topline",
@@ -311,7 +306,7 @@ def build_scroll_timeline_section():
     positioned_items = []
     total_items = len(TIMELINE_EVENTS)
     for idx, event in enumerate(TIMELINE_EVENTS):
-        year_value = _extract_year_value(event.get("year", ""))
+        year_value = int(event.get("year", ""))
         if year_value is not None:
             top_pct = _year_to_top_pct(year_value, scale)
         else:
@@ -711,7 +706,7 @@ def build_scroll_timeline_section():
             class_="timeline-header",
         ),
         ui.div(
-            _build_timeline_ticks(TIMELINE_EVENTS, scale),
+            _build_timeline_ticks(scale),
             *positioned_items,
             class_="scroll-timeline",
             style=f"--timeline-track-height: {scale['track_height_px']}px;",
@@ -792,7 +787,7 @@ def build_scroll_timeline_section():
 
                         if (currentTick && currentTickLabel) {
                             if (current) {
-                                currentTickLabel.textContent = current.getAttribute('data-year-label') || '';
+                                currentTickLabel.textContent = current.getAttribute('data-year') || '';
                                 currentTick.style.top = current.style.top || '0%';
                                 currentTick.classList.add('is-visible');
                             } else {
