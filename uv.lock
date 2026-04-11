@@ -1349,6 +1349,11 @@ name = "sample-project"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
+<<<<<<< Updated upstream
+=======
+    { name = "icrawler" },
+    { name = "ipykernel" },
+>>>>>>> Stashed changes
     { name = "jupyterlab" },
     { name = "matplotlib" },
     { name = "pandas" },
@@ -1359,6 +1364,11 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
+<<<<<<< Updated upstream
+=======
+    { name = "icrawler", specifier = ">=0.6.10" },
+    { name = "ipykernel", specifier = ">=6.30.1" },
+>>>>>>> Stashed changes
     { name = "jupyterlab", specifier = ">=4.4.7" },
     { name = "matplotlib", specifier = ">=3.10.6" },
     { name = "pandas", specifier = ">=2.3.2" },
