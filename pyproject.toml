@@ -11,9 +11,6 @@ dependencies = [
     "python-dotenv>=1.1.1",
     "seaborn>=0.13.2",
     "ydata-profiling>=4.12.2",
-<<<<<<< Updated upstream
-=======
     "shiny>=0.7.0",
     "ipykernel>=6.30.1",
->>>>>>> Stashed changes
 ]
