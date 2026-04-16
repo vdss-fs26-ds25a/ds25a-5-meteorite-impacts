@@ -158,33 +158,31 @@ Unser Team besteht aus drei Personen. Als Software setzen wir hauptsächlich Pyt
 ## Visualization Concept
 ### Produktform
 
-Das Visualisierungsprodukt ist ein interaktives Dashboard, umgesetzt als Python-Shiny-Webanwendung. Ein einleitender Abschnitt führt die Nutzenden durch die wichtigsten Informationen im Datensatz. Anschliessend können sie die Daten selbst filtern und untersuchen. Das Dashboard richtet sich primär an die interessierte Öffentlichkeit, sekundär an wissenschaftlich interessierte Nutzende.
+Das Visualisierungsprodukt ist eine Python-Shiny-Webanwendung, die sich an Besucherinnen und Besucher von einem Meteoritenmuseum richtet. Die App gliedert sich in zwei aufeinander aufbauende Teile.
 
-Die webbasierte Bereitstellung erfordert keine Installation und ist über eine stabile URL für alle zugänglich.
+Der erste Teil ist ein narrativer Zeitfaden. Er beginnt mit einem einleitenden Abschnitt, der allgemeine Informationen über Meteoriten hat. Danach führt ein Scroll-Zeitstrahl durch acht ausgewählte Ereignisse der Meteoritengeschichte, vom ersten dokumentierten Fund im Jahr 860 bis zum Einschlag von Chelyabinsk 2013. Jedes Ereignis erscheint als Karte mit Bild, Jahr, Fundstatus, Masse, Zusammensetzung und Fundort.
+
+Der zweite Teil ist ein interaktiver 3D-Globus. Er zeigt alle 45 716 Meteoriteneinschläge des NASA-Datensatzes als Punkte auf einer drehbaren Erdkugel. Hier können Besucherinnen und Besucher selbst erkunden.
 
 ### Visuelle Kodierungen
 
-Den Kern des Dashboards bildet ein 3D-Globus mit Heatmap. Er zeigt, wo die 45'716 Meteoriten eingeschlagen sind. Die Fläche des Globus wird durch eine Farbskala von kalt nach warm kodiert je nach Einschalgsdichte. Ergänzt wird der Globus durch ein Liniendiagramm der Entdeckungen pro Jahrzehnt sowie ein gruppiertes Balkendiagramm, das beobachtete Einschläge und nachträgliche Funde vergleicht.
+Den Kern des zweiten Teils bildet der 3D-Globus. Jeder Einschlag ist als Punkt dargestellt; die Farbe kodiert die Masse auf einer Skala von Grün (leicht) bis Rot (schwer). Ergänzt wird der Globus durch vier weitere Diagramme: eine 2D-Heatmap der globalen Verteilung, ein Balkendiagramm der Einschläge pro Jahr, ein Histogramm der Massenverteilung auf logarithmischer Skala sowie ein Balkendiagramm der zehn häufigsten Meteoritenklassen.
 
-Die drei Ansichten zeigen gemeinsam räumliche, zeitliche und kategorische Muster. Der Globus ist ohne Vorkenntnisse lesbar. Balkendiagramm und Liniendiagramm sind bekannte Charttypen, die öffentlichkeit versteht diese sehr gut. Die 3D-Darstellung erzeugt einen visuellen Anreiz und lädt zum Erkunden ein.
+Im narrativen Zeitfaden übernehmen die Ereigniskarten die visuelle Funktion. Bild und Metadaten stehen nebeneinander; ein Zeitstrahl mit Jahresmarkierungen gibt räumliche Orientierung.
 
 ### Interaktivität
 
-Das Dashboard bietet 3 interaktive Elemente. Eine Filterleiste erlaubt die Auswahl nach Meteoritenklasse und Fall-/Fund-Status. Tooltips zeigen beim Hovern Name, Jahr, Masse und Klasse eines Meteoriten. Eine Auswahl auf der Karte aktualisiert automatisch die Diagramme.
+Der narrative Zeitfaden reagiert auf das Scrollen. Ein Scroll-Skript erkennt, welche Karte sich in der Bildschirmmitte befindet, hebt sie hervor und blendet die anderen aus. Ein beweglicher Jahreszeiger auf dem Zeitstrahl zeigt das aktuelle Jahr an.
 
-Tooltips liefern wichtige Details, ohne die Hauptansicht zu überladen. Nutzende können gezielt filtern, ohne Daten selbst auswerten zu müssen.
+Der Globus verfügt über ein ein- und ausblendbares Filtermenü. Darin lassen sich der Zeitraum, die Masse, der Falltyp (gefallen oder gefunden) sowie die maximale Punktzahl und der Sampling-Modus einstellen. Beim Hovern über einen Punkt erscheint ein Tooltip mit Name, Jahr, Masse und Klasse des Meteoriten. Zusätzlich kann eine 3D-Heatmap-Schicht über den Globus gelegt werden. Alle vier Unterdiagramme aktualisieren sich synchron mit den gesetzten Filtern.
 
 ### Narrative und Annotation
 
-Ein kurzer Einleitungstitel gibt den thematischen Rahmen vor. Das Zeitdiagramm enthält eine Annotation, die einen markanten Anstieg der Fundzahlen erklärt und einordnet. Tooltips erklären Meteoritenklassen in einfacher Sprache. 
-
-Gezielte Annotationen lenken den Blick auf die wichtigsten Muster und verhindern, dass zentrale Erkenntnisse übersehen werden. Nutzende ohne Vorkenntnisse verstehen die Zusammenhänge durch die eingebetteten Erklärungen.
+Jede Ereigniskarte zeigt neben dem Bild die wichtigsten Metadaten: Masse, Zusammensetzung und Fundort. Links zu Wikipedia und zur Bildquelle sind direkt in jede Karte eingebettet.
 
 ### Zielmedium und Integration
 
-Das Dashboard wird als öffentliche Webanwendung bereitgestellt. Es ist primär für Desktop-Browser ausgelegt. Der gesamte Code und die Datenpipeline sind in einem Quarto-Projekt auf GitHub dokumentiert und reproduzierbar.
-
-Der Server verarbeitet alle 45'716 Datensätze serverseitig. Nutzende müssen nichts installieren. Die Online-Bereitstellung macht das Produkt für Öffentlichkeit zugänglich.
+Die App läuft als öffentliche Webanwendung im Desktop-Browser. Der gesamte Code ist in einem Quarto-Projekt auf GitHub dokumentiert und reproduzierbar. Der Server verarbeitet alle 45 716 Datensätze; Besucherinnen und Besucher müssen nichts installieren.
 
 ### Bezug zu Projektzielen und Nutzerbedürfnissen
 
@@ -209,16 +207,16 @@ gantt
     axisFormat %d.%m
 
     section Projektinitiierung
-    Projektcharta erstellen         :active, 2026-03-01, 2026-03-20
+    Projektcharta erstellen         :done, 2026-03-01, 2026-03-20
     Abgabe Entwurf Projektcharta    :milestone, 2026-03-20, 0d
 
     section Datenanalyse
-    Datensatz erkunden              :2026-03-20, 2026-04-10
-    Data Report erstellen           :2026-04-01, 2026-04-20
+    Datensatz erkunden              :done, 2026-03-20, 2026-04-10
+    Data Report erstellen           :done, 2026-04-01, 2026-04-20
 
     section Design und Entwicklung
-    Visualisierungsdesign           :2026-04-10, 2026-04-30
-    Website erstellen               :2026-04-20, 2026-05-18
+    Visualisierungsdesign           :active, 2026-04-10, 2026-04-30
+    Website erstellen               :active, 2026-04-20, 2026-05-18
 
     section Evaluation und Präsentation
     Evaluation                      :2026-05-01, 2026-05-18
