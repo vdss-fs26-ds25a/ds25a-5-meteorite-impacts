@@ -33,6 +33,9 @@ jobs:
         uses: quarto-dev/quarto-actions/render@v2
         with:
           path: docs
+      
+      - name: copy data profiling report
+        run: cp docs/meteorite_report.html docs/build/meteorite_report.html
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
