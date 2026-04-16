@@ -1,5 +1,4 @@
 from shiny import ui
-import re
 
 
 TIMELINE_EVENTS = [
@@ -323,7 +322,7 @@ def build_scroll_timeline_section():
                     radial-gradient(circle at 15% 0%, rgba(13, 110, 253, 0.16), transparent 35%),
                     radial-gradient(circle at 85% 100%, rgba(255, 120, 80, 0.10), transparent 35%),
                     #121212;
-                padding: 64px 24px 86px;
+                padding: 64px 24px 300px;
                 border-top: 1px solid #1a1a1a;
                 border-bottom: 1px solid #1a1a1a;
             }

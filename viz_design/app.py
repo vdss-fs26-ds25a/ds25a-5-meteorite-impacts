@@ -5,6 +5,7 @@ from shinywidgets import output_widget, render_widget
 from data_cleanup import generate_cleaned_file
 from filters import filter_and_sample
 from formatting import format_mass
+from meteorite_introduction import build_meteor_introduction
 from timeline import build_scroll_timeline_section
 from widgets import (
     build_class_bar,
@@ -98,8 +99,11 @@ app_ui = ui.page_fluid(
         """)
     ),
     
+    build_meteor_introduction(),
+    
     build_scroll_timeline_section(),
 
+    '''
     # Globe Section
     ui.div(
         output_widget("globe_plot", height="70vh", width="100%"),
@@ -148,8 +152,9 @@ app_ui = ui.page_fluid(
         ),
         style="position: relative; z-index: 10; background-color: #121212;"
     ),
-
+    
     ui.output_ui("menu_container"),
+    '''
 )
 
 
