@@ -52,9 +52,9 @@ The data catalogue basically represents an extended schema of a relational datab
 
 
 #### Data Chracteristics and Quality
+Die Rohdaten wurden mit der Analyse von dem package ydata_profiling gemacht.
+Diese sind hier zu finden[Analyse der Rohdaten](https://vdss-fs26-ds25a.github.io/ds25a-5-fancyproject/meteorite_report.html)
 
-```{=html}
-<iframe src="meteorite_report.html" width="100%" height="800px" style="border:none;"></iframe>
 
 
 ## Processed Data
@@ -77,22 +77,100 @@ The processed dataset is created from the raw dataset by running eda.ipynb. The 
 
 Rows with at least one missing value in reclat, reclong, mass, year, recclass, or fall were deleted. 7,315 entries had no coordinate data, 291 had no year, and 131 had no mass. One entry with a year value of 2101 was removed as a data entry error, along with 19 entries where mass was zero, which is physicaly impossible. The column mass (g) was renamed to mass_g to avoid issues with special characters, and the year column was converted from float to integer. The cleaning reduce the Entry number from 45,716 to 31,911.
 
-#### Data Catalogue
+#### Data Visualisations of the most important variables after cleaning
+##### Meteoites on the World
+The map shows meteorite impact sites around the world, with blue dots representing “found” meteorites and red dots representing “observed falls.” There are particularly many finds in North America, Europe, India, and Australia, as well as in Antarctica, where numerous meteorites are discovered due to the ice sheets.
+```{python}
+#| label: fig-demo2
+#| echo: false
+#| code-fold: true
 
-: Data catalogue for Processed Dataset 1. {#tbl-data-catalogue-processed}
+import cartopy.crs as ccrs
+import cartopy.feature as cfeature
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+from pathlib import Path
 
-| Column index | Column name | Datatype | Values (Range, validation rules) | Short description |
-|--------------|-------------|----------|---------------------------------|-----------------|
-| 1 | name | categorical | any string | Name of the meteorite |
-| 2 | id | numeric | positive integers 1 to 57455 | Unique identifier of this dataset, not compatible with other datasets |
-| 3 | nametype | categorical | "Valid", "Relict" | Indicates if the meteorite name is valid |
-| 4 | recclass | categorical | meteorite classification codes (e.g., L5, H6, EH4) | Classification of the meteorite |
-| 5 | mass_g | numeric | positive numbers 0.01 to 60000000 g | Mass of the meteorite in grams |
-| 6 | fall | categorical | "Fell" or "Found" | Whether it was observed falling or later found |
-| 7 | year | integer | 860 to 2013 | Year the meteorite fell or was found |
-| 8 | reclat | numeric | -87.37 to 81.17 | Latitude of the find location |
-| 9 | reclong | numeric | -165.43 to 178.20 | Longitude of the find location |
-| 10 | GeoLocation | categorical | format "(lat, long)" | Combined latitude/longitude |
+data_path = Path("../viz_design/Meteorite_Landings_cleaned.csv")
+df = pd.read_csv(data_path)
+
+df["year"] = pd.to_numeric(df["year"], errors="coerce")
+df["mass_g"] = pd.to_numeric(df["mass_g"], errors="coerce")
+df["reclat"] = pd.to_numeric(df["reclat"], errors="coerce")
+df["reclong"] = pd.to_numeric(df["reclong"], errors="coerce")
+
+eda_df = df
+top_classes = eda_df["recclass"].value_counts().head(15).sort_values()
+
+fig = plt.figure(figsize=(14, 7))
+ax = plt.axes(projection=ccrs.PlateCarree())
+
+# Weltkarte
+ax.add_feature(cfeature.LAND, facecolor="#f2f2f2")
+ax.add_feature(cfeature.OCEAN, facecolor="#d9ecff")
+ax.add_feature(cfeature.COASTLINE, linewidth=0.5)
+ax.add_feature(cfeature.BORDERS, linewidth=0.3)
+
+# Daten trennen
+found = eda_df[eda_df["fall"] != "Fell"]
+fell = eda_df[eda_df["fall"] == "Fell"]
+
+# Found (blau)
+ax.scatter(
+    found["reclong"],
+    found["reclat"],
+    color="blue",
+    s=10,
+    alpha=0.4,
+    transform=ccrs.PlateCarree(),
+    label="Found"
+)
+
+# Fell (rot)
+ax.scatter(
+    fell["reclong"],
+    fell["reclat"],
+    color="red",
+    s=10,
+    alpha=0.4,
+    transform=ccrs.PlateCarree(),
+    label="Fell"
+)
+
+# Titel
+ax.set_title("Meteorite Landing and Recovery Locations", fontsize=15, weight="bold")
+ax.set_global()
+
+# Grid
+gl = ax.gridlines(draw_labels=True, linestyle="--", alpha=0.25)
+gl.top_labels = False
+gl.right_labels = False
+
+# Legende
+ax.legend(loc="lower left")
+
+plt.tight_layout()
+plt.show()
+```
+##### Meteoites classes 
+This shows the top 15 kategories with the most meteorites
+```{python}
+#| label: fig-demo
+#| echo: false
+#| code-fold: true
+
+
+fig, ax = plt.subplots(figsize=(10, 6))
+ax.barh(top_classes.index, top_classes.values, color="steelblue")
+ax.set_title("Top 15 meteorite classes")
+ax.set_xlabel("Count")
+ax.set_ylabel("Class")
+
+plt.tight_layout()
+plt.show()
+```
+|
 
 #### If applicable: Entity Relationship Diagram
 

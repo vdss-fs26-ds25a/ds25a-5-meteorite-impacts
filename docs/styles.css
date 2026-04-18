@@ -1,1 +1,14 @@
 /* css styles */
+html, body {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.container,
+.container-fluid,
+.page-columns,
+.content,
+main {
+  max-width: 100% !important;
+  width: 100% !important;
+}

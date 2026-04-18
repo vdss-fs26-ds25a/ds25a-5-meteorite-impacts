@@ -7,11 +7,10 @@ language:
   section-title-appendices: "Appendix"
 
 website:
-  title: "Sample Project"
-  search: true
   sidebar:
     style: "floating"
-    search: true
+    collapse-level: 1
+    pinned: false
     contents:
       - index.qmd
       - project_charta.qmd
@@ -25,6 +24,9 @@ format:
     theme: cosmo
     css: styles.css
     toc: true
+    page-layout: full
+    grid:
+      body-width: 1400px
       
 
 number-sections: true
