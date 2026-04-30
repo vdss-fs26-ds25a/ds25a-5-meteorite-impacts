@@ -2,3 +2,4 @@
 **/*.quarto_ipynb
 *.quarto_ipynb
 
+/data_report_files
