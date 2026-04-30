@@ -47,8 +47,8 @@ jobs:
           uv pip install shinylive
 
       - name: Download data
-        working-directory: viz_design
-        run: uv run python data/data.py
+        working-directory: data
+        run: uv run python data.py
 
       - name: Export Shiny app to static site
         working-directory: viz_design
