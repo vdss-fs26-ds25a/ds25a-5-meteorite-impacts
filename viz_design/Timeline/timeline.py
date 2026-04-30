@@ -328,28 +328,47 @@ def _timeline_item(event, index, top_pct):
             **{"data-lat": f"{lat:.6f}", "data-lon": f"{lon:.6f}"},
         )
 
-    return ui.tags.article(
-         ui.tags.div(
+    media_block = None
+    if event["image_url"]:
+        media_block = ui.tags.div(
+            ui.tags.img(
+                src=event["image_url"],
+                alt=f"{event['name']} meteorite",
+                class_="timeline-image",
+                loading="lazy",
+            ),
+            ui.tags.p(
+                "Image unavailable. Open Wiki link.",
+                class_="timeline-image-fallback"
+            ),
+            class_="timeline-media",
+        )
+
+    content_block = ui.tags.div(
+        ui.tags.div(
             ui.tags.span(event["year"], class_="timeline-year"),
             ui.tags.span(event["status"], class_="timeline-status"),
             class_="timeline-topline",
         ),
         ui.tags.h3(event["name"], class_="timeline-title"),
         ui.tags.p(event["title"], class_="timeline-event-type"),
-        ui.tags.img(
-            src=event["image_url"],
-            alt=f"{event['name']} meteorite",
-            class_="timeline-image",
-            loading="lazy",
-        ) if event["image_url"] else ui.tags.p(
-            "Image unavailable. Open Wiki link.",
-            class_="timeline-image-fallback"
-        ),
-        map_card,
         details,
         ui.tags.ul(*entries, class_="timeline-entry-list") if entries else None,
         *notes,
         ui.tags.div(*link_buttons, class_="timeline-links") if link_buttons else None,
+        class_="timeline-card-content",
+    )
+
+    top_section_children = [content_block]
+    if media_block is not None:
+        top_section_children.append(media_block)
+
+    return ui.tags.article(
+        ui.tags.div(
+            *top_section_children,
+            class_=f"timeline-card-top {'has-media' if media_block is not None else 'no-media'}",
+        ),
+        map_card,
         class_=f"timeline-item {side}",
         style=f"top: {top_pct:.4f}%;",
         **attrs,
@@ -585,6 +604,29 @@ def build_scroll_timeline_section():
                 gap: 10px;
             }
 
+            .timeline-card-top {
+                display: grid;
+                gap: 12px;
+                align-items: start;
+                margin-bottom: 10px;
+            }
+
+            .timeline-card-top.has-media {
+                grid-template-columns: minmax(0, 1fr) clamp(150px, 34%, 220px);
+            }
+
+            .timeline-card-top.no-media {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .timeline-card-content {
+                min-width: 0;
+            }
+
+            .timeline-media {
+                align-self: stretch;
+            }
+
             .timeline-year {
                 display: inline-block;
                 color: #6f8fbd;
@@ -627,24 +669,33 @@ def build_scroll_timeline_section():
 
             .timeline-image {
                 width: 100%;
-                max-height: 190px;
+                height: 100%;
+                min-height: 160px;
+                max-height: 260px;
                 object-fit: cover;
                 border-radius: 10px;
                 border: 1px solid rgba(255, 255, 255, 0.12);
-                margin-bottom: 10px;
                 display: block;
             }
 
             .timeline-image-fallback {
                 display: none;
-                margin: 0 0 10px 0;
+                margin: 0;
+                min-height: 160px;
+                border-radius: 10px;
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                background: rgba(255, 255, 255, 0.03);
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                padding: 10px;
                 color: #8f8f8f;
                 font-size: 12px;
             }
 
             .timeline-map {
                 position: relative;
-                margin: 0 0 10px 0;
+                margin: 0;
             }
 
             .timeline-map-plot {
@@ -759,6 +810,16 @@ def build_scroll_timeline_section():
                 .timeline-meta-row {
                     grid-template-columns: 1fr;
                     gap: 1px;
+                }
+
+                .timeline-card-top.has-media {
+                    grid-template-columns: minmax(0, 1fr);
+                }
+
+                .timeline-image,
+                .timeline-image-fallback {
+                    min-height: 180px;
+                    max-height: 230px;
                 }
 
                 .timeline-tick-label {
@@ -922,7 +983,7 @@ def build_scroll_timeline_section():
                         if (img && fallback) {
                             img.addEventListener('error', function() {
                                 img.style.display = 'none';
-                                fallback.style.display = 'block';
+                                fallback.style.display = 'flex';
                             }, { once: true });
                         }
 

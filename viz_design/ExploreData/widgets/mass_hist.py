@@ -1,7 +1,7 @@
 import plotly.express as px
 import plotly.graph_objects as go
 
-from formatting import decade_ticks
+from viz_design.ExploreData.formatting import decade_ticks
 
 
 def build_mass_hist(df):

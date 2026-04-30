@@ -292,6 +292,36 @@ def build_meteor_introduction():
                 height: 52vh;
             }
 
+            .meteorite-intro-scroll-hint {
+                position: fixed;
+                left: 50%;
+                top: 70vh;
+                transform: translateX(-50%);
+                z-index: 25;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2px;
+                margin: 0;
+                color: #aeb9cc;
+                font-size: 11px;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                pointer-events: none;
+                opacity: 1;
+                transition: opacity 180ms ease;
+            }
+
+            .meteorite-intro-scroll-hint.is-hidden {
+                opacity: 0;
+            }
+
+            .meteorite-intro-scroll-hint-icon {
+                font-size: 14px;
+                color: #8fb5ef;
+            }
+
             @media (max-width: 900px) {
                 .meteorite-intro-section {
                     padding: 56px 18px 110px;
@@ -329,6 +359,11 @@ def build_meteor_introduction():
         ),
         ui.tags.div(
             ui.tags.div(*blocks, class_="meteorite-intro-stack"),
+            ui.tags.div(
+                ui.tags.span("Scroll"),
+                ui.tags.i(class_="bi bi-chevron-down meteorite-intro-scroll-hint-icon", aria_hidden="true"),
+                class_="meteorite-intro-scroll-hint",
+            ),
             ui.tags.div(*sentinels, class_="meteorite-intro-scrollspace"),
             class_="meteorite-intro-scrolly",
         ),
@@ -347,6 +382,7 @@ def build_meteor_introduction():
                         root.querySelectorAll('.meteorite-intro-sentinel')
                     );
                     var stack = root.querySelector('.meteorite-intro-stack');
+                    var indicator = root.querySelector('.meteorite-intro-scroll-hint');
                     if (!blocks.length || blocks.length !== sentinels.length || !stack) return;
 
                     var currentStep = -1;
@@ -377,6 +413,17 @@ def build_meteor_introduction():
                         syncStackHeight(currentStep);
                     }
 
+                    function updateIndicatorPosition() {
+                        if (!indicator) return;
+                        var viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+                        var stackRect = stack.getBoundingClientRect();
+                        var stackVisible = stackRect.bottom > 0 && stackRect.top < viewportHeight;
+
+                        indicator.style.left = (stackRect.left + (stackRect.width / 2)) + 'px';
+                        indicator.style.top = (stackRect.bottom + 26) + 'px';
+                        indicator.classList.toggle('is-hidden', !stackVisible);
+                    }
+
                     function updateStep() {
                         var viewportMid = (window.innerHeight || document.documentElement.clientHeight) * 0.52;
                         var bestStep = 0;
@@ -402,12 +449,14 @@ def build_meteor_introduction():
                         window.requestAnimationFrame(function() {
                             updateStep();
                             syncStackHeight(currentStep >= 0 ? currentStep : 0);
+                            updateIndicatorPosition();
                             ticking = false;
                         });
                     }
 
                     setStep(0);
                     updateStep();
+                    updateIndicatorPosition();
                     window.addEventListener('scroll', onScrollOrResize, { passive: true });
                     window.addEventListener('resize', onScrollOrResize);
                 }

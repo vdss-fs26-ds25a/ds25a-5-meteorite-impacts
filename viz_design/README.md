@@ -36,7 +36,12 @@ Install the required packages:
 uv pip install shiny shinywidgets plotly pandas numpy
 ```
 
-### 3. Run the Application
+### 3. Download and clean data
+```bash
+uv run python ../data/data.py   
+```
+
+### 4. Run the Application
 Start the Shiny server:
 
 ```bash

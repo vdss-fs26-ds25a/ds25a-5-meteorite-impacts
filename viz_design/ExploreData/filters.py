@@ -1,6 +1,6 @@
 import pandas as pd
 
-from point_sampling import limit_points
+from viz_design.ExploreData.point_sampling import limit_points
 
 
 def filter_and_sample(
