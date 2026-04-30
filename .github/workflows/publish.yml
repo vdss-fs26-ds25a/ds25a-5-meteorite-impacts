@@ -33,9 +33,26 @@ jobs:
         uses: quarto-dev/quarto-actions/render@v2
         with:
           path: docs
-      
-      - name: copy data profiling report
+
+      - name: Copy data profiling report
         run: cp docs/meteorite_report.html docs/build/meteorite_report.html
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+
+      - name: Install dependencies and Shinylive
+        working-directory: viz_design
+        run: |
+          uv sync
+          uv pip install shinylive
+
+      - name: Download data
+        working-directory: viz_design
+        run: uv run python data/data.py
+
+      - name: Export Shiny app to static site
+        working-directory: viz_design
+        run: uv run shinylive export . ../docs/build/app
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
