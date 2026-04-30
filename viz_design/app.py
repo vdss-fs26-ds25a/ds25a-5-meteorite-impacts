@@ -1,3 +1,4 @@
+__requires__ = ["pandas", "plotly", "scipy"]
 import pandas as pd
 import numpy as np
 import sys
@@ -104,13 +105,14 @@ app_ui = ui.page_fluid(
     
     build_scroll_timeline_section(),
 
-    '''
+    
     # Globe Section
     ui.div(
         output_widget("globe_plot", height="70vh", width="100%"),
         style="background-color: #121212; border-bottom: 1px solid #1a1a1a; overflow: hidden; padding-top: 40px;"
     ),
 
+    """
     # Widget Section
     ui.div(
         ui.row(
@@ -153,9 +155,9 @@ app_ui = ui.page_fluid(
         ),
         style="position: relative; z-index: 10; background-color: #121212;"
     ),
+    """,
     
     ui.output_ui("menu_container"),
-    '''
 )
 
 

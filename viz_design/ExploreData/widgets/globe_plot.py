@@ -1,3 +1,4 @@
+from ExploreData.formatting import decade_ticks, format_mass
 import numpy as np
 import plotly.graph_objects as go
 from scipy.ndimage import gaussian_filter
@@ -5,7 +6,6 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from ExploreData.formatting import decade_ticks, format_mass
 
 
 def _build_smoothed_geo_heat(df, n_lat=140, n_lon=280, sigma=1.35):
@@ -23,7 +23,8 @@ def _build_smoothed_geo_heat(df, n_lat=140, n_lon=280, sigma=1.35):
     lon_edges = np.linspace(-180.0, 180.0, n_lon + 1)
 
     density, _, _ = np.histogram2d(lat, lon, bins=[lat_edges, lon_edges])
-    smoothed = gaussian_filter(density, sigma=(sigma, sigma), mode=("nearest", "wrap"))
+    smoothed = gaussian_filter(density, sigma=(
+        sigma, sigma), mode=("nearest", "wrap"))
 
     positive = smoothed[smoothed > 0]
     if positive.size == 0:
@@ -52,7 +53,6 @@ def _build_smoothed_geo_heat(df, n_lat=140, n_lon=280, sigma=1.35):
     lat_sel = lat_flat[mask]
     heat_sel = heat[mask]
 
-    # Keep payload responsive in Shiny while preserving strongest density cells.
     if heat_sel.size > 9000:
         idx = np.argpartition(heat_sel, -9000)[-9000:]
         lon_sel = lon_sel[idx]
@@ -115,7 +115,8 @@ def build_globe_plot(df, mass_log, show_impacts=True, show_heatmap=False):
         hover_texts = []
 
         for _, row in df.iterrows():
-            fall_type = "Fallen" if row["fall"] == "Fell" else ("Found" if row["fall"] == "Found" else "")
+            fall_type = "Fallen" if row["fall"] == "Fell" else (
+                "Found" if row["fall"] == "Found" else "")
             year_label = f"Year {fall_type}" if fall_type else "Year"
             text = (
                 f"<b>{row['name']}</b><br>"
@@ -143,8 +144,11 @@ def build_globe_plot(df, mass_log, show_impacts=True, show_heatmap=False):
                     reversescale=True,
                     showscale=True,
                     colorbar=dict(
-                        title="MASS (g/kg/t)",
-                        titleside="right",
+                        title=dict(
+                            text="MASS (g/kg/t)",
+                            side="right",
+                            font=dict(color="#888", size=10),
+                        ),
                         thickness=15,
                         len=0.8,
                         x=0.95,
@@ -152,7 +156,6 @@ def build_globe_plot(df, mass_log, show_impacts=True, show_heatmap=False):
                         tickvals=tickvals,
                         ticktext=ticktext,
                         tickfont=dict(color="#888", size=10),
-                        titlefont=dict(color="#888", size=10),
                     ),
                     line=dict(width=0.5, color="rgba(255,255,255,0.2)"),
                 ),
