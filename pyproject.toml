@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = "==3.12.*"
 dependencies = [
+    "icrawler>=0.6.10",
     "jupyterlab>=4.4.7",
     "matplotlib>=3.10.6",
     "pandas>=2.3.2",
@@ -14,4 +15,6 @@ dependencies = [
     "shiny>=0.7.0",
     "ipykernel>=6.30.1",
     "cartopy>=0.25.0",
+    "shinywidgets>=0.7.1",
+    "plotly>=6.6.0",
 ]
