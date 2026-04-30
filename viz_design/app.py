@@ -4,12 +4,12 @@ import sys
 from pathlib import Path
 from shiny import App, render, ui, reactive
 from shinywidgets import output_widget, render_widget
-sys.path.insert(0, str(Path(__file__).parent.parent))
-from viz_design.ExploreData.filters import filter_and_sample
-from viz_design.ExploreData.formatting import format_mass
-from viz_design.Introduction.meteorite_introduction import build_meteor_introduction
-from viz_design.Timeline.timeline import build_scroll_timeline_section
-from viz_design.ExploreData.widgets import (
+sys.path.insert(0, str(Path(__file__).parent))
+from ExploreData.filters import filter_and_sample
+from ExploreData.formatting import format_mass
+from Introduction.meteorite_introduction import build_meteor_introduction
+from Timeline.timeline import build_scroll_timeline_section
+from ExploreData.widgets import (
     build_class_bar,
     build_globe_plot,
     build_heatmap_2d,

@@ -1,6 +1,9 @@
 import pandas as pd
+import sys
+from pathlib import Path
 
-from viz_design.ExploreData.point_sampling import limit_points
+sys.path.insert(0, str(Path(__file__).parent))
+from ExploreData.point_sampling import limit_points
 
 
 def filter_and_sample(

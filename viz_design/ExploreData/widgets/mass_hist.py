@@ -1,8 +1,10 @@
 import plotly.express as px
 import plotly.graph_objects as go
+import sys
+from pathlib import Path
 
-from viz_design.ExploreData.formatting import decade_ticks
-
+sys.path.insert(0, str(Path(__file__).parent))
+from ExploreData.formatting import decade_ticks
 
 def build_mass_hist(df):
     if df.empty:

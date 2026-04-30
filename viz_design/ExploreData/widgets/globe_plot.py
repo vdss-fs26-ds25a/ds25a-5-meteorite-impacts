@@ -1,8 +1,11 @@
 import numpy as np
 import plotly.graph_objects as go
 from scipy.ndimage import gaussian_filter
+import sys
+from pathlib import Path
 
-from viz_design.ExploreData.formatting import decade_ticks, format_mass
+sys.path.insert(0, str(Path(__file__).parent))
+from ExploreData.formatting import decade_ticks, format_mass
 
 
 def _build_smoothed_geo_heat(df, n_lat=140, n_lon=280, sigma=1.35):
