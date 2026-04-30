@@ -52,7 +52,7 @@ jobs:
 
       - name: Export Shiny app to static site
         working-directory: viz_design
-        run: uv run shinylive export . ../docs/build/app
+        run: uv run shinylive export . ../docs/build/app --requirements requirements.txt
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
