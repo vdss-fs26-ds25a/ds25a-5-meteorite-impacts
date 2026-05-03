@@ -41,105 +41,100 @@ Es wurden zwei Zielgruppen-Personas definiert:
 
 ---
 
-### **Persona 1: Wissenschaftlicher Forscher**
+### **Persona 1: Sekundar Schüler**
 
-**Name:** Dr. Lena Fischer  
-**Alter:** 38  
-**Beruf:** Planetarwissenschaftlerin / Meteoritik-Forscherin  
+**Name:** Lucas Berger  
+**Alter:** 15   
+**Beruf:** Sekundar Schüler      
 
 **Domain Expertise:**  
-- Sehr hohes Wissen über Meteoriten, Asteroiden und Planetologie  
-- Vertraut mit wissenschaftlichen Datenbanken  
+- Sehr wenig Wissen über Meteoriten, Asteroiden und Planetologie  
+- Thema wurde in der Schule noch sehr wenig behandelt
 
 **Data Literacy:**  
-- Hoch, kann komplexe Datensätze analysieren  
-- Erfahrung mit Statistiken, Tabellen und GIS-Systemen  
+- Gering, kann einfache Diagramme lesen, hat aber sehr wenig Erfahrung mit Datensätzen
+- keine Erfahrung mit Statistiken, Tabellen und Datenbanken
 
 **Technical Environment:**  
-- Geräte: 27" Desktop-Monitor + Laptop  
-- Browserbasiert, WebGL-kompatibel  
-- Tools: Python, R, ArcGIS  
-
+- Geräte: Smartphone, Schulcomputer
+- Benutzt nur für Social Media, Gaming, und Streaming-Sites  
+ 
 **Frequency of Use:**  
-- Täglich, für Forschung und Datenanalyse  
+- Einmalig, Klassenausflug im Museum    
 
 #### Customer Profile (Value Proposition Canvas)
 
-**User Tasks (Jobs):**
-- Visualisierung von Meteoriten-Fallstellen weltweit  
-- Analyse von Mustern nach Jahr oder Region  
-- Erstellung von Heatmaps und Vergleich von statistischen Daten  
-- Export von Grafiken für Publikationen  
-
+**User Tasks (Jobs):**  
+- Informationen zu Meteoriten entdecken und verstehen   
+- Interaktive App ausprobieren  
+ 
 **Social Jobs:**  
-- Teilen von Erkenntnissen mit Kollegen  
-- Präsentation auf Konferenzen  
+- Mit Klassenkameraden über Entdeckungen reden  
 
 **Emotional Jobs:**  
-- Vertrauen in die Datenqualität  
-- Freude an interaktiver Exploration  
+- Neugier für das Thema Meteoriten bekommen  
+- Nicht gelangweilt fühlen  
 
 **Pains:**  
-- Komplexe, wenig interaktive Tools  
-- Zeitaufwendige Datenaufbereitung  
-- Fehlende intuitive 3D-Globus-Visualisierung  
-- Schwierigkeiten beim Vergleich von Daten über Jahre  
+- Zu viel Text auf einmal
+- Fachbegriffe ohne Erklärungen 
+- Schwierigkeiten beim bedienen der Interaktiven Darstellung 
 
 **Gains:**  
-- Interaktive 3D-Visualisierung mit Filterfunktion  
-- Zugriff auf Heatmaps, Statistiken und Graphen  
-- Exportierbare Grafiken  
-- Schnelle Erkennung von Mustern und Trends  
+- Interessante und interaktive Visuelle Darstellung
+- Einfache Sprache 
+- Überaschende und interessante Fakten  
 
 ---
 
-### **Persona 2: Bildungsinteressierter Nutzer**
+### **Persona 2: Interessierter Erwachsener**
 
 **Name:** Max Schneider  
-**Alter:** 22  
-**Beruf:** Student  
+**Alter:** 31  
+**Beruf:** Elektroingenieur  
 
 **Domain Expertise:**  
 - Grundwissen über Meteoriten und Astronomie  
-- Lernt Datenanalyse und Visualisierung  
+- Interesse durch eine Youtube Doku bekommen
+- Liest manchmal wissenschafts Magazine
 
 **Data Literacy:**  
-- Mittel, kann einfache Grafiken interpretieren  
-- Erfahrung mit Excel, Tableau, Web-Tools  
+- Mittel, kann Diagramme und Grafiken lesen 
+- keine Erfahrung mit wissenschaftliche Datenbanken  
 
 **Technical Environment:**  
-- Geräte: Laptop (15"), Smartphone  
-- Browserbasiert, WebGL-kompatibel  
+- Geräte: Laptop, Smartphone  
+- Browserbasiert, vertraut mit interaktiven anwendungen
+- Nutzt interaktive Kartenanwendungen wie Google-Maps.
 
 **Frequency of Use:**  
-- Wöchentlich 
+- Selten, besucht das Mueseum aus persönlichen Interesse 
 
 #### Customer Profile (Value Proposition Canvas)
 
-**User Tasks (Jobs):**
-- Erkunden von Meteoritenfällen und deren Verteilung  
-- Nutzung von Heatmaps, um Trends zu erkennen  
-- Analyse von Statistiken für Hausarbeiten oder Projekte  
+**User Tasks (Jobs):**  
+- Erkunden von Meteoritenfällen und deren Verteilung    
+- Zusammenhänge zwischen Häufigkeit, Region und Zeit verstehen  
+- Mehr Informationen zu bekannten Meteoriten finden (z.B. Chelyabinsk)  
 
 **Social Jobs:**  
-- Präsentation von Projekten vor Kommilitonen oder Dozenten  
-- Zusammenarbeit in Gruppen  
+- Interessante Fakten mit Familie und Freunden teilen.      
+- Mehr Gesprächstoff haben.
 
 **Emotional Jobs:**  
-- Begeisterung über interaktive 3D-Darstellung  
-- Vertrauen in die Daten  
+- Neugier und interesse zufriedenstellen
 - Motivation, mehr zu lernen  
 
 **Pains:**  
-- Tools oft komplex oder unübersichtlich  
+- Zu technische oder wissenschaftliche Sprache  
 - Schwierigkeit, Daten zu filtern oder zu vergleichen  
-- Fehlende intuitive Web-Visualisierung  
+- Fachbegriffe ohne Erklärungen
 
 **Gains:**  
-- Interaktive 3D-Globus-Darstellung  
-- Leicht verständliche Heatmaps und Graphen  
-- Einfache Erstellung eigener Projekte  
-- Intuitive Filter nach Jahr order Region  
+- Klare, verständliche Visualisierungen  
+- Spannende Informationen über einzelne Meteoriten
+- Intuitiv bedienbarer 3D Globus  
+- Einordnung der Daten in einen grösseren Kontext
 
 ---
 
@@ -147,8 +142,8 @@ Es wurden zwei Zielgruppen-Personas definiert:
 
 | Persona | Hauptbedürfnis | Nutzungskontext |
 |---|---|---|
-| Wissenschaftlicher Forscher | Tiefgehende Analyse & Publikation | Täglich, Desktop & Laptop |
-| Student / Bildungsinteressierter | Lernen & Exploration | Mehrmals pro Woche, Laptop & Smartphone |
+| Lucas Berger (Sekundar Schüler) | Spielerische Entdeckung ohne Vorkenntnisse | Einmalig, Klassenausflug im Museum |
+| Max Schneider (Bildungsinteressierter) | Lernen & Verständliche Visualisierung | Selten, gezielter Museumsbesuch |
 
 
 ## Situation Assessment
