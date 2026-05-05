@@ -1,2 +1,6 @@
-plotly
+numpy
 pandas
+plotly
+scipy
+shiny
+shinywidgets

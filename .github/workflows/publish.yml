@@ -50,9 +50,14 @@ jobs:
         working-directory: data
         run: uv run python data.py
 
+      - name: Copy cleaned data into Shiny app bundle
+        run: |
+          mkdir -p viz_design/data/processed
+          cp data/processed/Meteorite_Landings_cleaned.csv viz_design/data/processed/Meteorite_Landings_cleaned.csv
+
       - name: Export Shiny app to static site
         working-directory: viz_design
-        run: uv run shinylive export . ../docs/build/app
+        run: uv run shinylive export . ../docs/build/viz-design
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
