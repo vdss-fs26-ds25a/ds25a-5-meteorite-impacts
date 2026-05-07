@@ -120,13 +120,8 @@ def build_meteor_introduction():
             .meteorite-intro-section {
                 position: relative;
                 z-index: 11;
-                background:
-                    radial-gradient(circle at 12% 15%, rgba(13, 110, 253, 0.14), transparent 35%),
-                    radial-gradient(circle at 85% 85%, rgba(255, 120, 80, 0.08), transparent 35%),
-                    #121212;
+                background: #1f1f1f;
                 padding: 64px 24px 140px;
-                border-top: 1px solid #1a1a1a;
-                border-bottom: 1px solid #1a1a1a;
             }
 
             .meteorite-intro-header {

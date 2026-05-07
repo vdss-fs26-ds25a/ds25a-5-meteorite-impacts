@@ -269,8 +269,7 @@ def _build_timeline_ticks(scale):
     )
 
 
-def _timeline_item(event, index, top_pct):
-    side = "left" if index % 2 == 0 else "right"
+def _timeline_item(event, top_pct):
     year_value = int(event.get("year", ""))
     attrs = {}
     if year_value is not None:
@@ -369,7 +368,7 @@ def _timeline_item(event, index, top_pct):
             class_=f"timeline-card-top {'has-media' if media_block is not None else 'no-media'}",
         ),
         map_card,
-        class_=f"timeline-item {side}",
+        class_="timeline-item",
         style=f"top: {top_pct:.4f}%;",
         **attrs,
     )
@@ -385,7 +384,7 @@ def build_scroll_timeline_section():
             top_pct = _year_to_top_pct(year_value, scale)
         else:
             top_pct = ((idx + 1) / (total_items + 1)) * 100
-        positioned_items.append(_timeline_item(event, idx, top_pct))
+        positioned_items.append(_timeline_item(event, top_pct))
 
     return ui.tags.section(
         ui.tags.style(
@@ -394,13 +393,8 @@ def build_scroll_timeline_section():
                 position: relative;
                 z-index: 10;
                 --timeline-max-width: 1120px;
-                background:
-                    radial-gradient(circle at 15% 0%, rgba(13, 110, 253, 0.16), transparent 35%),
-                    radial-gradient(circle at 85% 100%, rgba(255, 120, 80, 0.10), transparent 35%),
-                    #121212;
-                padding: 64px 24px 300px;
-                border-top: 1px solid #1a1a1a;
-                border-bottom: 1px solid #1a1a1a;
+                background: #1f1f1f;
+                padding: 64px 24px 600px;
             }
 
             .timeline-header {
@@ -437,7 +431,7 @@ def build_scroll_timeline_section():
                 max-width: var(--timeline-max-width);
                 margin: 0 auto;
                 height: var(--timeline-track-height, 3200px);
-                --timeline-axis-x: 50%;
+                --timeline-axis-x: 0%;
             }
 
             .scroll-timeline::before {
@@ -538,7 +532,7 @@ def build_scroll_timeline_section():
             }
 
             .timeline-item {
-                width: calc(50% - 34px);
+                width: min(860px, calc(100% - var(--timeline-axis-x) - 74px));
                 margin: 0;
                 padding: 16px 18px 18px;
                 border: 1px solid rgba(255, 255, 255, 0.14);
@@ -546,19 +540,12 @@ def build_scroll_timeline_section():
                 background: rgba(25, 25, 25, 0.88);
                 box-shadow: 0 16px 28px rgba(0, 0, 0, 0.32);
                 position: absolute;
+                left: calc(var(--timeline-axis-x) + 100px);
                 opacity: 0;
                 transform: translateY(26px);
                 pointer-events: none;
                 transition: opacity 380ms ease, transform 380ms ease;
                 z-index: 2;
-            }
-
-            .timeline-item.left {
-                left: 0;
-            }
-
-            .timeline-item.right {
-                right: 0;
             }
 
             .timeline-item::before {
@@ -571,13 +558,6 @@ def build_scroll_timeline_section():
                 background: #0d6efd;
                 border: 2px solid #9fc3ff;
                 transform: translateY(-50%);
-            }
-
-            .timeline-item.left::before {
-                right: -41px;
-            }
-
-            .timeline-item.right::before {
                 left: -41px;
             }
 
@@ -700,7 +680,7 @@ def build_scroll_timeline_section():
 
             .timeline-map-plot {
                 width: 100%;
-                height: 170px;
+                height: 300px;
                 border-radius: 10px;
                 border: 1px solid rgba(255, 255, 255, 0.12);
                 overflow: hidden;
@@ -792,19 +772,13 @@ def build_scroll_timeline_section():
                     --timeline-axis-x: 24px;
                 }
 
-                .timeline-item,
-                .timeline-item.left,
-                .timeline-item.right {
+                .timeline-item {
                     width: calc(100% - 54px);
                     left: 54px;
-                    right: auto;
                 }
 
-                .timeline-item::before,
-                .timeline-item.left::before,
-                .timeline-item.right::before {
+                .timeline-item::before {
                     left: -37px;
-                    right: auto;
                 }
 
                 .timeline-meta-row {
