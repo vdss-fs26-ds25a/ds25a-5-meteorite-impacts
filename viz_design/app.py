@@ -74,10 +74,11 @@ app_ui = ui.page_fluid(
             }
 
             .globe-layout {
-                max-width: 1120px;
-                margin: 0 auto;
+                max-width: none;
+                margin: 0;
+                width: 100%;
                 display: flex;
-                gap: 24px;
+                gap: 16px;
                 align-items: flex-start;
             }
 
@@ -128,6 +129,23 @@ app_ui = ui.page_fluid(
                     max-height: none;
                 }
             }
+
+            .app-footer {
+                text-align: center;
+                padding: 20px 24px 28px;
+                color: #9a9a9a;
+                font-size: 13px;
+                background-color: #121212;
+            }
+
+            .app-footer a {
+                color: #8ab4f8;
+                text-decoration: none;
+            }
+
+            .app-footer a:hover {
+                text-decoration: underline;
+            }
         """)
     ),
 
@@ -162,50 +180,16 @@ app_ui = ui.page_fluid(
         class_="globe-section",
     ),
 
-    """
-    # Widget Section
     ui.div(
-        ui.row(
-            ui.column(8,
-                      ui.div(
-                          ui.h4("GLOBAL DISTRIBUTION HEATMAP",
-                                style="margin-bottom: 20px; color: #666; font-size: 12px; font-weight: 900;"),
-                          output_widget("heatmap_2d", height="400px"),
-                          class_="chart-card"
-                      ),
-                      ),
-            ui.column(4,
-                      ui.div(
-                          ui.h4(
-                              "IMPACTS PER YEAR", style="margin-bottom: 20px; color: #666; font-size: 12px; font-weight: 900;"),
-                          output_widget("timeline_plot", height="400px"),
-                          class_="chart-card"
-                      )
-                      ),
-            style="padding: 30px 30px 0 30px;"
+        ui.tags.span("Dataset source: "),
+        ui.tags.a(
+            "NASA Open Data - Meteorite Landings",
+            href="https://data.nasa.gov/dataset/meteorite-landings",
+            target="_blank",
+            rel="noopener noreferrer",
         ),
-        ui.row(
-            ui.column(6,
-                      ui.div(
-                          ui.h4("MASS DISTRIBUTION (LOG SCALE)",
-                                style="margin-bottom: 20px; color: #666; font-size: 12px; font-weight: 900;"),
-                          output_widget("mass_hist", height="400px"),
-                          class_="chart-card"
-                      ),
-                      ),
-            ui.column(6,
-                      ui.div(
-                          ui.h4("TOP 10 METEORITE CLASSES",
-                                style="margin-bottom: 20px; color: #666; font-size: 12px; font-weight: 900;"),
-                          output_widget("class_bar", height="400px"),
-                          class_="chart-card"
-                      )
-                      ),
-            style="padding: 0 30px 30px 30px;"
-        ),
-        style="position: relative; z-index: 10; background-color: #121212;"
-    ),
-    """,
+        class_="app-footer",
+    )
 )
 
 
