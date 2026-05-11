@@ -1,28 +1,34 @@
 # Data Report
 All information on the data used in the project is compiled in the data report in order to ensure the traceability and reproducibility of the results and to enable a systematic expansion of the database.
-
-Typically, in the exploratory analysis of the acquired raw data, quality and other issues are identified, which require pre-processing, merging of individual datasets and feature engineering into processed datasets. Therefore, this template provides a separate section for the processed data, which then serves as a starting point for the modelling activities. This needs to be adapted to the specific project requirements.
+All information about the data used in the project is documented in the data report to ensure the traceability and reproducibility of the results.
 
 ## Raw data
 ### Overview Raw Datasets
 
+
+| name | Source | Storage location |
+|----------------|-----------------------------------------|--------------------------------------------------------------------------|
+| Meteorites | The data are from NASA Open Data NASA is the Federal Agency for Space, Space Research and Aviation Research | [Link to Data NASA](https://data.nasa.gov/dataset/meteorite-landings) Downloaded via script from NASA Open Data and not stored in a folder|
+
 : Overview of raw datasets used in the project. {#tbl-raw-overview}
 
-| Name | Quelle | Storage location |
-|----------------|-----------------------------------------|--------------------------------------------------------------------------|
-| Dataset 1      | The data are from NASA Open Data NASA is the Federal Agency for Space, Space Research and Aviation Research | [Link zum Datensatz bei NASA](https://data.nasa.gov/dataset/meteorite-landings) intern the cleande Version is in the Folder viz_design |
 
-### Details Dataset 1
+### Details Dataset 
 
 #### Description
 The Meteorite Landings dataset contains information on known meteorites that have landed on Earth. For each meteorite, details such as the name, geographic location (latitude and longitude), year of landing, mass, and meteorite type are recorded. This dataset allows for analysis of meteorite distribution, frequency, and properties worldwide.
 
 #### Source
-The dataset is provided by NASA (National Aeronautics and Space Administration) and is publicly available.
+The data is provided by NASA through the NASA Open Data Portal, which collects and publishes scientific data from space research and meteorite observations. NASA is a United States government agency responsible for civilian space exploration and scientific research related to Earth, space, and planetary science.
 
-#### Data Acquisition
-The dataset can be directly downloaded from NASA’s website:  
-[Daten](https://data.nasa.gov/dataset/meteorite-landings)
+#### Data Acquisition {#sec-data-acquisition}
+The data used in this project is obtained through a separate data processing script located in the project folder (ds25a-5-fancyproject\data). This script is executed at the beginning of the workflow and is responsible for downloading and preparing all required datasets.
+
+The raw data is automatically retrieved from the data source when the script is executed and stored in the folder (ds25a-5-fancyproject/data/raw). This ensures that the original dataset is preserved in a reproducible form.
+
+Subsequently, the script performs several data cleaning and preprocessing steps, including type conversions, handling of missing values, and further data preparation tasks. The resulting processed datasets are stored in the folder (ds25a-5-fancyproject/data/processed).
+
+The main application (Shiny app) exclusively uses the preprocessed data from the processed directory and does not directly access any external data sources.
 
 #### Legal Aspects and Licensing
 The dataset is under an open license, allowing free use, sharing, and modification as long as NASA is credited as the source. For commercial use, it is recommended to review NASA’s license terms on their website.
@@ -35,7 +41,7 @@ The dataset is classified as public, as it provides scientific information for r
 The data catalogue basically represents an extended schema of a relational database.
 
 
-: Data catalogue for Dataset 1. {#tbl-data-catalogue}
+
 
 | Column index | Column name | Datatype | Values (Range, validation rules) | Short description |
 |--------------|-------------|----------|---------------------------------|-----------------|
@@ -49,29 +55,24 @@ The data catalogue basically represents an extended schema of a relational datab
 | 8 | reclat     | numeric   | -90 to 90                         | Latitude of the find location |
 | 9 | reclong    | numeric   | -180 to 180                       | Longitude of the find location |
 | 10 | GeoLocation | nummeric    | format "(lat, long)"              | combined latitude/longitude |
-
+: Data catalogue for Dataset 1. {#tbl-data-catalogue}
 
 #### Data Chracteristics and Quality
-Die Rohdaten wurden mit der Analyse von dem package ydata_profiling gemacht.
-Diese sind hier zu finden[Analyse der Rohdaten](https://vdss-fs26-ds25a.github.io/ds25a-5-fancyproject/meteorite_report.html)
+The raw data was analyzed using the ydata_profiling package.
+It can be found here [Raw Data Analysis](https://vdss-fs26-ds25a.github.io/ds25a-5-fancyproject/meteorite_report.html)
 
 
 
 ## Processed Data
 ### Overview Processed Datasets
 
-: Overview of processed datasets used in the project. {#tbl-processed-overview}
-
-| Name | Quelle | Storage location |
-|----------------|-----------------------------------------|--------------------------------------------------------------------------|
-| Meteorite_Landings_cleaned.csv      | Meteorite_Landings.csv (Raw Dataset 1) | viz_design/Meteorite_Landings_cleaned.csv |
+The conceptual design and creation of this dataset are described in Section @sec-data-acquisition.
 
 ### Details Meteorite_Landings_cleaned.csv
 
 #### Description
 
 The cleaned dataset has 31,911 meteorite records with complete information on location, mass, year, classification, and fall type. It is our main dataset for all visualizations in this project.
-The processed dataset is created from the raw dataset by running eda.ipynb. The notebook reads Meteorite_Landings.csv, applies the cleaning steps, and writes the result to viz_design/Meteorite_Landings_cleaned.csv.
 
 #### Processing Steps
 
@@ -82,6 +83,7 @@ Rows with at least one missing value in reclat, reclong, mass, year, recclass, o
 The map shows meteorite impact sites around the world, with blue dots representing “found” meteorites and red dots representing “observed falls.” There are particularly many finds in North America, Europe, India, and Australia, as well as in Antarctica, where numerous meteorites are discovered due to the ice sheets.
 ```{python}
 #| label: fig-demo2
+#| fig-cap: "Meteorites over the world"
 #| echo: false
 #| code-fold: true
 
@@ -92,7 +94,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from pathlib import Path
 
-data_path = Path("../viz_design/Meteorite_Landings_cleaned.csv")
+data_path = Path("../data/processed/Meteorite_Landings_cleaned.csv")
 df = pd.read_csv(data_path)
 
 df["year"] = pd.to_numeric(df["year"], errors="coerce")
@@ -103,7 +105,7 @@ df["reclong"] = pd.to_numeric(df["reclong"], errors="coerce")
 eda_df = df
 top_classes = eda_df["recclass"].value_counts().head(15).sort_values()
 
-fig = plt.figure(figsize=(14, 7))
+fig = plt.figure(figsize=(10, 5))
 ax = plt.axes(projection=ccrs.PlateCarree())
 
 # Weltkarte
@@ -157,11 +159,12 @@ plt.show()
 This shows the top 15 kategories with the most meteorites
 ```{python}
 #| label: fig-demo
+#| fig-cap: "Meteorite classes"
 #| echo: false
 #| code-fold: true
 
 
-fig, ax = plt.subplots(figsize=(10, 6))
+fig, ax = plt.subplots(figsize=(9, 6))
 ax.barh(top_classes.index, top_classes.values, color="steelblue")
 ax.set_title("Top 15 meteorite classes")
 ax.set_xlabel("Count")
@@ -174,10 +177,11 @@ plt.show()
 The histogram shows the mass distribution of all recorded meteorites on a log10 scale. Most meteorites weigh between 1g and 100g (log10 values 0–2). The distribution is roughly bell-shaped on the log scale, which means the underlying data is log-normally distributed. A linear scale is not used because a small number of very heavy meteorites would compress the majority of entries into an unreadable range.
 ```{python}
 #| label: fig-mass-distribution
+#| fig-cap: "Meteorite Mass in log"
 #| echo: false
 #| code-fold: true
 
-fig, ax = plt.subplots(figsize=(10, 5))
+fig, ax = plt.subplots(figsize=(9, 6))
 
 mass = eda_df["mass_g"].clip(lower=0.01)
 ax.hist(np.log10(mass), bins=150, color="steelblue", edgecolor="none")
@@ -194,26 +198,20 @@ The chart shows the number of meteorite finds per year from 860 to 2013. Before 
 
 ```{python}
 #| label: fig-finds-over-time
+#| fig-cap: "Meteorites over time"
 #| echo: false
 #| code-fold: true
 
 records_per_year = eda_df.groupby("year").size().sort_index()
 
-fig, ax = plt.subplots(figsize=(10, 5))
+fig, ax = plt.subplots(figsize=(9, 6))
 ax.plot(records_per_year.index, records_per_year.values, linewidth=1.5, color="steelblue")
 
 ax.set_title("Meteorite Finds per Year", fontsize=15, weight="bold")
 ax.set_xlabel("Year")
 ax.set_ylabel("Count")
+ax.set_xlim(1950, records_per_year.index.max())  # Startet bei 1800 statt bei 860
 
 plt.tight_layout()
 plt.show()
 ```
-#### If applicable: Entity Relationship Diagram
-
-
-#### Data Chracteristics and Quality
-
-
-### Details Processed Dataset 2
-...
