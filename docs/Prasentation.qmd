@@ -1,0 +1,69 @@
+---
+title: "VDSS_Präsentation"
+format: revealjs
+editor: visual
+number-sections: false
+
+---
+
+## Thema und Hauptziel
+-Thema: Meteoriteneinschläge auf der Erde
+-Hauptziel: Einführung ins Thema Meteoriten mit Dashboard für ein Museum
+
+### Zielgruppe
+- Personen ab 13 Jahren
+- wissensbegirieger Museumsbesucher 
+- erste Berührungspunkte mit Meteoriten 
+
+### Erwartetes Feedback
+- Einfachheit der Einführung in das Thema 
+
+
+## Ziele und Erfolgskriterien(nico) 
+
+## Beschreibung der Zielgruppe(andi)
+
+## Datensatz(nico)
+-Quelle
+-Was zeigt er
+-filtering
+
+
+## Auswahl und Begründung(andi) Visualisierungselemente
+
+- Auswahl Bedürfnisse Zielgruppe
+- visuell ansprechend 
+- Timeline, Karte, 3D Erde (Ziel war es nicht Daten am besten rüber zu bringen sonder, diese Visuell inttressant zu machen)
+
+## Umsetzung zeigen(silvan)
+
+
+## Code(silvan)
+
+-Struktur
+-Uv shiney 
+-Schritte um Code laufen zu lassen 
+- Was wurde für eine Sprache verwendet 
+## Abschluss
+-Fragen 
+-Schwirigkeiten 
+-Probleme 
+
+
+
+
+
+
+
+
+
+
+```
+
+
+
+
+
+
+
+
