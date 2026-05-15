@@ -1,69 +1,131 @@
 ---
-title: "VDSS_Präsentation"
-format: revealjs
+title: "☄️ Meteoriten-Dashboard"
+subtitle: "Dubach · Minder · Varano — VDSS Abschlusspräsentation"
+format:
+  revealjs:
+    theme: dark
+    slide-number: true
+    transition: fade
+    center: true
+    navigation-mode: linear
+    chalkboard: false
+    toc: false
+    incremental: false
 editor: visual
 number-sections: false
+---
+
+
+
+## 🌍 Thema und Hauptziel
+
+- Thema: Meteoritenfunde und Meteoriteneinschläge auf der Erde  
+- Einführung in das Thema Meteoriten durch ein interaktives Dashboard  
+- Fokus auf visuelles Storytelling und Datenexploration  
 
 ---
 
-## Thema und Hauptziel
--Thema: Meteoriteneinschläge auf der Erde
--Hauptziel: Einführung ins Thema Meteoriten mit Dashboard für ein Museum
+## 👥 Zielgruppe
 
-### Zielgruppe
-- Personen ab 13 Jahren
-- wissensbegirieger Museumsbesucher 
-- erste Berührungspunkte mit Meteoriten 
+- Personen ab 13 Jahren  
+- Wissbegierige Museumsbesucher:innen  
+- Nutzer:innen mit ersten Berührungspunkten zum Thema Meteoriten  
 
-### Erwartetes Feedback
-- Einfachheit der Einführung in das Thema 
+---
+
+## 💬 Erwartetes Feedback
+
+- Einfache und verständliche Einführung  
+- Intuitive Bedienung  
+- Visuell spannende Darstellung der Daten  
+
+---
+
+## 🎯 Projektziele
+
+- Anschauliche Einführung in Meteoriten für Besucher:innen  
+- Weltweite Meteoritenfunde als zeitliches Storytelling  
+- Hervorhebung besonderer Ereignisse und Funde  
+- Interaktive Visualisierungen mit Filtern und Exploration  
+- Tabletfreundliches und intuitives Design  
+
+---
+
+## 🧪 Erfolgskriterien
+
+- Flüssige Bedienung auf Tablets  
+- Besondere Ereignisse klar erkennbar  
+- Zuverlässige Filter- und Auswahlfunktionen  
+- Vergleich von Masse, Jahr und Klassifikation möglich  
+- Übersichtliche und selbsterklärende Visualisierungen  
+
+---
+
+## 👤 Beschreibung der Zielgruppe
+
+- Fokus auf Museumskontext  
+- Keine Vorkenntnisse notwendig  
+- Kombination aus Lernen und Exploration  
+- Niedrige Einstiegshürde durch visuelle Darstellung  
+
+---
+
+## 📂 Data Report
+
+- Datengrundlage: *NASA Meteorite Landings Dataset*  
+- Informationen zu  
+  - Standort  
+  - Jahr  
+  - Masse  
+  - Klassifikation  
+  - Falltyp  
+
+- Automatisierte Datenpipeline  
+
+---
+
+## 🧹 Datenbereinigung
+
+- Bereinigter Datensatz: **31’911 Meteoriten**  
+
+- Entfernung fehlender Werte  
+- Filterung unrealistischer Daten  
+  - Jahre zwischen 800–2025  
+  - gültige Koordinatenbereiche  
+  - Masse > 0  
+  - Ausschluss von `(0,0)`  
+
+---
+
+## 📊 Auswahl der Visualisierungselemente
+
+- Auswahl basierend auf Zielgruppe  
+- Fokus auf visuell ansprechende Darstellung  
+- Kombination aus  
+  - Timeline  
+  - Weltkarte  
+  - 3D-Erde  
+
+- Ziel: Daten spannend und intuitiv vermitteln  
+
+---
+
+## 💻 Umsetzung
+
+- Demonstration des Dashboards  
+- Navigation durch Storyline und Interaktionen  
+- Filter- und Explorationsmöglichkeiten zeigen  
+
+---
+
+## 🧩 Technische Umsetzung
+
+- Projektstruktur und Aufbau  
+- Nutzung von Shiny und Python  
+- Datenpipeline und Verarbeitungsschritte  
+- Schritte zum lokalen Ausführen des Projekts  
 
 
-## Ziele und Erfolgskriterien(nico) 
 
-## Beschreibung der Zielgruppe(andi)
-
-## Datensatz(nico)
--Quelle
--Was zeigt er
--filtering
-
-
-## Auswahl und Begründung(andi) Visualisierungselemente
-
-- Auswahl Bedürfnisse Zielgruppe
-- visuell ansprechend 
-- Timeline, Karte, 3D Erde (Ziel war es nicht Daten am besten rüber zu bringen sonder, diese Visuell inttressant zu machen)
-
-## Umsetzung zeigen(silvan)
-
-
-## Code(silvan)
-
--Struktur
--Uv shiney 
--Schritte um Code laufen zu lassen 
-- Was wurde für eine Sprache verwendet 
-## Abschluss
--Fragen 
--Schwirigkeiten 
--Probleme 
-
-
-
-
-
-
-
-
-
-
-```
-
-
-
-
-
-
-
+# Danke für eure Aufmerksamkeit ☄️
 

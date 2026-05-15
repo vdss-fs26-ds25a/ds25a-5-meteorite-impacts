@@ -14,7 +14,7 @@ Das gesamte Projekt wird als Shiny-App umgesetzt, sodass die Inhalte einfach auf
 
 ### Projekziele
 1. Besucherinnen und Besuchern eine anschauliche Einführung in Meteoriten bieten.
-2. Wichtige Meteoritenfunde weltweit entlang eines zeitlichen Storytellings präsentieren, einschließlich besonderer Ereignisse (z. B. erster Fund, besonders grosse Meteoriten).
+2. Wichtige Meteoritenfunde weltweit entlang eines zeitlichen Storytellings präsentieren, einschliesslich besonderer Ereignisse (z. B. erster Fund, besonders grosse Meteoriten).
 3. Interaktive Visualisierungen bereitstellen, die es ermöglichen, nach Jahr, Masse, Klassifikation oder Region zu filtern und eigene Explorationen durchzuführen.
 4. Inhalte intuitiv und tabletfreundlich gestalten, sodass Nutzer die Storyline linear verfolgen oder selbst Daten erkunden können.
 
@@ -165,7 +165,7 @@ Der zweite Teil ist ein interaktiver 3D-Globus. Er zeigt alle ausgesuchten  Mete
 
 ### Visuelle Kodierungen
 
-Den Kern des zweiten Teils bildet der 3D-Globus. Jeder Einschlag ist als Punkt dargestellt; die Farbe kodiert die Masse auf einer Skala von Grün (leicht) bis Rot (schwer). Ergänzt wird der Globus durch vier weitere Diagramme: eine 2D-Heatmap der globalen Verteilung, ein Balkendiagramm der Einschläge pro Jahr, ein Histogramm der Massenverteilung auf logarithmischer Skala sowie ein Balkendiagramm der zehn häufigsten Meteoritenklassen.
+Den Kern des zweiten Teils bildet der 3D-Globus. Jeder Einschlag ist als Punkt dargestellt; die Farbe kodiert die Masse auf einer Skala von Grün (leicht) bis Rot (schwer). Ergänzt wird der Globus durch weitere Elemente, wie die Heatmap, bei dieser Heatmap werden Regionen in denen eher weniger Meteoriten gefunden worden sind als dunkelrot angezeigt und Regionen in denen viele Meteoriten gefunden worden sind hellgelb angezeigt.
 
 Im narrativen Zeitfaden übernehmen die Ereigniskarten die visuelle Funktion. Bild und Metadaten stehen nebeneinander; ein Zeitstrahl mit Jahresmarkierungen gibt räumliche Orientierung.
 
@@ -173,7 +173,7 @@ Im narrativen Zeitfaden übernehmen die Ereigniskarten die visuelle Funktion. Bi
 
 Der narrative Zeitfaden reagiert auf das Scrollen. Ein Scroll-Skript erkennt, welche Karte sich in der Bildschirmmitte befindet, hebt sie hervor und blendet die anderen aus. Ein beweglicher Jahreszeiger auf dem Zeitstrahl zeigt das aktuelle Jahr an.
 
-Der Globus verfügt über ein ein- und ausblendbares Filtermenü. Darin lassen sich der Zeitraum, die Masse, der Falltyp (gefallen oder gefunden) sowie die maximale Punktzahl und der Sampling-Modus einstellen. Beim Hovern über einen Punkt erscheint ein Tooltip mit Name, Jahr, Masse und Klasse des Meteoriten. Zusätzlich kann eine 3D-Heatmap-Schicht über den Globus gelegt werden. Alle vier Unterdiagramme aktualisieren sich synchron mit den gesetzten Filtern.
+Der Globus verfügt über ein ein- und ausblendbares Filtermenü. Darin lassen sich der Zeitraum, die Masse, der Falltyp (gefallen oder gefunden) sowie die maximale Punktzahl und der Sampling-Modus einstellen. Beim Hovern über einen Punkt erscheint ein Tooltip mit Name, Jahr, Masse und Klasse des Meteoriten. Zusätzlich kann eine 3D-Heatmap-Schicht über den Globus gelegt werden.
 
 ### Narrative und Annotation
 
@@ -181,7 +181,7 @@ Jede Ereigniskarte zeigt neben dem Bild die wichtigsten Metadaten: Masse, Zusamm
 
 ### Zielmedium und Integration
 
-Die App läuft als öffentliche Webanwendung im Desktop-Browser. Der gesamte Code ist in einem Quarto-Projekt auf GitHub dokumentiert und reproduzierbar. Der Server verarbeitet alle 45 716 Datensätze; Besucherinnen und Besucher müssen nichts installieren.
+Die App läuft als öffentliche Webanwendung im Desktop-Browser. Der gesamte Code ist in einem Quarto-Projekt auf GitHub dokumentiert und reproduzierbar. Der Server verarbeitet den datensatz und Besucherinnen und Besucher müssen nichts installieren.
 
 ### Bezug zu Projektzielen und Nutzerbedürfnissen
 
