@@ -1,21 +1,24 @@
 ---
-title: "☄️ Meteoriten-Dashboard"
-subtitle: "Dubach · Minder · Varano — VDSS Abschlusspräsentation"
+title: "☄️ Visualisierung von Meteoriten für Museen"
+subtitle: "Dubach · Minder · Varano"
 format:
   revealjs:
     theme: dark
-    slide-number: true
+    slide-number: false
     transition: fade
     center: true
     navigation-mode: linear
     chalkboard: false
     toc: false
     incremental: false
+    menu: false
+    controls: false
+    progress: false
 editor: visual
 number-sections: false
 ---
 
-## 🌍 Thema und Hauptziel(hilfsfolie)
+## 🌍 Thema und Hauptziel (Hilfsfolie)
 
 -   Thema: Meteoritenfunde und Meteoriteneinschläge auf der Erde\
 -   Einführung in das Thema Meteoriten durch ein interaktives Dashboard\
@@ -23,7 +26,7 @@ number-sections: false
 
 ------------------------------------------------------------------------
 
-## 👥 Zielgruppe(hilfsfolie)
+## 👥 Zielgruppe (Hilfsfolie)
 
 -   Personen ab 13 Jahren\
 -   Wissbegierige Museumsbesucher:innen\
@@ -31,11 +34,47 @@ number-sections: false
 
 ------------------------------------------------------------------------
 
-## 💬 Erwartetes Feedback(hilfsfolie)
+## 💬 Erwartetes Feedback (Hilfsfolie)
 
 -   Einfache und verständliche Einführung\
 -   Intuitive Bedienung\
 -   Visuell spannende Darstellung der Daten
+
+------------------------------------------------------------------------
+
+## 📂 Datensatz
+
+Source: [*NASA Meteorite Landings Dataset*](https://data.nasa.gov/dataset/meteorite-landings)
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-note appearance="simple"}
+
+## Nogata
+
+| Property | Value |
+|---|---|
+| **Meteorite ID** | 16988 |
+| **Classification** | L6 |
+| **Status** | Valid |
+| **Mass** | 472 g |
+| **Fall Type** | Fell |
+| **Year** | 860 |
+| **Location** | 33.725, 130.75 |
+
+:::
+
+:::
+
+::: {.column width="50%"}
+
+![](./pics/Nogata_map.png)
+
+:::
+
+::::
 
 ------------------------------------------------------------------------
 
@@ -49,7 +88,7 @@ number-sections: false
 
 ------------------------------------------------------------------------
 
-## 🧪 Erfolgskriterien
+## Erfolgskriterien
 
 -   Flüssige Bedienung auf Tablets\
 -   Besondere Ereignisse klar erkennbar\
@@ -85,19 +124,6 @@ number-sections: false
 
 ------------------------------------------------------------------------
 
-## 📂 Data Report
-
--   Datengrundlage: *NASA Meteorite Landings Dataset*\
--   Informationen zu
-    -   Standort\
-    -   Jahr\
-    -   Masse\
-    -   Klassifikation\
-    -   Falltyp
--   Automatisierte Datenpipeline
-
-------------------------------------------------------------------------
-
 ## 🧹 Datenbereinigung
 
 -   Bereinigter Datensatz: **31’911 Meteoriten**
@@ -130,19 +156,50 @@ number-sections: false
 
 ------------------------------------------------------------------------
 
-## 💻 Umsetzung
+## Technische Umsetzung
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+### Techstack 
+- Python, UV
+- Shiny App
+- inline HTML, CSS
+
+:::
+
+::: {.column width="50%"}
+
+### Datapipeline 
+- Download von Datensatz
+- Cleaning von Daten 
+
+:::
+::::
+
+## Bereitstellung
+- Github Pages
+- Action Workflow
+
+```yaml
+- name: Install dependencies and Shinylive
+  working-directory: viz_design
+  run: |
+    uv sync
+    uv pip install shinylive
+
+- name: Download data
+  working-directory: data
+  run: uv run python data.py
+```
+
+------------------------------------------------------------------------
+
+## Umsetzung
 
 -   Demonstration des Dashboards\
 -   Navigation durch Storyline und Interaktionen\
 -   Filter- und Explorationsmöglichkeiten zeigen
-
-------------------------------------------------------------------------
-
-## 🧩 Technische Umsetzung
-
--   Projektstruktur und Aufbau\
--   Nutzung von Shiny und Python\
--   Datenpipeline und Verarbeitungsschritte\
--   Schritte zum lokalen Ausführen des Projekts
 
 # Danke für eure Aufmerksamkeit ☄️

@@ -10,7 +10,6 @@ An interactive 3D globe visualization of global meteorite impacts using **Shiny 
   - Filter by **Year Range** (860 AD - Present).
   - Filter by **Mass** (logarithmic scale for better granularity).
   - Control the **Max Displayed Points** to balance performance and detail.
-- **Glassmorphism UI**: A sleek, semi-transparent floating menu that can be collapsed for a full-screen experience.
 - **State Preservation**: The menu remembers your filter settings even when closed and reopened.
 
 ## Prerequisites

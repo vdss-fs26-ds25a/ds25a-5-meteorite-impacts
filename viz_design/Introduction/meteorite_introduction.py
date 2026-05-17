@@ -6,112 +6,133 @@ def build_meteor_introduction():
         {
             "title": "Meteoroid",
             "icon": "bi-hexagon-fill",
-            "text": "A rocky or metallic body traveling through space.",
+            "text": "A rocky or metallic body traveling through space, ranging from tiny dust grains to objects meters wide. Larger bodies are classified as asteroids or comets.",
         },
         {
             "title": "Meteor",
             "icon": "bi-stars",
-            "text": "The bright streak created when it burns in the atmosphere.",
+            "text": "The luminous phenomenon when a meteoroid enters Earth's atmosphere at high speed, heating the surrounding air to incandescence. Commonly known as a 'shooting star'.",
         },
         {
             "title": "Meteorite",
             "icon": "bi-geo-alt-fill",
-            "text": "The surviving fragment that reaches Earth's surface.",
+            "text": "The solid fragment that survives the fiery passage through the atmosphere and reaches Earth's surface. Less than 5% of meteoroids that enter the atmosphere make it to the ground.",
         },
     ]
+
     intro_steps = [
         {
             "kind": "text",
-            "title": "Meteoroid, Meteor, Meteorite whats the difference?",
-            "text": "Here is the sequence from space object to ground fragment.",
+            "title": "Meteoroid, Meteor, Meteorite — What's the Difference?",
+            "text": "The same object can be called three different names depending on where it is in its journey. "
+                    "These terms are often confused in everyday language, but scientists use them precisely "
+                    "to describe each phase: drifting through space, blazing through our atmosphere, "
+                    "and finally resting on the ground.",
         },
         {
             "kind": "text",
-            "title": "From Space To Ground",
-            "text": "The same object gets a different name depending on where it is: \n"
-            "in space, in the atmosphere, or on the ground.",
+            "title": "From Space to Ground",
+            "text": "The journey begins millions of kilometers away. A meteoroid — a fragment of rock or metal "
+                    "broken off from an asteroid or comet — drifts silently through the solar system. "
+                    "When it crosses paths with Earth, gravity pulls it into our atmosphere at speeds "
+                    "between 11 and 72 km/s. The name it carries changes at each stage of that descent.",
         },
         {
             "kind": "cards",
             "title": "Meteoroid, Meteor, Meteorite",
-            "text": "Here is the sequence from space object to ground fragment.",
+            "text": "Three names, one object — here is how the terminology shifts as the space rock "
+                    "travels from the void of space through our atmosphere to the surface of the Earth.",
         },
         {
             "kind": "text",
             "title": "Meteoroid",
-            "text": "Meteorites are time capsules from the early solar system. Their "
-            "minerals and isotopes help scientists reconstruct planetary "
-            "formation and cosmic history.",
+            "text": "Meteoroids are the most numerous solid objects in the inner solar system. "
+                    "They originate from collisions between asteroids, from cometary debris trails, "
+                    "or even from material ejected off the Moon or Mars by past impacts. "
+                    "Most are smaller than a grain of sand, though some reach several meters in diameter. "
+                    "Earth sweeps up an estimated 100 tonnes of meteoroid material every single day.",
         },
         {
             "kind": "text",
             "title": "Meteor",
-            "text": "Meteorites are time capsules from the early solar system. Their "
-            "minerals and isotopes help scientists reconstruct planetary "
-            "formation and cosmic history.",
+            "text": "As a meteoroid slams into Earth's atmosphere, friction compresses and superheats "
+                    "the air in front of it to temperatures exceeding 1,600 °C. This causes the object "
+                    "to ablate — its outer layers vaporize, producing the glowing streak we call a meteor. "
+                    "Most meteors burn up completely within seconds at altitudes between 80 and 120 km. "
+                    "Exceptionally bright meteors, brighter than Venus, are called fireballs or bolides "
+                    "and can cast shadows on the ground.",
         },
         {
             "kind": "text",
             "title": "Meteorite",
-            "text": "Meteorites are time capsules from the early solar system. Their "
-            "minerals and isotopes help scientists reconstruct planetary "
-            "formation and cosmic history.",
+            "text": "Meteorites are survivors. Only the most robust and sizable meteoroids withstand "
+                    "the brutal passage through the atmosphere and reach the surface intact. "
+                    "They are classified into three broad groups: stony meteorites (most common), "
+                    "iron meteorites (dense, metallic), and stony-iron meteorites (rarest). "
+                    "Upon landing, they are typically cool to the touch — the ablation process "
+                    "strips away the heated outer shell, leaving the cold interior exposed.",
         },
         {
             "kind": "text",
             "title": "What Meteorites Tell Us",
-            "text": "Meteorites are time capsules from the early solar system. Their "
-            "minerals and isotopes help scientists reconstruct planetary "
-            "formation and cosmic history.",
+            "text": "Meteorites are among the oldest materials on Earth — many formed over 4.5 billion years ago, "
+                    "predating our planet itself. Their chemical composition, mineral structures, and isotopic "
+                    "ratios act as a fossil record of the early solar system. By studying them, scientists "
+                    "can reconstruct how planets formed, what the young Sun looked like, and whether "
+                    "organic molecules — the building blocks of life — were delivered to early Earth from space.",
         },
         {
             "kind": "text",
             "title": "Why This Matters Here",
-            "text": "The timeline below highlights key meteorite events, from early "
-            "historical records to modern observed falls and major scientific "
-            "discoveries.",
+            "text": "The timeline below traces key moments in humanity's relationship with meteorites — "
+                    "from ancient civilizations that worshipped fallen iron as gifts from the gods, "
+                    "to the first scientific classifications in the 19th century, "
+                    "to modern observed falls tracked by global camera networks. "
+                    "Each event marks a milestone in how we understand our place in the solar system.",
         },
     ]
 
     blocks = []
     sentinels = []
     for i, step in enumerate(intro_steps):
-        block_children = [
-            ui.tags.h3(step["title"], class_="meteorite-intro-block-title"),
-            ui.tags.p(step["text"], class_="meteorite-intro-block-text"),
-        ]
-        block_class = "meteorite-intro-block"
+            block_children = [
+                ui.tags.h3(step["title"], class_="meteorite-intro-block-title"),
+                ui.tags.p(step["text"], class_="meteorite-intro-block-text"),
+            ]
+            block_class = "meteorite-intro-block"
 
-        if step["kind"] == "cards":
-            block_class += " cards-step"
-            term_cards = []
-            for card in comparison_cards:
-                term_cards.append(
-                    ui.tags.article(
-                        ui.tags.div(
-                            ui.tags.i(class_=f"bi {card['icon']}"),
-                            class_="meteorite-term-icon",
-                            aria_hidden="true",
-                        ),
-                        ui.tags.h3(card["title"], class_="meteorite-term-title"),
-                        ui.tags.p(card["text"], class_="meteorite-term-text"),
-                        class_="meteorite-term-card",
+            if step["kind"] == "cards":
+                block_class += " cards-step"
+                term_cards = []
+                for card in comparison_cards:
+                    term_cards.append(
+                        ui.tags.article(
+                            ui.tags.div(
+                                ui.tags.i(class_=f"bi {card['icon']}"),
+                                class_="meteorite-term-icon",
+                                aria_hidden="true",
+                            ),
+                            ui.tags.h3(card["title"],
+                                    class_="meteorite-term-title"),
+                            ui.tags.p(card["text"], class_="meteorite-term-text"),
+                            class_="meteorite-term-card",
+                        )
                     )
-                )
-            block_children.append(ui.tags.div(*term_cards, class_="meteorite-term-grid"))
+                block_children.append(ui.tags.div(
+                    *term_cards, class_="meteorite-term-grid"))
 
-        blocks.append(
-            ui.tags.article(
-                *block_children,
-                class_=block_class,
-                **{"data-step": str(i)},
+            blocks.append(
+                ui.tags.article(
+                    *block_children,
+                    class_=block_class,
+                    **{"data-step": str(i)},
+                )
             )
-        )
-        sentinels.append(
-            ui.tags.div(
-                class_="meteorite-intro-sentinel",
-                **{"data-step": str(i)},
-            )
+            sentinels.append(
+                ui.tags.div(
+                    class_="meteorite-intro-sentinel",
+                    **{"data-step": str(i)},
+                )
         )
 
     return ui.tags.section(
@@ -356,7 +377,8 @@ def build_meteor_introduction():
             ui.tags.div(*blocks, class_="meteorite-intro-stack"),
             ui.tags.div(
                 ui.tags.span("Scroll"),
-                ui.tags.i(class_="bi bi-chevron-down meteorite-intro-scroll-hint-icon", aria_hidden="true"),
+                ui.tags.i(
+                    class_="bi bi-chevron-down meteorite-intro-scroll-hint-icon", aria_hidden="true"),
                 class_="meteorite-intro-scroll-hint",
             ),
             ui.tags.div(*sentinels, class_="meteorite-intro-scrollspace"),
