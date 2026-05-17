@@ -46,35 +46,27 @@ number-sections: false
 
 Source: [*NASA Meteorite Landings Dataset*](https://data.nasa.gov/dataset/meteorite-landings)
 
-:::: {.columns}
-
-::: {.column width="50%"}
-
+:::::: columns
+:::: {.column width="50%"}
 ::: {.callout-note appearance="simple"}
-
 ## Nogata
 
-| Property | Value |
-|---|---|
-| **Meteorite ID** | 16988 |
-| **Classification** | L6 |
-| **Status** | Valid |
-| **Mass** | 472 g |
-| **Fall Type** | Fell |
-| **Year** | 860 |
-| **Location** | 33.725, 130.75 |
-
+| Property           | Value          |
+|--------------------|----------------|
+| **Meteorite ID**   | 16988          |
+| **Classification** | L6             |
+| **Status**         | Valid          |
+| **Mass**           | 472 g          |
+| **Fall Type**      | Fell           |
+| **Year**           | 860            |
+| **Location**       | 33.725, 130.75 |
 :::
-
-:::
+::::
 
 ::: {.column width="50%"}
-
 ![](./pics/Nogata_map.png)
-
 :::
-
-::::
+::::::
 
 ------------------------------------------------------------------------
 
@@ -152,37 +144,35 @@ Source: [*NASA Meteorite Landings Dataset*](https://data.nasa.gov/dataset/meteor
 
 -   Interaktiver 3D-Globus: Punkte auf drehbarer Erde, Farbe = Masse (grün, rot), optionale Heatmap
 
-    -   vertraute Metapher (Google Maps), keine Projektionsverzerrung
+    -   vertrautes Tool (Google Maps)
 
 ------------------------------------------------------------------------
 
 ## Technische Umsetzung
 
-:::: {.columns}
-
+::::: columns
 ::: {.column width="50%"}
+### Techstack
 
-### Techstack 
-- Python, UV
-- Shiny App
-- inline HTML, CSS
-
+-   Python, UV
+-   Shiny App
+-   inline HTML, CSS
 :::
 
 ::: {.column width="50%"}
+### Datapipeline
 
-### Datapipeline 
-- Download von Datensatz
-- Cleaning von Daten 
-
+-   Download von Datensatz
+-   Cleaning von Daten
 :::
-::::
+:::::
 
 ## Bereitstellung
-- Github Pages
-- Action Workflow
 
-```yaml
+-   Github Pages
+-   Action Workflow
+
+``` yaml
 - name: Install dependencies and Shinylive
   working-directory: viz_design
   run: |
