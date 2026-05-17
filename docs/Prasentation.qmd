@@ -17,7 +17,7 @@ number-sections: false
 
 
 
-## 🌍 Thema und Hauptziel
+## 🌍 Thema und Hauptziel(hilfsfolie)
 
 - Thema: Meteoritenfunde und Meteoriteneinschläge auf der Erde  
 - Einführung in das Thema Meteoriten durch ein interaktives Dashboard  
@@ -25,7 +25,7 @@ number-sections: false
 
 ---
 
-## 👥 Zielgruppe
+## 👥 Zielgruppe(hilfsfolie)
 
 - Personen ab 13 Jahren  
 - Wissbegierige Museumsbesucher:innen  
@@ -33,7 +33,7 @@ number-sections: false
 
 ---
 
-## 💬 Erwartetes Feedback
+## 💬 Erwartetes Feedback(hilfsfolie)
 
 - Einfache und verständliche Einführung  
 - Intuitive Bedienung  
