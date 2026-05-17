@@ -15,117 +15,134 @@ editor: visual
 number-sections: false
 ---
 
-
-
 ## 🌍 Thema und Hauptziel(hilfsfolie)
 
-- Thema: Meteoritenfunde und Meteoriteneinschläge auf der Erde  
-- Einführung in das Thema Meteoriten durch ein interaktives Dashboard  
-- Fokus auf visuelles Storytelling und Datenexploration  
+-   Thema: Meteoritenfunde und Meteoriteneinschläge auf der Erde\
+-   Einführung in das Thema Meteoriten durch ein interaktives Dashboard\
+-   Fokus auf visuelles Storytelling und Datenexploration
 
----
+------------------------------------------------------------------------
 
 ## 👥 Zielgruppe(hilfsfolie)
 
-- Personen ab 13 Jahren  
-- Wissbegierige Museumsbesucher:innen  
-- Nutzer:innen mit ersten Berührungspunkten zum Thema Meteoriten  
+-   Personen ab 13 Jahren\
+-   Wissbegierige Museumsbesucher:innen\
+-   Nutzer:innen mit ersten Berührungspunkten zum Thema Meteoriten
 
----
+------------------------------------------------------------------------
 
 ## 💬 Erwartetes Feedback(hilfsfolie)
 
-- Einfache und verständliche Einführung  
-- Intuitive Bedienung  
-- Visuell spannende Darstellung der Daten  
+-   Einfache und verständliche Einführung\
+-   Intuitive Bedienung\
+-   Visuell spannende Darstellung der Daten
 
----
+------------------------------------------------------------------------
 
 ## 🎯 Projektziele
 
-- Anschauliche Einführung in Meteoriten für Besucher:innen  
-- Weltweite Meteoritenfunde als zeitliches Storytelling  
-- Hervorhebung besonderer Ereignisse und Funde  
-- Interaktive Visualisierungen mit Filtern und Exploration  
-- Tabletfreundliches und intuitives Design  
+-   Anschauliche Einführung in Meteoriten für Besucher:innen\
+-   Weltweite Meteoritenfunde als zeitliches Storytelling\
+-   Hervorhebung besonderer Ereignisse und Funde\
+-   Interaktive Visualisierungen mit Filtern und Exploration\
+-   Tabletfreundliches und intuitives Design
 
----
+------------------------------------------------------------------------
 
 ## 🧪 Erfolgskriterien
 
-- Flüssige Bedienung auf Tablets  
-- Besondere Ereignisse klar erkennbar  
-- Zuverlässige Filter- und Auswahlfunktionen  
-- Vergleich von Masse, Jahr und Klassifikation möglich  
-- Übersichtliche und selbsterklärende Visualisierungen  
+-   Flüssige Bedienung auf Tablets\
+-   Besondere Ereignisse klar erkennbar\
+-   Zuverlässige Filter- und Auswahlfunktionen\
+-   Vergleich von Masse, Jahr und Klassifikation möglich\
+-   Übersichtliche und selbsterklärende Visualisierungen
 
----
+------------------------------------------------------------------------
 
 ## 👤 Beschreibung der Zielgruppe
 
-- Fokus auf Museumskontext  
-- Keine Vorkenntnisse notwendig  
-- Kombination aus Lernen und Exploration  
-- Niedrige Einstiegshürde durch visuelle Darstellung  
+### Persona 1: Lucas Berger (15)
 
----
+-   Sekundarschüler, Klassenausflug ins Museum
+-   Kaum Vorwissen zu Meteoriten
+-   Geringe Data Literacy, gewohnt an Smartphone & Social Media
+-   Hauptbedürfnis: spielerische Entdeckung ohne Vorkenntnisse
+-   Pain Points: zu viel Text, Fachbegriffe ohne Erklärung
+-   Gains: einfache Sprache, überraschende Fakten, interaktive Bedienung
+
+------------------------------------------------------------------------
+
+## 👤 Beschreibung der Zielgruppe
+
+### Persona 2: Max Schneider (31)
+
+-   Elektroingenieur, gezielter Museumsbesuch aus Interesse
+-   Grundwissen aus YouTube-Dokus und Magazinen
+-   Mittlere Data Literacy, vertraut mit interaktiven Karten (Google Maps)
+-   Hauptbedürfnis: verständliche Visualisierung mit Tiefe
+-   Pain Points: zu wissenschaftliche Sprache, fehlende Filter
+-   Gains: intuitiver 3D-Globus, Einordnung in grösseren Kontext
+
+------------------------------------------------------------------------
 
 ## 📂 Data Report
 
-- Datengrundlage: *NASA Meteorite Landings Dataset*  
-- Informationen zu  
-  - Standort  
-  - Jahr  
-  - Masse  
-  - Klassifikation  
-  - Falltyp  
+-   Datengrundlage: *NASA Meteorite Landings Dataset*\
+-   Informationen zu
+    -   Standort\
+    -   Jahr\
+    -   Masse\
+    -   Klassifikation\
+    -   Falltyp
+-   Automatisierte Datenpipeline
 
-- Automatisierte Datenpipeline  
-
----
+------------------------------------------------------------------------
 
 ## 🧹 Datenbereinigung
 
-- Bereinigter Datensatz: **31’911 Meteoriten**  
+-   Bereinigter Datensatz: **31’911 Meteoriten**
 
-- Entfernung fehlender Werte  
-- Filterung unrealistischer Daten  
-  - Jahre zwischen 800–2025  
-  - gültige Koordinatenbereiche  
-  - Masse > 0  
-  - Ausschluss von `(0,0)`  
+-   Entfernung fehlender Werte\
 
----
+-   Filterung unrealistischer Daten
 
-## 📊 Auswahl der Visualisierungselemente
+    -   Jahre zwischen 800–2025\
+    -   gültige Koordinatenbereiche\
+    -   Masse \> 0\
+    -   Ausschluss von `(0,0)`
 
-- Auswahl basierend auf Zielgruppe  
-- Fokus auf visuell ansprechende Darstellung  
-- Kombination aus  
-  - Timeline  
-  - Weltkarte  
-  - 3D-Erde  
+------------------------------------------------------------------------
 
-- Ziel: Daten spannend und intuitiv vermitteln  
+## 📊 Auswahl & Begründung der Visualisierung
 
----
+-   Zweiteiliges Konzept für beide Personas
+
+    -   Zeitfaden → geführte Story für Lucas (15, ohne Vorwissen)
+    -   3D-Globus → freie Exploration für Max (31, mit Interesse)
+
+-   Narrativer Zeitfaden: 8 Ereignisse von 860 bis 2013, Karten mit Bild, Jahr, Masse, Fundort
+
+    -   konkrete Geschichten statt abstrakter Statistik
+
+-   Interaktiver 3D-Globus: Punkte auf drehbarer Erde, Farbe = Masse (grün, rot), optionale Heatmap
+
+    -   vertraute Metapher (Google Maps), keine Projektionsverzerrung
+
+------------------------------------------------------------------------
 
 ## 💻 Umsetzung
 
-- Demonstration des Dashboards  
-- Navigation durch Storyline und Interaktionen  
-- Filter- und Explorationsmöglichkeiten zeigen  
+-   Demonstration des Dashboards\
+-   Navigation durch Storyline und Interaktionen\
+-   Filter- und Explorationsmöglichkeiten zeigen
 
----
+------------------------------------------------------------------------
 
 ## 🧩 Technische Umsetzung
 
-- Projektstruktur und Aufbau  
-- Nutzung von Shiny und Python  
-- Datenpipeline und Verarbeitungsschritte  
-- Schritte zum lokalen Ausführen des Projekts  
-
-
+-   Projektstruktur und Aufbau\
+-   Nutzung von Shiny und Python\
+-   Datenpipeline und Verarbeitungsschritte\
+-   Schritte zum lokalen Ausführen des Projekts
 
 # Danke für eure Aufmerksamkeit ☄️
-
