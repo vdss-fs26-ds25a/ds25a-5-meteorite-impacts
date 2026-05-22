@@ -28,9 +28,9 @@ Code and configurations used in the different project phases are stored in the c
 > To do: add link to documentation website for convenience.
 
 ## Website
-Die Dokumenations ist unter https://vdss-fs26-ds25a.github.io/ds25a-5-fancyproject/ zu finden.
+Die Dokumentation ist unter https://vdss-fs26-ds25a.github.io/ds25a-5-meteorite-impacts/docs/ zu finden.
 
-Die Visualisierung ist under https://vdss-fs26-ds25a.github.io/ds25a-5-fancyproject/viz-design zu finden
+Die Visualisierung ist unter https://vdss-fs26-ds25a.github.io/ds25a-5-meteorite-impacts/ zu finden.
 
 
 See section `Quarto Setup and Usage` for instructions on how to build and serve the documentation website using Quarto.

@@ -22,11 +22,11 @@ The Meteorite Landings dataset contains information on known meteorites that hav
 The data is provided by NASA through the NASA Open Data Portal, which collects and publishes scientific data from space research and meteorite observations. NASA is a United States government agency responsible for civilian space exploration and scientific research related to Earth, space, and planetary science.
 
 #### Data Acquisition {#sec-data-acquisition}
-The data used in this project is obtained through a separate data processing script located in the project folder (ds25a-5-fancyproject\data). This script is executed at the beginning of the workflow and is responsible for downloading and preparing all required datasets.
+The data used in this project is obtained through a separate data processing script located in the project folder (ds25a-5-meteorite-impacts\data). This script is executed at the beginning of the workflow and is responsible for downloading and preparing all required datasets.
 
-The raw data is automatically retrieved from the data source when the script is executed and stored in the folder (ds25a-5-fancyproject/data/raw). This ensures that the original dataset is preserved in a reproducible form.
+The raw data is automatically retrieved from the data source when the script is executed and stored in the folder (ds25a-5-meteorite-impacts/data/raw). This ensures that the original dataset is preserved in a reproducible form.
 
-Subsequently, the script performs several data cleaning and preprocessing steps, including type conversions, handling of missing values, and further data preparation tasks. The resulting processed datasets are stored in the folder (ds25a-5-fancyproject/data/processed).
+Subsequently, the script performs several data cleaning and preprocessing steps, including type conversions, handling of missing values, and further data preparation tasks. The resulting processed datasets are stored in the folder (ds25a-5-meteorite-impacts/data/processed).
 
 The main application (Shiny app) exclusively uses the preprocessed data from the processed directory and does not directly access any external data sources.
 
@@ -59,7 +59,7 @@ The data catalogue basically represents an extended schema of a relational datab
 
 #### Data Chracteristics and Quality
 The raw data was analyzed using the ydata_profiling package.
-It can be found here [Raw Data Analysis](https://vdss-fs26-ds25a.github.io/ds25a-5-fancyproject/meteorite_report.html)
+It can be found here [Raw Data Analysis](https://vdss-fs26-ds25a.github.io/ds25a-5-meteorite-impacts/docs/meteorite_report.html)
 
 
 
