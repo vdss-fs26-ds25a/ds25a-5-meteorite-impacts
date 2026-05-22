@@ -2,6 +2,9 @@ from ExploreData.widgets import (
     build_globe_plot,
 )
 from Timeline.timeline import build_scroll_timeline_section
+from Timeline.weight_histogram import build_weight_histogram_plot
+from Timeline.impacts_per_year import build_impacts_per_year_plot
+from Timeline.meteorite_classes_barchart import build_meteorite_classes_barchart_plot
 from Introduction.meteorite_introduction import build_meteor_introduction
 from ExploreData.formatting import format_mass
 from ExploreData.filters import filter_and_sample
@@ -66,6 +69,27 @@ app_ui = ui.page_fluid(
                 background-color: #1f1f1f;
                 overflow: hidden;
                 padding: 150px 24px 24px;
+            }
+
+            .insight-section {
+                --timeline-max-width: 1120px;
+                background-color: #1f1f1f;
+                padding: 36px 24px 60px;
+            }
+
+            .insight-section .timeline-header {
+                max-width: var(--timeline-max-width);
+                margin: 0 auto 22px auto;
+            }
+
+            .insight-plot-wrap {
+                max-width: var(--timeline-max-width);
+                margin: 0 auto;
+                border-radius: 14px;
+                border: 1px solid rgba(255, 255, 255, 0.09);
+                background: rgba(18, 18, 18, 0.55);
+                box-shadow: 0 12px 26px rgba(0, 0, 0, 0.45);
+                padding: 12px 12px 2px;
             }
 
             .globe-layout {
@@ -173,6 +197,59 @@ app_ui = ui.page_fluid(
             class_="globe-layout",
         ),
         class_="globe-section",
+    ),
+
+    ui.div(
+        ui.div(
+            ui.tags.p("Distribution", class_="timeline-kicker"),
+            ui.tags.h2("Weight Histogram", class_="timeline-heading"),
+            ui.tags.p(
+                "Log-scaled mass distribution of all recorded meteorites.",
+                class_="timeline-subtitle",
+            ),
+            class_="timeline-header",
+        ),
+        ui.div(
+            output_widget("weight_histogram_plot", height="56vh", width="100%"),
+            class_="insight-plot-wrap",
+        ),
+        class_="insight-section",
+    ),
+
+    ui.div(
+        ui.div(
+            ui.tags.p("Trend", class_="timeline-kicker"),
+            ui.tags.h2("Impacts per Year", class_="timeline-heading"),
+            ui.tags.p(
+                "Yearly impact counts split by Found (red) and Fallen (blue).",
+                class_="timeline-subtitle",
+            ),
+            class_="timeline-header",
+        ),
+        ui.div(
+            output_widget("impacts_per_year_plot", height="56vh", width="100%"),
+            class_="insight-plot-wrap",
+        ),
+        class_="insight-section",
+    ),
+
+    ui.div(
+        ui.div(
+            ui.tags.p("Composition", class_="timeline-kicker"),
+            ui.tags.h2("Barchart of Meteorite Classes",
+                       class_="timeline-heading"),
+            ui.tags.p(
+                "Top 5 most common meteorite classes in the dataset.",
+                class_="timeline-subtitle",
+            ),
+            class_="timeline-header",
+        ),
+        ui.div(
+            output_widget("meteorite_classes_barchart_plot",
+                          height="56vh", width="100%"),
+            class_="insight-plot-wrap",
+        ),
+        class_="insight-section",
     ),
 
     ui.div(
@@ -303,6 +380,18 @@ def server(input, output, session):
             show_impacts=s_impacts,
             show_heatmap=s_heatmap,
         )
+
+    @render_widget
+    def weight_histogram_plot():
+        return build_weight_histogram_plot(meteorites)
+
+    @render_widget
+    def impacts_per_year_plot():
+        return build_impacts_per_year_plot(meteorites)
+
+    @render_widget
+    def meteorite_classes_barchart_plot():
+        return build_meteorite_classes_barchart_plot(meteorites)
 
 
 app = App(app_ui, server)
