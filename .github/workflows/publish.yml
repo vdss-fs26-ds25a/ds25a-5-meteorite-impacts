@@ -55,14 +55,44 @@ jobs:
           mkdir -p viz_design/data/processed
           cp data/processed/Meteorite_Landings_cleaned.csv viz_design/data/processed/Meteorite_Landings_cleaned.csv
 
-      - name: Export Shiny app to static site
+      - name: Prepare publish directory
+        run: |
+          rm -rf site
+          mkdir -p site
+
+      - name: Export Shiny app to root route
         working-directory: viz_design
-        run: uv run shinylive export . ../docs/build/viz-design
+        run: uv run shinylive export . ../site
+
+      - name: Copy Quarto docs to /docs route
+        run: |
+          mkdir -p site/docs
+          cp -R docs/build/. site/docs/
+
+      - name: Create /presentation route
+        run: |
+          mkdir -p site/presentation
+          cat > site/presentation/index.html <<'HTML'
+          <!doctype html>
+          <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>Presentation</title>
+            <meta http-equiv="refresh" content="0; url=../docs/Prasentation.html">
+            <link rel="canonical" href="../docs/Prasentation.html">
+          </head>
+          <body style="background:#121212;color:#e0e0e0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;padding:24px;">
+            <p>Redirecting to the presentation.</p>
+            <p><a href="../docs/Prasentation.html">Open presentation</a></p>
+          </body>
+          </html>
+          HTML
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs/build
+          path: site
 
   deploy:
     needs: build

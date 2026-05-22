@@ -65,6 +65,35 @@ app_ui = ui.page_fluid(
                 overflow-y: auto;
             }
 
+            .site-nav {
+                position: fixed;
+                top: 14px;
+                right: 18px;
+                display: flex;
+                gap: 8px;
+                z-index: 5000;
+            }
+
+            .site-nav-link {
+                display: inline-block;
+                padding: 6px 12px;
+                border-radius: 999px;
+                border: 1px solid rgba(138, 180, 248, 0.35);
+                background: rgba(24, 24, 24, 0.9);
+                color: #cddfff;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: 0.02em;
+                text-decoration: none;
+                transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+            }
+
+            .site-nav-link:hover {
+                color: #ffffff;
+                border-color: rgba(138, 180, 248, 0.7);
+                background: rgba(40, 57, 84, 0.95);
+            }
+
             .globe-section {
                 background-color: #1f1f1f;
                 overflow: hidden;
@@ -166,6 +195,12 @@ app_ui = ui.page_fluid(
                 text-decoration: underline;
             }
         """)
+    ),
+
+    ui.div(
+        ui.tags.a("Docs", href="docs/", class_="site-nav-link"),
+        ui.tags.a("Presentation", href="presentation/", class_="site-nav-link"),
+        class_="site-nav",
     ),
 
     build_meteor_introduction(),
