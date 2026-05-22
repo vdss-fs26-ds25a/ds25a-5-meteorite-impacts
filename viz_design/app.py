@@ -198,8 +198,8 @@ app_ui = ui.page_fluid(
     ),
 
     ui.div(
-        ui.tags.a("Docs", href="docs/", class_="site-nav-link"),
-        ui.tags.a("Presentation", href="presentation/", class_="site-nav-link"),
+        ui.tags.a("Docs", href="../docs/", target="_top", class_="site-nav-link"),
+        ui.tags.a("Presentation", href="../presentation/", target="_top", class_="site-nav-link"),
         class_="site-nav",
     ),
 
