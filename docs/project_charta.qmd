@@ -185,7 +185,9 @@ Die App läuft als öffentliche Webanwendung im Desktop-Browser. Der gesamte Cod
 
 ### Bezug zu Projektzielen und Nutzerbedürfnissen
 
-Das Konzept analysiert die geografische und zeitliche Verteilung von Meteoriteneinschlägen und macht diese für die öffentlichkeit zugänglich. Die interessierte Öffentlichkeit profitiert durch die 3D Graphik, den Annotationen und der einfachen Webbereitstellung. Wissenschaftlich interessierte Nutzende können über Filter und verknüpfte Ansichten eigene Fragen untersuchen.
+Das Konzept adressiert zwei Projektziele: Wissensvermittlung und eigenständige Exploration.
+Der narrative Zeitfaden richtet sich an Besuchende ohne Vorwissen. Kurze Ereigniskarten mit Bild, Masse und Fundort vermitteln Kontext, ohne zu überfordern. Der Scroll-Mechanismus hält alles sehr simple.
+Der 3D-Globus ermöglicht eigenständiges Erkunden. Filter nach Jahr, Masse und Falltyp erlauben gezielte Fragen; die Infofelder liefern Details zu einzelnen Einschlägen.
 
 ## Project Plan
 
