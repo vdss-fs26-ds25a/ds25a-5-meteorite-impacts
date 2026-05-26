@@ -88,6 +88,12 @@ def build_meteor_introduction():
         },
     ]
 
+    class_table_title = "How To Read Meteorite Class Codes"
+    class_table_text = (
+        "The recclass value is built from a group code (letters) plus a subtype number or modifier. "
+        "Use this quick guide to decode labels like L6, LL5, CM2, H4/5, and Iron, IIIAB."
+    )
+
     intro_steps = [
         {
             "kind": "text",
@@ -150,12 +156,6 @@ def build_meteor_introduction():
                     "organic molecules, the building blocks of life, were delivered to early Earth from space.",
         },
         {
-            "kind": "class_table",
-            "title": "How To Read Meteorite Class Codes",
-            "text": "The recclass value is built from a group code (letters) plus a subtype number or modifier. "
-                    "Use this quick guide to decode labels like L6, LL5, CM2, H4/5, and Iron, IIIAB.",
-        },
-        {
             "kind": "text",
             "title": "Why This Matters Here",
             "text": "The timeline below traces key moments in humanity's relationship with meteorites "
@@ -179,46 +179,31 @@ def build_meteor_introduction():
             block_class += " cards-step"
             term_cards = []
             for card in comparison_cards:
+                card_children = [
+                    ui.tags.div(
+                        ui.tags.i(class_=f"bi {card['icon']}"),
+                        class_="meteorite-term-icon",
+                        aria_hidden="true",
+                    ),
+                    ui.tags.h3(card["title"], class_="meteorite-term-title"),
+                    ui.tags.p(card["text"], class_="meteorite-term-text"),
+                ]
+
                 term_cards.append(
                     ui.tags.article(
-                        ui.tags.div(
-                            ui.tags.i(class_=f"bi {card['icon']}"),
-                            class_="meteorite-term-icon",
-                            aria_hidden="true",
-                        ),
-                        ui.tags.h3(card["title"],
-                                   class_="meteorite-term-title"),
-                        ui.tags.p(card["text"], class_="meteorite-term-text"),
+                        *card_children,
                         class_="meteorite-term-card",
                     )
                 )
             block_children.append(ui.tags.div(
                 *term_cards, class_="meteorite-term-grid"))
-        elif step["kind"] == "class_table":
-            table_rows = []
-            for row in class_code_rows:
-                table_rows.append(
-                    ui.tags.tr(
-                        ui.tags.td(row["code"], class_="meteorite-class-code"),
-                        ui.tags.td(row["name"]),
-                        ui.tags.td(row["description"]),
-                    )
-                )
-
+        elif step["kind"] == "text" and step["title"] == "Meteorite":
             block_children.append(
-                ui.tags.div(
-                    ui.tags.table(
-                        ui.tags.thead(
-                            ui.tags.tr(
-                                ui.tags.th("Code part"),
-                                ui.tags.th("Official meaning"),
-                                ui.tags.th("How to interpret it"),
-                            )
-                        ),
-                        ui.tags.tbody(*table_rows),
-                        class_="meteorite-class-table",
-                    ),
-                    class_="meteorite-class-table-wrap",
+                ui.tags.button(
+                    "Learn more about their composition",
+                    type="button",
+                    class_="meteorite-composition-button",
+                    **{"data-open-composition-modal": "1"},
                 )
             )
 
@@ -384,6 +369,90 @@ def build_meteor_introduction():
                 white-space: nowrap;
             }
 
+            .meteorite-composition-button {
+                margin-top: 12px;
+                border: 1px solid rgba(159, 195, 255, 0.5);
+                border-radius: 9px;
+                background: rgba(14, 35, 67, 0.75);
+                color: #d6e6ff;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: 0.02em;
+                padding: 8px 10px;
+                align-self: flex-start;
+                cursor: pointer;
+            }
+
+            .meteorite-composition-button:hover {
+                background: rgba(18, 46, 87, 0.9);
+                border-color: rgba(159, 195, 255, 0.8);
+            }
+
+            .meteorite-composition-modal {
+                position: fixed;
+                inset: 0;
+                z-index: 6000;
+                display: none;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+                background: rgba(0, 0, 0, 0.68);
+            }
+
+            .meteorite-composition-modal.is-open {
+                display: flex;
+            }
+
+            .meteorite-composition-modal-dialog {
+                width: min(980px, 100%);
+                max-height: min(82vh, 980px);
+                overflow: auto;
+                border: 1px solid rgba(255, 255, 255, 0.14);
+                border-radius: 14px;
+                background: rgba(25, 25, 25, 0.98);
+                box-shadow: 0 20px 34px rgba(0, 0, 0, 0.5);
+                padding: 18px;
+            }
+
+            .meteorite-composition-modal-header {
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                gap: 12px;
+                margin-bottom: 10px;
+            }
+
+            .meteorite-composition-modal-title {
+                margin: 0;
+                color: #f2f2f2;
+                font-size: 1.1rem;
+            }
+
+            .meteorite-composition-modal-text {
+                margin: 0;
+                color: #c6c6c6;
+                font-size: 14px;
+                line-height: 1.45;
+            }
+
+            .meteorite-composition-modal-close {
+                border: 1px solid rgba(255, 255, 255, 0.22);
+                background: rgba(255, 255, 255, 0.03);
+                color: #d4d4d4;
+                width: 30px;
+                height: 30px;
+                border-radius: 8px;
+                cursor: pointer;
+                font-size: 16px;
+                line-height: 1;
+                flex: 0 0 auto;
+            }
+
+            .meteorite-composition-modal-close:hover {
+                color: #ffffff;
+                border-color: rgba(255, 255, 255, 0.38);
+            }
+
             .meteorite-intro-scrolly {
                 position: relative;
                 max-width: 860px;
@@ -394,6 +463,7 @@ def build_meteor_introduction():
                 position: sticky;
                 top: 50vh;
                 transform: translateY(-50%);
+                z-index: 2;
                 border: 1px solid rgba(255, 255, 255, 0.14);
                 border-radius: 16px;
                 background: rgba(25, 25, 25, 0.88);
@@ -420,6 +490,8 @@ def build_meteor_introduction():
             .meteorite-intro-block.is-active {
                 opacity: 1;
                 transform: translateY(0);
+                pointer-events: auto;
+                z-index: 1;
             }
 
             .meteorite-intro-block.is-before {
@@ -449,6 +521,7 @@ def build_meteor_introduction():
             .meteorite-intro-scrollspace {
                 position: relative;
                 margin-top: 10px;
+                pointer-events: none;
             }
 
             .meteorite-intro-sentinel {
@@ -531,6 +604,55 @@ def build_meteor_introduction():
             ui.tags.div(*sentinels, class_="meteorite-intro-scrollspace"),
             class_="meteorite-intro-scrolly",
         ),
+        ui.tags.div(
+            ui.tags.div(
+                ui.tags.div(
+                    ui.tags.div(
+                        ui.tags.h3(
+                            class_table_title,
+                            class_="meteorite-composition-modal-title",
+                        ),
+                        ui.tags.p(
+                            class_table_text,
+                            class_="meteorite-composition-modal-text",
+                        ),
+                    ),
+                    ui.tags.button(
+                        "X",
+                        type="button",
+                        class_="meteorite-composition-modal-close",
+                        **{"data-close-composition-modal": "1", "aria-label": "Close composition table"},
+                    ),
+                    class_="meteorite-composition-modal-header",
+                ),
+                ui.tags.div(
+                    ui.tags.table(
+                        ui.tags.thead(
+                            ui.tags.tr(
+                                ui.tags.th("Code part"),
+                                ui.tags.th("Official meaning"),
+                                ui.tags.th("How to interpret it"),
+                            )
+                        ),
+                        ui.tags.tbody(
+                            *[
+                                ui.tags.tr(
+                                    ui.tags.td(row["code"], class_="meteorite-class-code"),
+                                    ui.tags.td(row["name"]),
+                                    ui.tags.td(row["description"]),
+                                )
+                                for row in class_code_rows
+                            ]
+                        ),
+                        class_="meteorite-class-table",
+                    ),
+                    class_="meteorite-class-table-wrap",
+                ),
+                class_="meteorite-composition-modal-dialog",
+            ),
+            class_="meteorite-composition-modal",
+            **{"data-composition-modal": "1"},
+        ),
         ui.tags.script(
             """
             (function() {
@@ -548,6 +670,26 @@ def build_meteor_introduction():
                     var stack = root.querySelector('.meteorite-intro-stack');
                     var indicator = root.querySelector('.meteorite-intro-scroll-hint');
                     if (!blocks.length || blocks.length !== sentinels.length || !stack) return;
+
+                    var compositionModal = document.querySelector('[data-composition-modal="1"]');
+                    var openCompositionButtons = Array.prototype.slice.call(
+                        document.querySelectorAll('[data-open-composition-modal="1"]')
+                    );
+                    var closeCompositionButton = compositionModal
+                        ? compositionModal.querySelector('[data-close-composition-modal="1"]')
+                        : null;
+
+                    if (compositionModal && closeCompositionButton) {
+                        openCompositionButtons.forEach(function(button) {
+                            button.addEventListener('click', function() {
+                                compositionModal.classList.add('is-open');
+                            });
+                        });
+
+                        closeCompositionButton.addEventListener('click', function() {
+                            compositionModal.classList.remove('is-open');
+                        });
+                    }
 
                     var currentStep = -1;
                     var ticking = false;

@@ -1,24 +1,12 @@
 # Meteorite Impacts 3D Globe Explorer
 
-An interactive 3D globe visualization of global meteorite impacts using **Shiny for Python** and **Plotly**. Explore thousands of historical meteorite landings, filtering by year and mass.
-
-## Features
-
-- **Interactive 3D Globe**: Rotate, zoom, and hover over impact sites.
-- **Glowing Visuals**: Impacts are colored from **Green (Small)** to **Red (Large)** by mass.
-- **Dynamic Filters**:
-  - Filter by **Year Range** (860 AD - Present).
-  - Filter by **Mass** (logarithmic scale for better granularity).
-  - Control the **Max Displayed Points** to balance performance and detail.
-- **State Preservation**: The menu remembers your filter settings even when closed and reopened.
-
 ## Prerequisites
 
 This project uses [**uv**](https://github.com/astral-sh/uv) for fast and reliable Python package management.
 
 ## Getting Started
 
-### 1. Initialize the Environment
+### Initialize the Environment
 If you haven't already, initialize the virtual environment and install dependencies:
 
 ```bash
@@ -28,19 +16,27 @@ source .venv/bin/activate  # On macOS/Linux
 .venv\Scripts\activate     # On Windows
 ```
 
-### 2. Install Dependencies
+### Install Dependencies
+Make shure you are in the `/viz_design` Directory
+
 Install the required packages:
+
+```bash
+uv sync
+```
+
+> If this dose not work try the following command
 
 ```bash
 uv pip install shiny shinywidgets plotly pandas numpy
 ```
 
-### 3. Download and clean data
+### Download and clean data
 ```bash
 uv run python ../data/data.py   
 ```
 
-### 4. Run the Application
+### Run the Application
 Start the Shiny server:
 
 ```bash
