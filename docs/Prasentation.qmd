@@ -18,29 +18,6 @@ editor: visual
 number-sections: false
 ---
 
-## 🌍 Thema und Hauptziel (Hilfsfolie)
-
--   Thema: Meteoritenfunde und Meteoriteneinschläge auf der Erde\
--   Einführung in das Thema Meteoriten durch ein interaktives Dashboard\
--   Fokus auf visuelles Storytelling und Datenexploration
-
-------------------------------------------------------------------------
-
-## 👥 Zielgruppe (Hilfsfolie)
-
--   Personen ab 13 Jahren\
--   Wissbegierige Museumsbesucher:innen\
--   Nutzer:innen mit ersten Berührungspunkten zum Thema Meteoriten
-
-------------------------------------------------------------------------
-
-## 💬 Erwartetes Feedback (Hilfsfolie)
-
--   Einfache und verständliche Einführung\
--   Intuitive Bedienung\
--   Visuell spannende Darstellung der Daten
-
-------------------------------------------------------------------------
 
 ## 📂 Datensatz
 
@@ -116,20 +93,7 @@ Source: [*NASA Meteorite Landings Dataset*](https://data.nasa.gov/dataset/meteor
 
 ------------------------------------------------------------------------
 
-## 🧹 Datenbereinigung
 
--   Bereinigter Datensatz: **31’911 Meteoriten**
-
--   Entfernung fehlender Werte\
-
--   Filterung unrealistischer Daten
-
-    -   Jahre zwischen 800–2025\
-    -   gültige Koordinatenbereiche\
-    -   Masse \> 0\
-    -   Ausschluss von `(0,0)`
-
-------------------------------------------------------------------------
 
 ## 📊 Auswahl & Begründung der Visualisierung
 
@@ -148,48 +112,7 @@ Source: [*NASA Meteorite Landings Dataset*](https://data.nasa.gov/dataset/meteor
 
 ------------------------------------------------------------------------
 
-## Technische Umsetzung
-
-::::: columns
-::: {.column width="50%"}
-### Techstack
-
--   Python, UV
--   Shiny App
--   inline HTML, CSS
-:::
-
-::: {.column width="50%"}
-### Datapipeline
-
--   Download von Datensatz
--   Cleaning von Daten
-:::
-:::::
-
-## Bereitstellung
-
--   Github Pages
--   Action Workflow
-
-``` yaml
-- name: Install dependencies and Shinylive
-  working-directory: viz_design
-  run: |
-    uv sync
-    uv pip install shinylive
-
-- name: Download data
-  working-directory: data
-  run: uv run python data.py
-```
-
-------------------------------------------------------------------------
-
-## Umsetzung
-
--   Demonstration des Dashboards\
--   Navigation durch Storyline und Interaktionen\
--   Filter- und Explorationsmöglichkeiten zeigen
+## Abschluss
+Probleme & Fazit
 
 # Danke für eure Aufmerksamkeit ☄️

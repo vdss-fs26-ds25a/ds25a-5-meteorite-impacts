@@ -1,6 +1,6 @@
 # Project Charta
 ## Context and Scope
-Unser Projekt gehört zum geowissenschaftlichen Bereich und beschäftigt sich mit Meteoritenfunden. Ziel ist es, die wichtigsten Informationen über Meteoriten und ihre Funde weltweit anschaulich und verständlich darzustellen – speziell für den Einsatz auf Tablets in Museen. Die Zielgruppe sind Besucherinnen und Besucher ab etwa 13 Jahren, die sich im Museum erste Informationen über Meteoriten aneignen möchten.
+Unser Projekt gehört zum geowissenschaftlichen Bereich und beschäftigt sich mit Meteoritenfunden. Ziel ist es, die wichtigsten Informationen über Meteoriten und ihre Funde weltweit anschaulich und verständlich darzustellen, speziell für den Einsatz auf Tablets in Museen. Die Zielgruppe sind Besucherinnen und Besucher ab etwa 15 Jahren, die sich im Museum erste Informationen über Meteoriten aneignen möchten.
 
 Das Storytelling beginnt mit einer einfach verständlichen Einführung, in der grundlegende Begriffe erklärt werden. Darauf aufbauend werden mithilfe des Datensatzes bedeutende Meteoritenfunde entlang eines Zeitstrahls präsentiert. Besondere Ereignisse wie der erste dokumentierte Fund, besonders grosse oder schwere Meteoriten sowie weitere herausragende Funde werden hervorgehoben.
 
@@ -10,7 +10,7 @@ Das gesamte Projekt wird als Shiny-App umgesetzt, sodass die Inhalte einfach auf
 
 
 
-## Project Objectives and Success Criteria
+## Projektziele und Erfolgskriterien
 
 ### Projekziele
 1. Besucherinnen und Besuchern eine anschauliche Einführung in Meteoriten bieten.
@@ -30,16 +30,14 @@ Das gesamte Projekt wird als Shiny-App umgesetzt, sodass die Inhalte einfach auf
 2. Es werden keine Vorhersagen erstellt, z. B. zur zukünftigen Fallstelle von Meteoriten oder zu Einschlagwahrscheinlichkeiten.
 
 
-## Stakeholder Analysis
+## Stakeholder Analyse
 Im Projekt Meteoriten-Dashboard sind vier zentrale Gruppen beteiligt: Der Auftraggeber (Dozent) bewertet das Projekt und bietet fachliche Unterstützung. Das Projektteam (Studenten) entwickelt und setzt das Dashboard um. Die Nutzer verwenden das fertige Dashboard aktiv. Das Museum stellt das Dashboard vor Ort bereit.
 
 ::: {#fig-stakeholder}
 ![Stakeholderanalyse](pics/Stakeholdeanalyse.png){fig-cap="Abbildung: Stakeholderanalyse"}
 :::
 
-## User Analysis
-
-Die WebApp visualisiert gefallene Meteoriten auf einem **3D-Globus**, inklusive Heatmaps, Jahresfilter und weiteren Statistiken/Graphen.  
+## User Analyse
 
 Es wurden zwei Zielgruppen-Personas definiert:
 
@@ -150,11 +148,11 @@ Es wurden zwei Zielgruppen-Personas definiert:
 | Max Schneider (Bildungsinteressierter) | Lernen & Verständliche Visualisierung | Selten, gezielter Museumsbesuch |
 
 
-## Situation Assessment
+## Situations Beschreibung
 Für unsere Projektarbeit arbeiten wir mit einem Datensatz der NASA, der Daten von Meteoriteneinschlägen enthält. 
 Unser Team besteht aus drei Personen. Als Software setzen wir hauptsächlich Python mit allen relevanten Zusatzpaketen ein, bei Bedarf kann weitere Software genutzt werden. Das Projekt soll bis zum 1. Juni abgeschlossen werden, wobei der Arbeitsaufwand auf die Teammitglieder verteilt und durch regelmässige Treffen koordiniert wird. Mögliche Risiken umfassen technische Probleme, Verzögerungen bei der Datenaufbereitung oder eine ungleichmässige Arbeitsverteilung im Team, welche den Zeitplan beeinflussen könnten.
 
-## Visualization Concept
+## Visualization Konzept
 ### Produktform
 
 Das Visualisierungsprodukt ist eine Python-Shiny-Webanwendung, die sich an Besucherinnen und Besucher von einem Meteoritenmuseum richtet. Die App gliedert sich in zwei aufeinander aufbauende Teile.
@@ -163,31 +161,62 @@ Der erste Teil ist ein narrativer Zeitfaden. Er beginnt mit einem einleitenden A
 
 Der zweite Teil ist ein interaktiver 3D-Globus. Er zeigt alle ausgesuchten  Meteoriteneinschläge des NASA-Datensatzes als Punkte auf einer drehbaren Erdkugel. Hier können Besucherinnen und Besucher selbst erkunden.
 
-### Visuelle Kodierungen
+### Introduction Karten
+#### Visuelle Kodierungen
+#### Interaktivität
+#### Narrative und Annotation
+#### Zielmedium und Integration
+#### Bezug zu Projektzielen und Nutzerbedürfnissen
 
-Den Kern des zweiten Teils bildet der 3D-Globus. Jeder Einschlag ist als Punkt dargestellt; die Farbe kodiert die Masse auf einer Skala von Grün (leicht) bis Rot (schwer). Ergänzt wird der Globus durch weitere Elemente, wie die Heatmap, bei dieser Heatmap werden Regionen in denen eher weniger Meteoriten gefunden worden sind als dunkelrot angezeigt und Regionen in denen viele Meteoriten gefunden worden sind hellgelb angezeigt.
+Das Konzept adressiert zwei Projektziele: Wissensvermittlung und eigenständige Exploration.  
+Der narrative Zeitfaden richtet sich an Besuchende ohne Vorwissen. Kurze Ereigniskarten mit Bild, Masse und Fundort vermitteln Kontext, ohne zu überfordern. Der Scroll-Mechanismus hält alles sehr simple.  
+
+
+---
+
+### Timeline
+
+#### Visuelle Kodierungen
 
 Im narrativen Zeitfaden übernehmen die Ereigniskarten die visuelle Funktion. Bild und Metadaten stehen nebeneinander; ein Zeitstrahl mit Jahresmarkierungen gibt Orientierung.
 
-### Interaktivität
+#### Interaktivität
 
 Der narrative Zeitfaden reagiert auf das Scrollen. Ein Scroll-Skript erkennt, welche Karte sich in der Bildschirmmitte befindet, hebt sie hervor und blendet die anderen aus. Ein beweglicher Jahreszeiger auf dem Zeitstrahl zeigt das aktuelle Jahr an.
 
-Der Globus verfügt über ein ein- und ausblendbares Filtermenü. Darin lassen sich der Zeitraum, die Masse, der Falltyp (gefallen oder gefunden) sowie die maximale Punktzahl und der Sampling-Modus einstellen. Beim Hovern über einen Punkt erscheint ein Tooltip mit Name, Jahr, Masse und Klasse des Meteoriten. Zusätzlich kann eine 3D-Heatmap-Schicht über den Globus gelegt werden.
-
-### Narrative und Annotation
+#### Narrative und Annotation
 
 Jede Ereigniskarte zeigt neben dem Bild die wichtigsten Metadaten: Masse, Zusammensetzung und Fundort. Links zu Wikipedia und zur Bildquelle sind direkt in jede Karte eingebettet.
+#### Zielmedium und Integration
+#### Bezug zu Projektzielen und Nutzerbedürfnissen
+---
 
-### Zielmedium und Integration
+### 3D-Globus
 
-Die App läuft als öffentliche Webanwendung im Desktop-Browser. Der gesamte Code ist in einem Quarto-Projekt auf GitHub dokumentiert und reproduzierbar. Der Server verarbeitet den datensatz und Besucherinnen und Besucher müssen nichts installieren.
+#### Visuelle Kodierungen
 
-### Bezug zu Projektzielen und Nutzerbedürfnissen
+Den Kern des zweiten Teils bildet der 3D-Globus. Jeder Einschlag ist als Punkt dargestellt; die Farbe kodiert die Masse auf einer Skala von Grün (leicht) bis Rot (schwer). Ergänzt wird der Globus durch weitere Elemente, wie die Heatmap. Bei dieser Heatmap werden Regionen, in denen eher weniger Meteoriten gefunden worden sind, dunkelrot angezeigt und Regionen, in denen viele Meteoriten gefunden worden sind, hellgelb angezeigt.
 
-Das Konzept adressiert zwei Projektziele: Wissensvermittlung und eigenständige Exploration.
-Der narrative Zeitfaden richtet sich an Besuchende ohne Vorwissen. Kurze Ereigniskarten mit Bild, Masse und Fundort vermitteln Kontext, ohne zu überfordern. Der Scroll-Mechanismus hält alles sehr simple.
+#### Interaktivität
+
+Der Globus verfügt über ein ein- und ausblendbares Filtermenü. Darin lassen sich der Zeitraum, die Masse, der Falltyp (gefallen oder gefunden) sowie die maximale Punktzahl und der Sampling-Modus einstellen. Beim Hovern über einen Punkt erscheint ein Tooltip mit Name, Jahr, Masse und Klasse des Meteoriten. Zusätzlich kann eine 3D-Heatmap-Schicht über den Globus gelegt werden.
+
+#### Narrative und Annotation
+#### Zielmedium und Integration
+#### Bezug zu Projektzielen und Nutzerbedürfnissen
+
 Der 3D-Globus ermöglicht eigenständiges Erkunden. Filter nach Jahr, Masse und Falltyp erlauben gezielte Fragen; die Infofelder liefern Details zu einzelnen Einschlägen.
+
+---
+
+### Plot Visualisierungen
+#### Visuelle Kodierungen
+#### Interaktivität
+#### Narrative und Annotation
+#### Zielmedium und Integration
+
+Die App läuft als öffentliche Webanwendung im Browser. Der gesamte Code ist in einem Quarto-Projekt auf GitHub dokumentiert und reproduzierbar. Der Server verarbeitet den Datensatz und Besucherinnen und Besucher müssen nichts installieren.
+#### Bezug zu Projektzielen und Nutzerbedürfnissen
 
 ## Project Plan
 
