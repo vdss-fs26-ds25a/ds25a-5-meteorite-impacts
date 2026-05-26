@@ -159,7 +159,7 @@ Das Visualisierungsprodukt ist eine Python-Shiny-Webanwendung, die sich an Besuc
 
 Der erste Teil ist ein narrativer Zeitfaden. Er beginnt mit einem einleitenden Abschnitt, der allgemeine Informationen über Meteoriten hat. Danach führt ein Scroll-Zeitstrahl durch acht ausgewählte Ereignisse der Meteoritengeschichte, vom ersten dokumentierten Fund im Jahr 860 bis zum Einschlag von Chelyabinsk 2013. Jedes Ereignis erscheint als Karte mit Bild, Jahr, Fundstatus, Masse, Zusammensetzung und Fundort.
 
-Der zweite Teil ist ein interaktiver 3D-Globus. Er zeigt alle ausgesuchten  Meteoriteneinschläge des NASA-Datensatzes als Punkte auf einer drehbaren Erdkugel. Hier können Besucherinnen und Besucher selbst erkunden.
+Der zweite Teil ist ein interaktiver 3D-Globus. Er zeigt alle ausgesuchten  Meteoriteneinschläge des NASA-Datensatzes als Punkte auf einer drehbaren Erdkugel. Hier können Besucherinnen und Besucher selbst erkunden. Der Schluss der Webseite zeigt noch verschieden Plots auf bei denen die Leute noch mehr Informationen bekommen können.
 
 ### Introduction Karten
 #### Visuelle Kodierungen
@@ -189,34 +189,46 @@ Der narrative Zeitfaden reagiert auf das Scrollen. Ein Scroll-Skript erkennt, we
 Jede Ereigniskarte zeigt neben dem Bild die wichtigsten Metadaten: Masse, Zusammensetzung und Fundort. Links zu Wikipedia und zur Bildquelle sind direkt in jede Karte eingebettet.
 #### Zielmedium und Integration
 #### Bezug zu Projektzielen und Nutzerbedürfnissen
+
 ---
 
 ### 3D-Globus
+Der 3D-Globus ist die zentrale Visualisierung des zweiten Teils und stellt Meteoritenfunde weltweit auf einer dreidimensionalen Darstellung der Erde dar. Jeder Einschlag wird als Punkt auf der Erdoberfläche visualisiert, wodurch die globale Verteilung der Funde räumlich nachvollziehbar wird.
+
+Über ein Filtermenü können die angezeigten Daten nach Zeitraum, Masse und Falltyp (gefallen oder gefunden) eingeschränkt werden, um gezielte Analysen zu ermöglichen. Zusätzlich kann eine Heatmap eingeblendet werden, die die Dichte der Meteoritenfunde weltweit visualisiert und so Regionen mit vielen oder wenigen Funden hervorhebt.
 
 #### Visuelle Kodierungen
 
-Den Kern des zweiten Teils bildet der 3D-Globus. Jeder Einschlag ist als Punkt dargestellt; die Farbe kodiert die Masse auf einer Skala von Grün (leicht) bis Rot (schwer). Ergänzt wird der Globus durch weitere Elemente, wie die Heatmap. Bei dieser Heatmap werden Regionen, in denen eher weniger Meteoriten gefunden worden sind, dunkelrot angezeigt und Regionen, in denen viele Meteoriten gefunden worden sind, hellgelb angezeigt.
+Jeder Einschlag wird als Punkt auf der Erdoberfläche dargestellt. Die Farbe der Punkte kodiert die Masse der Meteoriten auf einer Skala von Grün (leicht) bis Rot (schwer). Zusätzlich wird eine Heatmap eingesetzt, die die Dichte der Meteoritenfunde visualisiert: Regionen mit wenigen Funden erscheinen dunkelrot, während Regionen mit vielen Funden hellgelb dargestellt werden.
 
 #### Interaktivität
 
-Der Globus verfügt über ein ein- und ausblendbares Filtermenü. Darin lassen sich der Zeitraum, die Masse, der Falltyp (gefallen oder gefunden) sowie die maximale Punktzahl und der Sampling-Modus einstellen. Beim Hovern über einen Punkt erscheint ein Tooltip mit Name, Jahr, Masse und Klasse des Meteoriten. Zusätzlich kann eine 3D-Heatmap-Schicht über den Globus gelegt werden.
+Der Globus verfügt über ein ein- und ausblendbares Filtermenü. Darin lassen sich der Zeitraum, die Masse, der Falltyp (gefallen oder gefunden) sowie die maximale Punktzahl und der Sampling-Modus einstellen. Beim Hovern über einen Punkt erscheint ein Tooltip mit Name, Jahr, Masse und Klasse des Meteoriten. Zusätzlich kann eine 3D-Heatmap-Schicht über den Globus gelegt werden. Der Globus ist interaktiv und lässt sich frei drehen, zoomen und verschieben,
 
-#### Narrative und Annotation
 #### Zielmedium und Integration
+Die Anwendung ist für den Einsatz auf Tablets und interaktiven Präsentationssystemen konzipiert. Sie ist als Teil der Gesamtvisualisierung integriert und ergänzt die übrigen Module um eine räumliche Darstellung der Meteoritenfunde. Durch die Einbindung in die Benutzeroberfläche können Filter, Tooltips und Heatmap direkt mit dem Globus verwendet werden, wodurch eine konsistente und interaktive Nutzung ermöglicht wird.
+
 #### Bezug zu Projektzielen und Nutzerbedürfnissen
 
-Der 3D-Globus ermöglicht eigenständiges Erkunden. Filter nach Jahr, Masse und Falltyp erlauben gezielte Fragen; die Infofelder liefern Details zu einzelnen Einschlägen.
+Der 3D-Globus unterstützt die Projektziele, indem er Meteoritenfunde weltweit anschaulich und interaktiv darstellt. Durch die dreidimensionale Darstellung und den dunklen, weltraumähnlichen Hintergrund entsteht zudem ein stärkerer Bezug zum Ursprung der Meteoriten aus dem Weltall. Nutzerinnen und Nutzer können wichtige Ereignisse und Einschläge räumlich einordnen sowie Zusammenhänge zwischen Masse, Zeitraum und Fundorten erkennen.
+
+Die Filterfunktionen nach Jahr, Masse und Falltyp ermöglichen individuelle Explorationen und fördern das eigenständige Entdecken der Daten. Tooltips liefern zusätzliche Informationen zu einzelnen Meteoriten und erleichtern den direkten Vergleich verschiedener Funde.
+
+Durch die intuitive Bedienung, die tabletfreundliche Gestaltung und die Möglichkeit, den Globus frei zu drehen und zu zoomen, eignet sich die Anwendung für eine interaktive Datenerkundung.
 
 ---
 
 ### Plot Visualisierungen
-#### Visuelle Kodierungen
-#### Interaktivität
-#### Narrative und Annotation
-#### Zielmedium und Integration
+Für die Analyse wurden drei Plots erstellt: ein Histogramm zur Verteilung der Meteoritenmassen, ein Liniendiagramm zur Anzahl der Einschläge pro Jahr sowie ein Balkendiagramm zur Verteilung der Meteoritenklassen.
 
-Die App läuft als öffentliche Webanwendung im Browser. Der gesamte Code ist in einem Quarto-Projekt auf GitHub dokumentiert und reproduzierbar. Der Server verarbeitet den Datensatz und Besucherinnen und Besucher müssen nichts installieren.
+#### Interaktivität
+Alle drei Plots verfügen über eine Zoomfunktion. Dadurch können bestimmte Bereiche der Daten vergrössert und gezielt untersucht werden. Beim Liniendiagramm betrifft dies insbesondere zeitliche Bereiche, während beim Histogramm und Balkendiagramm einzelne Wertebereiche bzw. Klassen detaillierter betrachtet werden können.
+
+#### Zielmedium und Integration
+Die Plots sind als ergänzende Visualisierungen zum 3D-Globus in die Anwendung integriert und dienen der vertiefenden Analyse einzelner Datenaspekte. Sie lassen sich nahtlos in die Benutzeroberfläche einbinden, sodass ein flüssiger Wechsel zwischen den Visualisierungen möglich ist.
+
 #### Bezug zu Projektzielen und Nutzerbedürfnissen
+Die Plots unterstützen die Projektziele, indem sie eine ergänzende Analyse der Meteoritenfunde ermöglichen. Nutzerinnen und Nutzer können Verteilungen, zeitliche Entwicklungen und Klassifikationen untersuchen und dadurch zusätzliche Erkenntnisse gewinnen. 
 
 ## Project Plan
 
