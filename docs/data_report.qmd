@@ -54,7 +54,7 @@ The data catalogue basically represents an extended schema of a relational datab
 | 7 | year       | numeric   | 860 to 2026                             | Year the meteorite fell or was found |
 | 8 | reclat     | numeric   | -90 to 90                         | Latitude of the find location |
 | 9 | reclong    | numeric   | -180 to 180                       | Longitude of the find location |
-| 10 | GeoLocation | nummeric    | format "(lat, long)"              | combined latitude/longitude |
+| 10 | GeoLocation | numeric    | format "(lat, long)"              | combined latitude/longitude |
 : Data catalogue for Dataset 1. {#tbl-data-catalogue}
 
 #### Data Chracteristics and Quality
