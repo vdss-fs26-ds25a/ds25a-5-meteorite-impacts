@@ -106,6 +106,18 @@ app_ui = ui.page_fluid(
                 padding: 36px 24px 60px;
             }
 
+            .insight-section.spacer-after-globe {
+                padding-top: 300px;
+            }
+
+            .insight-section.spacer-before-barchart {
+                padding-top: 300px;
+            }
+
+            .insight-section.spacer-before-impacts {
+                padding-top: 300px;
+            }
+
             .insight-section .timeline-header {
                 max-width: var(--timeline-max-width);
                 margin: 0 auto 22px auto;
@@ -213,7 +225,7 @@ app_ui = ui.page_fluid(
             ui.tags.h2("Explore the whole dataset of Impacts",
                        class_="timeline-heading"),
             ui.tags.p(
-                "Change settings in the Menu",
+                "Change settings in the Menu and Drag the Globe",
                 class_="timeline-subtitle",
             ),
             class_="timeline-header",
@@ -239,7 +251,7 @@ app_ui = ui.page_fluid(
             ui.tags.p("Distribution", class_="timeline-kicker"),
             ui.tags.h2("Weight Histogram", class_="timeline-heading"),
             ui.tags.p(
-                "Log-scaled mass distribution of all recorded meteorites.",
+                "Zoom in with your Fingers, Reset by pressing the House",
                 class_="timeline-subtitle",
             ),
             class_="timeline-header",
@@ -248,7 +260,7 @@ app_ui = ui.page_fluid(
             output_widget("weight_histogram_plot", height="56vh", width="100%"),
             class_="insight-plot-wrap",
         ),
-        class_="insight-section",
+        class_="insight-section spacer-after-globe",
     ),
 
     ui.div(
@@ -265,7 +277,7 @@ app_ui = ui.page_fluid(
             output_widget("impacts_per_year_plot", height="56vh", width="100%"),
             class_="insight-plot-wrap",
         ),
-        class_="insight-section",
+        class_="insight-section spacer-before-impacts",
     ),
 
     ui.div(
@@ -284,7 +296,7 @@ app_ui = ui.page_fluid(
                           height="56vh", width="100%"),
             class_="insight-plot-wrap",
         ),
-        class_="insight-section",
+        class_="insight-section spacer-before-barchart",
     ),
 
     ui.div(
