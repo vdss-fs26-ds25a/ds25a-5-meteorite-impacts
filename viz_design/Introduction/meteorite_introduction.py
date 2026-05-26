@@ -20,10 +20,78 @@ def build_meteor_introduction():
         },
     ]
 
+    class_code_rows = [
+        {
+            "code": "H",
+            "name": "Ordinary chondrite group H",
+            "description": "High total iron content. Example: H5.",
+        },
+        {
+            "code": "L",
+            "name": "Ordinary chondrite group L",
+            "description": "Lower iron than H group. Example: L6.",
+        },
+        {
+            "code": "LL",
+            "name": "Ordinary chondrite group LL",
+            "description": "Low total iron and low metallic iron. Example: LL5.",
+        },
+        {
+            "code": "CM",
+            "name": "Carbonaceous chondrite group CM",
+            "description": "Carbon-rich, primitive meteorites, often altered by water. Example: CM2.",
+        },
+        {
+            "code": "E",
+            "name": "Enstatite chondrite group",
+            "description": "Very reduced meteorites dominated by enstatite. Example: E3.",
+        },
+        {
+            "code": "Iron",
+            "name": "Iron meteorite class",
+            "description": "Metal-dominated meteorites (mostly iron-nickel). Example: Iron, IIIAB.",
+        },
+        {
+            "code": "3",
+            "name": "Petrologic type 3",
+            "description": "Most primitive ordinary chondrites; least thermally altered.",
+        },
+        {
+            "code": "4",
+            "name": "Petrologic type 4",
+            "description": "Moderate thermal metamorphism.",
+        },
+        {
+            "code": "5",
+            "name": "Petrologic type 5",
+            "description": "Stronger thermal metamorphism than type 4.",
+        },
+        {
+            "code": "6",
+            "name": "Petrologic type 6",
+            "description": "Strong thermal metamorphism; textures are more equilibrated.",
+        },
+        {
+            "code": "2",
+            "name": "Petrologic type 2 (common in carbonaceous classes)",
+            "description": "Significant aqueous alteration on the parent body. Example: CM2.",
+        },
+        {
+            "code": "4/5",
+            "name": "Transitional subtype",
+            "description": "Intermediate between two petrologic types. Example: H4/5.",
+        },
+        {
+            "code": "IIIAB",
+            "name": "Chemical subgroup for iron meteorites",
+            "description": "Refines Iron meteorites by chemistry and structure. Example: Iron, IIIAB.",
+        },
+    ]
+
     intro_steps = [
         {
             "kind": "text",
-            "title": "Meteoroid, Meteor, Meteorite — What's the Difference?",
+            "title": "Meteoroid, Meteor, Meteorite, What's the Difference?",
             "text": "The same object can be called three different names depending on where it is in its journey. "
                     "These terms are often confused in everyday language, but scientists use them precisely "
                     "to describe each phase: drifting through space, blazing through our atmosphere, "
@@ -32,15 +100,15 @@ def build_meteor_introduction():
         {
             "kind": "text",
             "title": "From Space to Ground",
-            "text": "The journey begins millions of kilometers away. A meteoroid — a fragment of rock or metal "
-                    "broken off from an asteroid or comet — drifts silently through the solar system. "
+            "text": "The journey begins millions of kilometers away. A meteoroid is a fragment of rock or metal "
+                    "broken off from an asteroid or comet it drifts silently through the solar system. "
                     "When it crosses paths with Earth, gravity pulls it into our atmosphere at speeds "
                     "between 11 and 72 km/s. The name it carries changes at each stage of that descent.",
         },
         {
             "kind": "cards",
             "title": "Meteoroid, Meteor, Meteorite",
-            "text": "Three names, one object — here is how the terminology shifts as the space rock "
+            "text": "Three names, one object, here is how the terminology shifts as the space rock "
                     "travels from the void of space through our atmosphere to the surface of the Earth.",
         },
         {
@@ -57,7 +125,7 @@ def build_meteor_introduction():
             "title": "Meteor",
             "text": "As a meteoroid slams into Earth's atmosphere, friction compresses and superheats "
                     "the air in front of it to temperatures exceeding 1,600 °C. This causes the object "
-                    "to ablate — its outer layers vaporize, producing the glowing streak we call a meteor. "
+                    "to ablate, its outer layers vaporize, producing the glowing streak we call a meteor. "
                     "Most meteors burn up completely within seconds at altitudes between 80 and 120 km. "
                     "Exceptionally bright meteors, brighter than Venus, are called fireballs or bolides "
                     "and can cast shadows on the ground.",
@@ -69,22 +137,28 @@ def build_meteor_introduction():
                     "the brutal passage through the atmosphere and reach the surface intact. "
                     "They are classified into three broad groups: stony meteorites (most common), "
                     "iron meteorites (dense, metallic), and stony-iron meteorites (rarest). "
-                    "Upon landing, they are typically cool to the touch — the ablation process "
+                    "Upon landing, they are typically cool to the touch, the ablation process "
                     "strips away the heated outer shell, leaving the cold interior exposed.",
         },
         {
             "kind": "text",
             "title": "What Meteorites Tell Us",
-            "text": "Meteorites are among the oldest materials on Earth — many formed over 4.5 billion years ago, "
+            "text": "Meteorites are among the oldest materials on Earth, many formed over 4.5 billion years ago, "
                     "predating our planet itself. Their chemical composition, mineral structures, and isotopic "
                     "ratios act as a fossil record of the early solar system. By studying them, scientists "
                     "can reconstruct how planets formed, what the young Sun looked like, and whether "
-                    "organic molecules — the building blocks of life — were delivered to early Earth from space.",
+                    "organic molecules, the building blocks of life, were delivered to early Earth from space.",
+        },
+        {
+            "kind": "class_table",
+            "title": "How To Read Meteorite Class Codes",
+            "text": "The recclass value is built from a group code (letters) plus a subtype number or modifier. "
+                    "Use this quick guide to decode labels like L6, LL5, CM2, H4/5, and Iron, IIIAB.",
         },
         {
             "kind": "text",
             "title": "Why This Matters Here",
-            "text": "The timeline below traces key moments in humanity's relationship with meteorites — "
+            "text": "The timeline below traces key moments in humanity's relationship with meteorites "
                     "from ancient civilizations that worshipped fallen iron as gifts from the gods, "
                     "to the first scientific classifications in the 19th century, "
                     "to modern observed falls tracked by global camera networks. "
@@ -95,44 +169,71 @@ def build_meteor_introduction():
     blocks = []
     sentinels = []
     for i, step in enumerate(intro_steps):
-            block_children = [
-                ui.tags.h3(step["title"], class_="meteorite-intro-block-title"),
-                ui.tags.p(step["text"], class_="meteorite-intro-block-text"),
-            ]
-            block_class = "meteorite-intro-block"
+        block_children = [
+            ui.tags.h3(step["title"], class_="meteorite-intro-block-title"),
+            ui.tags.p(step["text"], class_="meteorite-intro-block-text"),
+        ]
+        block_class = "meteorite-intro-block"
 
-            if step["kind"] == "cards":
-                block_class += " cards-step"
-                term_cards = []
-                for card in comparison_cards:
-                    term_cards.append(
-                        ui.tags.article(
-                            ui.tags.div(
-                                ui.tags.i(class_=f"bi {card['icon']}"),
-                                class_="meteorite-term-icon",
-                                aria_hidden="true",
-                            ),
-                            ui.tags.h3(card["title"],
-                                    class_="meteorite-term-title"),
-                            ui.tags.p(card["text"], class_="meteorite-term-text"),
-                            class_="meteorite-term-card",
-                        )
+        if step["kind"] == "cards":
+            block_class += " cards-step"
+            term_cards = []
+            for card in comparison_cards:
+                term_cards.append(
+                    ui.tags.article(
+                        ui.tags.div(
+                            ui.tags.i(class_=f"bi {card['icon']}"),
+                            class_="meteorite-term-icon",
+                            aria_hidden="true",
+                        ),
+                        ui.tags.h3(card["title"],
+                                   class_="meteorite-term-title"),
+                        ui.tags.p(card["text"], class_="meteorite-term-text"),
+                        class_="meteorite-term-card",
                     )
-                block_children.append(ui.tags.div(
-                    *term_cards, class_="meteorite-term-grid"))
+                )
+            block_children.append(ui.tags.div(
+                *term_cards, class_="meteorite-term-grid"))
+        elif step["kind"] == "class_table":
+            table_rows = []
+            for row in class_code_rows:
+                table_rows.append(
+                    ui.tags.tr(
+                        ui.tags.td(row["code"], class_="meteorite-class-code"),
+                        ui.tags.td(row["name"]),
+                        ui.tags.td(row["description"]),
+                    )
+                )
 
-            blocks.append(
-                ui.tags.article(
-                    *block_children,
-                    class_=block_class,
-                    **{"data-step": str(i)},
+            block_children.append(
+                ui.tags.div(
+                    ui.tags.table(
+                        ui.tags.thead(
+                            ui.tags.tr(
+                                ui.tags.th("Code part"),
+                                ui.tags.th("Official meaning"),
+                                ui.tags.th("How to interpret it"),
+                            )
+                        ),
+                        ui.tags.tbody(*table_rows),
+                        class_="meteorite-class-table",
+                    ),
+                    class_="meteorite-class-table-wrap",
                 )
             )
-            sentinels.append(
-                ui.tags.div(
-                    class_="meteorite-intro-sentinel",
-                    **{"data-step": str(i)},
-                )
+
+        blocks.append(
+            ui.tags.article(
+                *block_children,
+                class_=block_class,
+                **{"data-step": str(i)},
+            )
+        )
+        sentinels.append(
+            ui.tags.div(
+                class_="meteorite-intro-sentinel",
+                **{"data-step": str(i)},
+            )
         )
 
     return ui.tags.section(
@@ -153,7 +254,7 @@ def build_meteor_introduction():
             .meteorite-intro-kicker {
                 margin: 0 0 8px 0;
                 color: #7f7f7f;
-                font-size: 11px;
+                font-size: 16px;
                 font-weight: 800;
                 text-transform: uppercase;
                 letter-spacing: 1.6px;
@@ -170,7 +271,7 @@ def build_meteor_introduction():
             .meteorite-intro-subtitle {
                 margin: 10px 0 0 0;
                 color: #a2a2a2;
-                font-size: 15px;
+                font-size: 18px;
                 max-width: 64ch;
             }
 
@@ -235,6 +336,52 @@ def build_meteor_introduction():
                 color: #c0c0c0;
                 line-height: 1.45;
                 font-size: 14px;
+            }
+
+            .meteorite-class-table-wrap {
+                margin-top: 12px;
+                border: 1px solid rgba(255, 255, 255, 0.14);
+                border-radius: 14px;
+                background: rgba(25, 25, 25, 0.88);
+                box-shadow: 0 16px 28px rgba(0, 0, 0, 0.24);
+                overflow-x: auto;
+            }
+
+            .meteorite-class-table {
+                width: 100%;
+                min-width: 760px;
+                border-collapse: collapse;
+                font-size: 13px;
+                line-height: 1.45;
+                color: #c7c7c7;
+            }
+
+            .meteorite-class-table th {
+                text-align: left;
+                font-size: 11px;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+                color: #8fb5ef;
+                padding: 12px 14px;
+                background: rgba(13, 110, 253, 0.12);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+            }
+
+            .meteorite-class-table td {
+                vertical-align: top;
+                padding: 10px 14px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            }
+
+            .meteorite-class-table tbody tr:last-child td {
+                border-bottom: none;
+            }
+
+            .meteorite-class-code {
+                color: #d6e6ff;
+                font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+                font-weight: 700;
+                white-space: nowrap;
             }
 
             .meteorite-intro-scrolly {

@@ -6,9 +6,10 @@ TIMELINE_EVENTS = [
         "id": "16988",
         "year": "860",
         "title": "First Recorded Meteorite",
+        "description": "In the year 860, a stone fell from the sky near Nogata in present-day Fukuoka, Japan. Local records preserved the event, making it the oldest documented meteorite fall still recognized today. The meteorite itself survived and became an extraordinary bridge between ancient observation and modern planetary science.",
         "name": "Nogata",
         "mass": "472 g",
-        "composition": "Ordinary chondrite (historical record)",
+        "composition": "Ordinary chondrite (L6)",
         "location": "Nogata, Fukuoka, Japan",
         "status": "Fell",
         "wiki_url": "https://en.wikipedia.org/wiki/N%C5%8Dgata_meteorite",
@@ -16,15 +17,16 @@ TIMELINE_EVENTS = [
         "image_source": "",
         "lat": 33.725,
         "lon": 130.75,
-        "notes": [],
+        "notes": []
     },
     {
         "id": "5247",
         "year": "1575",
-        "title": "One of the Biggest Meteorites",
+        "title": "Third Biggest Meteorite",
+        "description": "Scattered across Argentina’s Gran Chaco region lies Campo del Cielo, a field of iron meteorites left behind by a massive impact thousands of years ago. Known to Indigenous communities long before scientific study, its enormous fragments revealed one of Earth’s largest and most famous meteorite discoveries.",
         "name": "Campo del Cielo",
         "mass": "50 t",
-        "composition": "Iron meteorite (IAB complex)",
+        "composition": "Iron meteorite (IAB-MG)",
         "location": "Gran Chaco region, Argentina",
         "status": "Found",
         "wiki_url": "https://en.wikipedia.org/wiki/Campo_del_Cielo",
@@ -32,15 +34,16 @@ TIMELINE_EVENTS = [
         "image_source": "https://commons.wikimedia.org/wiki/File:Campo_del_Cielo_meteorite,_El_Chaco_fragment,_N.jpg",
         "lat": -27.46667,
         "lon": -60.58333,
-        "notes": [],
+        "notes": []
     },
     {
         "id": "5262",
         "year": "1818",
-        "title": "One of the Biggest Meteorites",
+        "title": "Second Biggest Meteorite",
+        "description": "Near Savissivik in Greenland, explorers encountered giant iron masses unlike ordinary rocks. These pieces belonged to the Cape York meteorite, used for generations by Inuit communities as a source of metal. Its largest fragment, Ahnighito, became one of the most iconic meteorites ever displayed.",
         "name": "Cape York",
         "mass": "58.2 t",
-        "composition": "Iron meteorite (coarse octahedrite)",
+        "composition": "Iron meteorite (IIIAB)",
         "location": "Savissivik, Greenland",
         "status": "Found",
         "wiki_url": "https://en.wikipedia.org/wiki/Cape_York_meteorite",
@@ -48,15 +51,16 @@ TIMELINE_EVENTS = [
         "image_source": "https://commons.wikimedia.org/wiki/File:Ahnighito_AMNH,_34_tons_meteorite.jpg",
         "lat": 76.13333,
         "lon": -64.93333,
-        "notes": ["Ahnighito AMNH, Larges fragment fount 34t"],
+        "notes": ["Ahnighito AMNH, Larges fragment fount 34t"]
     },
     {
         "id": "11890",
         "year": "1920",
         "title": "Biggest Known Meteorite",
+        "description": "Discovered on a farm near Grootfontein, Namibia, Hoba remains the largest single meteorite ever found on Earth. Unlike many impactors, it never formed a visible crater and still rests where it landed. Its immense iron mass has made it both a scientific treasure and landmark.",
         "name": "Hoba",
         "mass": "60 t",
-        "composition": "Iron meteorite (ataxite)",
+        "composition": "Iron meteorite (IVB)",
         "location": "Grootfontein, Namibia",
         "status": "Found",
         "wiki_url": "https://en.wikipedia.org/wiki/Hoba_meteorite",
@@ -64,15 +68,16 @@ TIMELINE_EVENTS = [
         "image_source": "https://commons.wikimedia.org/wiki/File:Hoba_meteorite_(15062762703).jpg",
         "lat": -19.58333,
         "lon": 17.91667,
-        "notes": ["Weight equivalent: 60 t / 12 t = 5 London double-decker buses."],
+        "notes": ["Weight equivalent: 60 t / 12 t = 5 London double-decker buses."]
     },
     {
         "id": "23773",
         "year": "1954",
         "title": "Meteorite Hit House and Person",
+        "description": "On a quiet afternoon in Alabama, a meteorite crashed through the roof of a house, bounced off furniture, and struck Ann Hodges while she rested. She survived with bruises, creating one of the only confirmed cases of a person being injured by a meteorite.",
         "name": "Sylacauga meteorite",
         "mass": "5.56 kg",
-        "composition": "Ordinary chondrite",
+        "composition": "Ordinary chondrite (H4)",
         "location": "Sylacauga, Alabama, USA",
         "status": "Fell",
         "wiki_url": "https://en.wikipedia.org/wiki/Sylacauga_(meteorite)",
@@ -80,12 +85,30 @@ TIMELINE_EVENTS = [
         "image_source": "https://commons.wikimedia.org/wiki/File:2024-10-21_-_Tuscaloosa,_AL,_USA_-_Hodges_(Sylacauga)_Meteorite.jpg",
         "lat": 33.18836,
         "lon": -86.2945,
-        "notes": [],
+        "notes": []
+    },
+    {
+        "id": "",
+        "year": "1979",
+        "title": "Peak of Recorded Distribution",
+        "description": "The year 1979 stands out in this dataset not for a single famous impact, but because it recorded the highest number of meteorite observations. Improved monitoring, reporting, and collection efforts created a sharp peak, capturing thousands of sightings and expanding the historical record.",
+        "name": "Most meteorites recorded in one year",
+        "mass": "",
+        "composition": "",
+        "location": "Global",
+        "status": "3323 sightings",
+        "wiki_url": "",
+        "image_url": "",
+        "image_source": "",
+        "lat": None,
+        "lon": None,
+        "notes": []
     },
     {
         "id": "604",
         "year": "1984",
         "title": "Mars Meteorite",
+        "description": "Recovered from the Antarctic ice fields, Allan Hills 84001 was eventually identified as a rock blasted from Mars millions of years ago. Decades later, scientists proposed it might contain traces linked to ancient microbial life, sparking worldwide debate and renewed interest in planetary exploration.",
         "name": "Allan Hills 84001",
         "mass": "1.9309 kg",
         "composition": "Orthopyroxenite (Martian meteorite)",
@@ -96,28 +119,13 @@ TIMELINE_EVENTS = [
         "image_source": "https://commons.wikimedia.org/wiki/File:ALH84001.jpg",
         "lat": -76.92031,
         "lon": 156.77355,
-        "notes": [],
-    },
-    {
-        "id": "",
-        "year": "2003",
-        "title": "Peak of Recorded Distribution",
-        "name": "Most meteorites recorded in one year",
-        "mass": "n/a",
-        "composition": "Mixed compositions",
-        "location": "Global",
-        "status": "3323 sightings",
-        "wiki_url": "",
-        "image_url": "",
-        "image_source": "",
-        "lat": None,
-        "lon": None,
-        "notes": [],
+        "notes": []
     },
     {
         "id": "57165",
         "year": "2013",
         "title": "Chelyabinsk Exploding Meteor",
+        "description": "A brilliant fireball streaked across the skies over Chelyabinsk, Russia, before exploding high in the atmosphere. The shockwave shattered windows across the region and injured thousands, mostly indirectly. Captured by countless cameras, it became the most documented meteor event in modern history.",
         "name": "Chelyabinsk meteor",
         "mass": "100 kg (large recovered fragment)",
         "composition": "LL5 ordinary chondrite",
@@ -128,9 +136,10 @@ TIMELINE_EVENTS = [
         "image_source": "https://commons.wikimedia.org/wiki/File:Meteorite_explosion_over_Chelyabinsk_on_February_15,_2013.gif",
         "lat": 54.81667,
         "lon": 61.11667,
-        "notes": [],
-    },
+        "notes": []
+    }
 ]
+
 
 def _meta_row(label, value):
     return ui.tags.li(
@@ -322,7 +331,8 @@ def _timeline_item(event, top_pct):
                 class_="timeline-map-plot",
                 **{"aria-label": f"Satellite map around {event['location']}"},
             ),
-            ui.tags.p(f"Lat {lat:.5f}, Lon {lon:.5f}", class_="timeline-map-coords"),
+            ui.tags.p(f"Lat {lat:.5f}, Lon {lon:.5f}",
+                      class_="timeline-map-coords"),
             class_="timeline-map",
             **{"data-lat": f"{lat:.6f}", "data-lon": f"{lon:.6f}"},
         )
@@ -351,10 +361,13 @@ def _timeline_item(event, top_pct):
         ),
         ui.tags.h3(event["name"], class_="timeline-title"),
         ui.tags.p(event["title"], class_="timeline-event-type"),
+        ui.tags.p(event.get("description", ""),
+                  class_="timeline-description") if event.get("description") else None,
         details,
         ui.tags.ul(*entries, class_="timeline-entry-list") if entries else None,
         *notes,
-        ui.tags.div(*link_buttons, class_="timeline-links") if link_buttons else None,
+        ui.tags.div(*link_buttons,
+                    class_="timeline-links") if link_buttons else None,
         class_="timeline-card-content",
     )
 
@@ -405,7 +418,7 @@ def build_scroll_timeline_section():
             .timeline-kicker {
                 margin: 0 0 8px 0;
                 color: #7f7f7f;
-                font-size: 11px;
+                font-size: 16px;
                 font-weight: 800;
                 text-transform: uppercase;
                 letter-spacing: 1.6px;
@@ -422,7 +435,7 @@ def build_scroll_timeline_section():
             .timeline-subtitle {
                 margin: 10px 0 0 0;
                 color: #a2a2a2;
-                font-size: 15px;
+                font-size: 18px;
                 max-width: 64ch;
             }
 
@@ -491,7 +504,7 @@ def build_scroll_timeline_section():
                 top: 50%;
                 transform: translateY(-50%);
                 color: #8ea5c7;
-                font-size: 10px;
+                font-size: 14px;
                 font-family: monospace;
                 letter-spacing: 0.08em;
                 opacity: 0.38;
@@ -522,7 +535,7 @@ def build_scroll_timeline_section():
                 transform: translateY(-50%);
                 color: #dce9ff;
                 font-family: monospace;
-                font-size: 11px;
+                font-size: 16px;
                 letter-spacing: 0.08em;
                 text-shadow: 0 0 8px rgba(122, 166, 240, 0.45);
             }
@@ -546,19 +559,6 @@ def build_scroll_timeline_section():
                 pointer-events: none;
                 transition: opacity 380ms ease, transform 380ms ease;
                 z-index: 2;
-            }
-
-            .timeline-item::before {
-                content: "";
-                position: absolute;
-                top: 0;
-                width: 12px;
-                height: 12px;
-                border-radius: 50%;
-                background: #0d6efd;
-                border: 2px solid #9fc3ff;
-                transform: translateY(-50%);
-                left: -41px;
             }
 
             .timeline-item.is-current {
@@ -645,6 +645,13 @@ def build_scroll_timeline_section():
                 font-size: 12px;
                 letter-spacing: 0.04em;
                 text-transform: uppercase;
+            }
+
+            .timeline-description {
+                margin: -2px 0 10px 0;
+                color: #d6d6d6;
+                font-size: 13px;
+                line-height: 1.45;
             }
 
             .timeline-image {
