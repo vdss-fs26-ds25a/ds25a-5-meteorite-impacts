@@ -161,14 +161,33 @@ Der erste Teil ist ein narrativer Zeitfaden. Er beginnt mit einem einleitenden A
 
 Der zweite Teil ist ein interaktiver 3D-Globus. Er zeigt alle ausgesuchten  Meteoriteneinschläge des NASA-Datensatzes als Punkte auf einer drehbaren Erdkugel. Hier können Besucherinnen und Besucher selbst erkunden. Der Schluss der Webseite zeigt noch verschieden Plots auf bei denen die Leute noch mehr Informationen bekommen können.
 
+---
+
 ### Introduction Karten
+
+Die Introduction Karten bilden den narrativen Einstieg der Anwendung und führen Besucherinnen und Besucher schrittweise in das Thema Meteoriten ein. Über eine scrollbasierte Abfolge von acht Inhaltsschritten werden grundlegende Begriffe und wissenschaftliche Zusammenhänge erklärt, bevor die interaktiven Visualisierungen beginnt.
+
 #### Visuelle Kodierungen
+
+Die Einführungssektion nutzt eine fixierte Karte als zentrales Gestaltungsmittel: Eine einzelne Karte bleibt während des Scrollens in der Bildschirmmitte sichtbar und wechselt ihren Inhalt schrittweise je nach Scrollposition. Bei der Begriffsunterscheidung Meteoroid, Meteor, Meteorit werden drei gleichwertige Karten nebeneinander dargestellt, jeweils mit einem Icon, einem Titel und einem kurzen Erklärungstext. Die dunkle Hintergrundfarbe und der weltraumähnliche Farbstil schaffen einen visuellen Bezug zum Ursprung der Meteoriten.
+
 #### Interaktivität
+
+Der Inhalt wechselt durch scroll-basierte Navigation. Beim Schritt zu den Meteoriten öffnet ein Button "Learn more about their composition" ein Modalfenster mit einer Erklärungstabelle zu Meteoritenklassen wie L6, H4 oder Iron, IIIAB. Die drei Begriffskarten erscheinen zudem animiert mit zeitversetztem Einblenden, sobald der entsprechende Schritt aktiv wird.
+
 #### Narrative und Annotation
+
+Die Einführung folgt einem klar strukturierten narrativen Bogen: Sie beginnt mit der Begriffsklärung (Meteoroid, Meteor, Meteorit), erklärt anschliessend Entstehung und Eigenschaften jeder Kategorie und schliesst mit der wissenschaftlichen Bedeutung der Meteoriten ab. Jeder Schritt enthält einen Titel und einen erläuternden Absatz in einfacher, allgemeinverständlicher Sprache. Das Modalfenster der composition bietet vertiefende Informationen für Interessierte, ohne den Hauptfluss zu unterbrechen.
+
 #### Zielmedium und Integration
+
+Die Einführungssektion ist als scrollbarer Einstieg konzipiert und leitet nahtlos zur historischen Timeline und zum interaktiven Globus über. Die Darstellung ist für Tablets optimiert: grosse Schriften, hoher Kontrast und eine responsive Kartendarstellung passen sich dem Viewport an. Die Sektion bildet den narrativen Rahmen, der Besucherinnen und Besuchern ohne Vorkenntnisse den Einstieg in die Anwendung erleichtert.
+
 #### Bezug zu Projektzielen und Nutzerbedürfnissen
 
-Das Konzept adressiert zwei Projektziele: Wissensvermittlung und eigenständige Exploration.  
+Die Introduction Karten adressieren direkt das erste Projektziel, nämlich Besucherinnen und Besuchern eine verständliche Einführung in das Thema Meteoriten zu bieten. Insbesondere für Nutzer die noch kein Wissen über Meteoriten haben, ermöglicht die schrittweise, text-basierte Einführung ein langsames Herantasten an das Thema ohne Überforderung. Die einfache Sprache, die visuellen Karten schaffen eine solide Wissensgrundlage und wecken die Neugier für die anschliessende interaktive Exploration.
+
+Das Konzept adressiert das Projektziele Wissensvermittlung.  
 Der narrative Zeitfaden richtet sich an Besuchende ohne Vorwissen. Kurze Ereigniskarten mit Bild, Masse und Fundort vermitteln Kontext, ohne zu überfordern. Der Scroll-Mechanismus hält alles sehr simple.  
 
 
@@ -178,17 +197,23 @@ Der narrative Zeitfaden richtet sich an Besuchende ohne Vorwissen. Kurze Ereigni
 
 #### Visuelle Kodierungen
 
-Im narrativen Zeitfaden übernehmen die Ereigniskarten die visuelle Funktion. Bild und Metadaten stehen nebeneinander; ein Zeitstrahl mit Jahresmarkierungen gibt Orientierung.
+Im narrativen Zeitfaden übernehmen die Ereigniskarten die visuelle Funktion. Bild und Metadaten stehen nebeneinander; ein Zeitstrahl mit Jahresmarkierungen gibt Orientierung. Jede Karte enthält zusätzlich eine interaktive Satellitenkarte, die den genauen Fundort des Meteoriten zeigt. Der Zeitstrahl ist nicht-linear gestaltet: Ältere Epochen sind gestaucht, während das 20. und 21. Jahrhundert mehr Platz einnehmen, um die höhere Ereignisdichte abzubilden.
 
 #### Interaktivität
 
-Der narrative Zeitfaden reagiert auf das Scrollen. Ein Scroll-Skript erkennt, welche Karte sich in der Bildschirmmitte befindet, hebt sie hervor und blendet die anderen aus. Ein beweglicher Jahreszeiger auf dem Zeitstrahl zeigt das aktuelle Jahr an.
+Der narrative Zeitfaden reagiert auf das Scrollen. Ein Scroll-Skript erkennt, welche Karte sich in der Bildschirmmitte befindet, hebt sie hervor und blendet die anderen aus. Ein beweglicher Jahreszeiger auf dem Zeitstrahl zeigt das aktuelle Jahr an. Die eingebetteten Satellitenkarten lassen sich zoomen und verschieben, sodass der Fundort räumlich erkundet werden kann.
 
 #### Narrative und Annotation
 
-Jede Ereigniskarte zeigt neben dem Bild die wichtigsten Metadaten: Masse, Zusammensetzung und Fundort. Links zu Wikipedia und zur Bildquelle sind direkt in jede Karte eingebettet.
+Jede Ereigniskarte zeigt neben dem Bild die wichtigsten Metadaten: Masse, Zusammensetzung und Fundort. Links zu Wikipedia und zur Bildquelle sind direkt in jede Karte eingebettet. Jedes Ereignis ist zudem mit einem kurzen Beschreibungstext versehen, der den historischen oder wissenschaftlichen Kontext des jeweiligen Fundes erläutert. Die acht Ereignisse sind bewusst so ausgewählt, dass sie verschiedene Kategorien abdecken: Rekorde nach Masse, historische Erstfunde, aussergewöhnliche Ereignisse und wissenschaftliche Meilensteine.
+
 #### Zielmedium und Integration
+
+Die Timeline ist als vertikaler Scroll-Zeitstrahl in die Shiny-Webanwendung integriert und schliesst direkt an die Introduction Karten an. Die Darstellung ist für Tablets konzipiert: Ereigniskarten mit grosser Schrift, Bilder und interaktive Satellitenkarten sind auf Touchbedienung ausgelegt. Der nicht-lineare Zeitstrahl mit gewichteten Abschnitten komprimiert weit zurückliegende Epochen und gibt dem 20. und 21. Jahrhundert mehr Raum, was der Datendichte des NASA-Datensatzes entspricht.
+
 #### Bezug zu Projektzielen und Nutzerbedürfnissen
+
+Die Timeline adressiert direkt das zweite Projektziel, nämlich bedeutende Meteoritenfunde entlang eines zeitlichen Storytellings zu präsentieren. Die acht ausgewählten Ereignisse von Nogata (860) bis Tscheljabinsk (2013) decken Rekorde (grösster, zweiter und dritter Meteorit) und besondere Ereignisse (Mars-Meteorit ALH84001) ab. Für beide Personas bietet die Kombination aus Bild, Beschreibung und Metadaten einen niederschwelligen, aber inhaltlich gehaltsvollen Einstieg in die Geschichte der Meteoritenforschung.
 
 ---
 
