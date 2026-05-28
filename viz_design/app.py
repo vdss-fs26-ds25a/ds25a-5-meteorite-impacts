@@ -44,6 +44,25 @@ else:
     MASS_LOG_MIN = float(np.floor(meteorites["log_mass"].min() * 10) / 10)
     MASS_LOG_MAX = float(np.ceil(meteorites["log_mass"].max() * 10) / 10)
 
+
+def tooltip_label(label, tooltip_text):
+    return ui.span(
+        label,
+        ui.span(
+            ui.tags.span(
+                "i",
+                class_="tooltip-icon",
+                tabindex="0",
+                role="button",
+                **{"aria-label": f"Information about {label}"},
+            ),
+            ui.tags.span(tooltip_text, class_="menu-tooltip", role="tooltip"),
+            class_="tooltip-wrap",
+        ),
+        class_="label-with-tooltip",
+    )
+
+
 app_ui = ui.page_fluid(
     ui.tags.head(
         ui.tags.link(
@@ -173,6 +192,85 @@ app_ui = ui.page_fluid(
             
             h3 { font-weight: 800; color: #fff; letter-spacing: -0.5px; margin-top: 0; }
             .impact-count { font-size: 14px; color: #00ff00 !important; font-family: monospace; font-weight: bold; }
+
+            .label-with-tooltip {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                position: relative;
+            }
+
+            .tooltip-wrap {
+                display: inline-flex;
+                align-items: center;
+                position: relative;
+                letter-spacing: normal;
+                text-transform: none;
+            }
+
+            .tooltip-icon {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 16px;
+                height: 16px;
+                border-radius: 999px;
+                background: #0d6efd;
+                color: #fff;
+                cursor: help;
+                font-size: 11px;
+                font-weight: 800;
+                line-height: 1;
+                letter-spacing: normal;
+                text-transform: none;
+                user-select: none;
+            }
+
+            .tooltip-icon:focus {
+                outline: 2px solid rgba(13, 110, 253, 0.45);
+                outline-offset: 2px;
+            }
+
+            .menu-tooltip {
+                position: absolute;
+                bottom: calc(100% + 8px);
+                left: 50%;
+                z-index: 10000;
+                width: max-content;
+                max-width: 220px;
+                padding: 8px 10px;
+                border-radius: 8px;
+                background: #0d6efd;
+                box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+                color: #fff;
+                font-size: 11px;
+                font-weight: 500;
+                line-height: 1.35;
+                letter-spacing: normal;
+                text-align: left;
+                text-transform: none;
+                transform: translateX(-50%);
+                opacity: 0;
+                pointer-events: none;
+                visibility: hidden;
+                transition: opacity 140ms ease, visibility 140ms ease;
+            }
+
+            .menu-tooltip::after {
+                content: "";
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                border: 6px solid transparent;
+                border-top-color: #0d6efd;
+            }
+
+            .tooltip-wrap:hover .menu-tooltip,
+            .tooltip-wrap:focus-within .menu-tooltip {
+                opacity: 1;
+                visibility: visible;
+            }
             
             /* Toggle Switch Labels */
             .form-check-label { color: #bbb !important; font-size: 12px; font-weight: 500; }
@@ -206,6 +304,15 @@ app_ui = ui.page_fluid(
             .app-footer a:hover {
                 text-decoration: underline;
             }
+        """),
+        ui.tags.script("""
+            document.addEventListener("click", function(event) {
+                const trigger = event.target.closest(".tooltip-icon");
+                if (!trigger) return;
+                event.preventDefault();
+                event.stopPropagation();
+                trigger.focus();
+            }, true);
         """)
     ),
 
@@ -359,11 +466,18 @@ def server(input, output, session):
             ui.hr(style="border-color: #333; margin: 15px 0;"),
             ui.input_switch("show_impacts", "Show Impacts",
                             value=show_impacts()),
-            ui.input_switch("show_heatmap", "Show 3D Heatmap",
+            ui.input_switch("show_heatmap", tooltip_label(
+                "Show 3D Heatmap",
+                "A heatmap uses color intensity to show where meteorite impacts are most concentrated.",
+            ),
                             value=show_heatmap()),
             ui.hr(style="border-color: #333; margin: 15px 0;"),
             ui.input_checkbox_group(
-                "fall_filter", "FALL TYPE",
+                "fall_filter",
+                tooltip_label(
+                    "FALL TYPE",
+                    "Fall = observed falling meteorite; Found = discovered after impact.",
+                ),
                 {"Fell": "Fallen", "Found": "Found"},
                 selected=cur_fall_filter(),
                 inline=True
