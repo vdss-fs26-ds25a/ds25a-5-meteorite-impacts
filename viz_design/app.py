@@ -354,7 +354,7 @@ def server(input, output, session):
     @render.ui
     def menu_container():
         return ui.div(
-            ui.h3("ORBITAL DATA"),
+            ui.h3("IMPACT DATA"),
             ui.div(ui.output_text("count_summary"), class_="impact-count"),
             ui.hr(style="border-color: #333; margin: 15px 0;"),
             ui.input_switch("show_impacts", "Show Impacts",

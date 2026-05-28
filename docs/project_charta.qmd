@@ -1,5 +1,5 @@
 # Project Charta
-## Context and Scope
+## Kontext und Umfang
 Unser Projekt gehört zum geowissenschaftlichen Bereich und beschäftigt sich mit Meteoritenfunden. Ziel ist es, die wichtigsten Informationen über Meteoriten und ihre Funde weltweit anschaulich und verständlich darzustellen, speziell für den Einsatz auf Tablets in Museen. Die Zielgruppe sind Besucherinnen und Besucher ab etwa 15 Jahren, die sich im Museum erste Informationen über Meteoriten aneignen möchten.
 
 Das Storytelling beginnt mit einer einfach verständlichen Einführung, in der grundlegende Begriffe erklärt werden. Darauf aufbauend werden mithilfe des Datensatzes bedeutende Meteoritenfunde entlang eines Zeitstrahls präsentiert. Besondere Ereignisse wie der erste dokumentierte Fund, besonders grosse oder schwere Meteoriten sowie weitere herausragende Funde werden hervorgehoben.
@@ -289,11 +289,11 @@ gantt
 ```
 
 
-## Roles and Contact Details
+## Rollen und Kontaktinfromationen
 
-| Name | Role | Mail |
+| Name | Rolle | Mail |
 |---|---|---|
 | Andreas Minder | Developer |mindeand@students.zhaw.ch|
-| Nico Varano | Developer | varannic.studnets.zhaw.ch |
+| Nico Varano | Developer | varannic@students.zhaw.ch |
 | Silvan Dubach | Developer | dubacsil@students.zhaw.ch |
 

@@ -57,16 +57,6 @@ Source: [*NASA Meteorite Landings Dataset*](https://data.nasa.gov/dataset/meteor
 
 ------------------------------------------------------------------------
 
-## Erfolgskriterien
-
--   Flüssige Bedienung auf Tablets\
--   Besondere Ereignisse klar erkennbar\
--   Zuverlässige Filter- und Auswahlfunktionen\
--   Vergleich von Masse, Jahr und Klassifikation möglich\
--   Übersichtliche und selbsterklärende Visualisierungen
-
-------------------------------------------------------------------------
-
 ## 👤 Beschreibung der Zielgruppe
 
 ### Persona 1: Lucas Berger (15)
@@ -94,13 +84,12 @@ Source: [*NASA Meteorite Landings Dataset*](https://data.nasa.gov/dataset/meteor
 ------------------------------------------------------------------------
 
 
-
 ## 📊 Auswahl & Begründung der Visualisierung
 
 -   Zweiteiliges Konzept für beide Personas
 
     -   Zeitfaden → geführte Story für Lucas (15, ohne Vorwissen)
-    -   3D-Globus → freie Exploration für Max (31, mit Interesse)
+    -   3D-Globus → Es wurde sich für 3D entschieden 
 
 -   Narrativer Zeitfaden: 8 Ereignisse von 860 bis 2013, Karten mit Bild, Jahr, Masse, Fundort
 
@@ -112,7 +101,15 @@ Source: [*NASA Meteorite Landings Dataset*](https://data.nasa.gov/dataset/meteor
 
 ------------------------------------------------------------------------
 
-## Abschluss
-Probleme & Fazit
+## Probleme
+- Eingrenzung Projektumfang
+- Zielgruppen bestimmen
+- Abgestimmte Visualisierungen auf Zielgruppe
+
+## Fazit
+- Geeignet für Besucher ab 15 Jahren
+- Visualisierung für Zielgruppe ohne Vorwissen
+- Interaktives lernen und entdecken
+
 
 # Danke für eure Aufmerksamkeit ☄️
