@@ -175,10 +175,6 @@ Die Einführungssektion nutzt eine fixierte Karte als zentrales Gestaltungsmitte
 
 Der Inhalt wechselt durch scroll-basierte Navigation. Beim Schritt zu den Meteoriten öffnet ein Button "Learn more about their composition" ein Modalfenster mit einer Erklärungstabelle zu Meteoritenklassen wie L6, H4 oder Iron, IIIAB. Die drei Begriffskarten erscheinen zudem animiert mit zeitversetztem Einblenden, sobald der entsprechende Schritt aktiv wird.
 
-#### Narrative und Annotation
-
-Die Einführung folgt einem klar strukturierten narrativen Bogen: Sie beginnt mit der Begriffsklärung (Meteoroid, Meteor, Meteorit), erklärt anschliessend Entstehung und Eigenschaften jeder Kategorie und schliesst mit der wissenschaftlichen Bedeutung der Meteoriten ab. Jeder Schritt enthält einen Titel und einen erläuternden Absatz in einfacher, allgemeinverständlicher Sprache. Das Modalfenster der composition bietet vertiefende Informationen für Interessierte, ohne den Hauptfluss zu unterbrechen.
-
 #### Zielmedium und Integration
 
 Die Einführungssektion ist als scrollbarer Einstieg konzipiert und leitet nahtlos zur historischen Timeline und zum interaktiven Globus über. Die Darstellung ist für Tablets optimiert: grosse Schriften, hoher Kontrast und eine responsive Kartendarstellung passen sich dem Viewport an. Die Sektion bildet den narrativen Rahmen, der Besucherinnen und Besuchern ohne Vorkenntnisse den Einstieg in die Anwendung erleichtert.
