@@ -165,7 +165,7 @@ Der zweite Teil ist ein interaktiver 3D-Globus. Er zeigt alle ausgesuchten  Mete
 
 ### Introduction Karten
 
-Die Introduction Karten bilden den narrativen Einstieg der Anwendung und führen Besucherinnen und Besucher schrittweise in das Thema Meteoriten ein. Über eine scrollbasierte Abfolge von acht Inhaltsschritten werden grundlegende Begriffe und wissenschaftliche Zusammenhänge erklärt, bevor die interaktiven Visualisierungen beginnt.
+Die Introduction Karten bilden den Einstieg der Anwendung und führen Besucherinnen und Besucher schrittweise in das Thema Meteoriten ein. Über eine scrollbasierte Abfolge von acht Inhaltsschritten werden grundlegende Begriffe und wissenschaftliche Zusammenhänge erklärt, bevor die interaktiven Visualisierungen beginnt.
 
 #### Visuelle Kodierungen
 
@@ -177,14 +177,14 @@ Der Inhalt wechselt durch scroll-basierte Navigation. Beim Schritt zu den Meteor
 
 #### Zielmedium und Integration
 
-Die Einführungssektion ist als scrollbarer Einstieg konzipiert und leitet nahtlos zur historischen Timeline und zum interaktiven Globus über. Die Darstellung ist für Tablets optimiert: grosse Schriften, hoher Kontrast und eine responsive Kartendarstellung passen sich dem Viewport an. Die Sektion bildet den narrativen Rahmen, der Besucherinnen und Besuchern ohne Vorkenntnisse den Einstieg in die Anwendung erleichtert.
+Die Einführungssektion ist als scrollbarer Einstieg konzipiert und leitet nahtlos zur historischen Timeline und zum interaktiven Globus über. Die Darstellung ist für Tablets optimiert: grosse Schriften, hoher Kontrast und eine responsive Kartendarstellung passen sich dem Viewport an. Die Sektion bildet einen Anfang, der Besucherinnen und Besuchern ohne Vorkenntnisse den Einstieg in die Anwendung erleichtert.
 
 #### Bezug zu Projektzielen und Nutzerbedürfnissen
 
 Die Introduction Karten adressieren direkt das erste Projektziel, nämlich Besucherinnen und Besuchern eine verständliche Einführung in das Thema Meteoriten zu bieten. Insbesondere für Nutzer die noch kein Wissen über Meteoriten haben, ermöglicht die schrittweise, text-basierte Einführung ein langsames Herantasten an das Thema ohne Überforderung. Die einfache Sprache, die visuellen Karten schaffen eine solide Wissensgrundlage und wecken die Neugier für die anschliessende interaktive Exploration.
 
 Das Konzept adressiert das Projektziele Wissensvermittlung.  
-Der narrative Zeitfaden richtet sich an Besuchende ohne Vorwissen. Kurze Ereigniskarten mit Bild, Masse und Fundort vermitteln Kontext, ohne zu überfordern. Der Scroll-Mechanismus hält alles sehr simple.  
+Der Zeitfaden richtet sich an Besuchende ohne Vorwissen. Kurze Ereigniskarten mit Bild, Masse und Fundort vermitteln Kontext, ohne zu überfordern. Der Scroll-Mechanismus hält alles sehr simple.  
 
 
 ---
