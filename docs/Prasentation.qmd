@@ -61,12 +61,10 @@ Source: [*NASA Meteorite Landings Dataset*](https://data.nasa.gov/dataset/meteor
 
 ### Persona 1: Lucas Berger (15)
 
--   Sekundarschüler, Klassenausflug ins Museum
--   Kaum Vorwissen zu Meteoriten
--   Geringe Data Literacy, gewohnt an Smartphone & Social Media
--   Hauptbedürfnis: spielerische Entdeckung ohne Vorkenntnisse
--   Pain Points: zu viel Text, Fachbegriffe ohne Erklärung
--   Gains: einfache Sprache, überraschende Fakten, interaktive Bedienung
+- Sekundarschüler, Klassenausflug
+- Kaum Vorwissen, geringe Data Literacy
+- Braucht: spielerische Entdeckung, einfache Sprache
+- Mag: überraschende Fakten, interaktive Bedienung
 
 ------------------------------------------------------------------------
 
@@ -74,12 +72,10 @@ Source: [*NASA Meteorite Landings Dataset*](https://data.nasa.gov/dataset/meteor
 
 ### Persona 2: Max Schneider (31)
 
--   Elektroingenieur, gezielter Museumsbesuch aus Interesse
--   Grundwissen aus YouTube-Dokus und Magazinen
--   Mittlere Data Literacy, vertraut mit interaktiven Karten (Google Maps)
--   Hauptbedürfnis: verständliche Visualisierung mit Tiefe
--   Pain Points: zu wissenschaftliche Sprache, fehlende Filter
--   Gains: intuitiver 3D-Globus, Einordnung in grösseren Kontext
+- Gezielter Museumsbesuch
+- Grundwissen, vertraut mit interaktiven Karten
+- Braucht: Tiefe mit Übersicht, intuitive Bedienung
+- Mag: 3D-Globus, Filter, Einordnung in Kontext
 
 ------------------------------------------------------------------------
 
