@@ -18,7 +18,6 @@ editor: visual
 number-sections: false
 ---
 
-
 ## 📂 Datensatz
 
 Source: [*NASA Meteorite Landings Dataset*](https://data.nasa.gov/dataset/meteorite-landings)
@@ -61,10 +60,10 @@ Source: [*NASA Meteorite Landings Dataset*](https://data.nasa.gov/dataset/meteor
 
 ### Persona 1: Lucas Berger (15)
 
-- Sekundarschüler, Klassenausflug
-- Kaum Vorwissen, geringe Data Literacy
-- Braucht: spielerische Entdeckung, einfache Sprache
-- Mag: überraschende Fakten, interaktive Bedienung
+-   Sekundarschüler, Klassenausflug
+-   Kaum Vorwissen, geringe Data Literacy
+-   Braucht: spielerische Entdeckung, einfache Sprache
+-   Mag: überraschende Fakten, interaktive Bedienung
 
 ------------------------------------------------------------------------
 
@@ -72,40 +71,23 @@ Source: [*NASA Meteorite Landings Dataset*](https://data.nasa.gov/dataset/meteor
 
 ### Persona 2: Max Schneider (31)
 
-- Gezielter Museumsbesuch
-- Grundwissen, vertraut mit interaktiven Karten
-- Braucht: Tiefe mit Übersicht, intuitive Bedienung
-- Mag: 3D-Globus, Filter, Einordnung in Kontext
-
-------------------------------------------------------------------------
-
-
-## 📊 Auswahl & Begründung der Visualisierung
-
--   Zweiteiliges Konzept für beide Personas
-
-    -   Zeitfaden → geführte Story für Lucas (15, ohne Vorwissen)
-    -   3D-Globus → Es wurde sich für 3D entschieden 
-
--   Narrativer Zeitfaden: 8 Ereignisse von 860 bis 2013, Karten mit Bild, Jahr, Masse, Fundort
-
-    -   konkrete Geschichten statt abstrakter Statistik
-
--   Interaktiver 3D-Globus: Punkte auf drehbarer Erde, Farbe = Masse (grün, rot), optionale Heatmap
-
-    -   vertrautes Tool (Google Maps)
+-   Gezielter Museumsbesuch
+-   Grundwissen, vertraut mit interaktiven Karten
+-   Braucht: Tiefe mit Übersicht, intuitive Bedienung
+-   Mag: 3D-Globus, Filter, Einordnung in Kontext
 
 ------------------------------------------------------------------------
 
 ## Probleme
-- Eingrenzung Projektumfang
-- Zielgruppen bestimmen
-- Abgestimmte Visualisierungen auf Zielgruppe
+
+-   Eingrenzung Projektumfang
+-   Zielgruppen bestimmen
+-   Abgestimmte Visualisierungen auf Zielgruppe
 
 ## Fazit
-- Geeignet für Besucher ab 15 Jahren
-- Visualisierung für Zielgruppe ohne Vorwissen
-- Interaktives lernen und entdecken
 
+-   Geeignet für Besucher ab 15 Jahren
+-   Visualisierung für Zielgruppe ohne Vorwissen
+-   Interaktives lernen und entdecken
 
 # Danke für eure Aufmerksamkeit ☄️
