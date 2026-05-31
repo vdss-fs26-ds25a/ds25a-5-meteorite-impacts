@@ -52,6 +52,11 @@ def build_meteor_introduction():
             "description": "Metal-dominated meteorites (mostly iron-nickel). Example: Iron, IIIAB.",
         },
         {
+            "code": "2",
+            "name": "Petrologic type 2 (common in carbonaceous classes)",
+            "description": "Significant aqueous alteration on the parent body. Example: CM2.",
+        },
+        {
             "code": "3",
             "name": "Petrologic type 3",
             "description": "Most primitive ordinary chondrites; least thermally altered.",
@@ -70,11 +75,6 @@ def build_meteor_introduction():
             "code": "6",
             "name": "Petrologic type 6",
             "description": "Strong thermal metamorphism; textures are more equilibrated.",
-        },
-        {
-            "code": "2",
-            "name": "Petrologic type 2 (common in carbonaceous classes)",
-            "description": "Significant aqueous alteration on the parent body. Example: CM2.",
         },
         {
             "code": "4/5",
@@ -637,7 +637,8 @@ def build_meteor_introduction():
                         ui.tags.tbody(
                             *[
                                 ui.tags.tr(
-                                    ui.tags.td(row["code"], class_="meteorite-class-code"),
+                                    ui.tags.td(
+                                        row["code"], class_="meteorite-class-code"),
                                     ui.tags.td(row["name"]),
                                     ui.tags.td(row["description"]),
                                 )
